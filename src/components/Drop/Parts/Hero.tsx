@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { styled } from '@theme'
+import { styled, keyframes } from '@theme'
 import { Heading } from '@components'
 
 // For the master container of the hero section of the drop section
@@ -36,6 +36,16 @@ const HeroImage = styled('div', {
   }
 })
 
+const fadeOutKF = keyframes({
+  '0%': { opacity: 1, transform: 'scale( 1 )' },
+  '100%': { opacity: 0, transform: 'scale( 0.9 )' }
+})
+
+const fadeInKF = keyframes({
+  '0%': { opacity: 0, transform: 'scale( 0.9 )' },
+  '100%': { opacity: 1, transform: 'scale( 1 )' }
+})
+
 // For the master container of the of the video within the hero section
 // This show the character animating, below the title
 
@@ -56,7 +66,14 @@ const VideoWrap = styled('div', {
     width: '100%',
     height: 'auto',
     display: 'block',
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+
+    '&.fadeOut': {
+      animation: `${fadeOutKF} 600ms ease forwards`
+    },
+    '&.fadeIn': {
+      animation: `${fadeInKF} 600ms ease forwards`
+    }
   }
 })
 
@@ -80,6 +97,9 @@ export const Hero = ({
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [index, setIndex] = useState(0)
+  const FADE_MS = 400
+  const [fading, setFading] = useState(false)
+  const [fadingIn, setFadingIn] = useState(true)
 
   // Normalize sources: prefer `videos` if provided; otherwise fall back to single `video`.
   const sources: string[] = React.useMemo(() => {
@@ -91,6 +111,9 @@ export const Hero = ({
   useEffect(() => {
     const el = videoRef.current
     if (!el) return
+    setFading(false)
+    setFadingIn(true)
+    setTimeout(() => setFadingIn(false), FADE_MS)
     // Force restart when the src changes
     el.load()
     const play = () => {
@@ -112,7 +135,17 @@ export const Hero = ({
 
   const advance = () => {
     if (sources.length <= 1) return // Nothing to advance
+    setFading(false)
     setIndex((i) => (i + 1) % sources.length)
+  }
+
+  const handleTimeUpdate = () => {
+    const el = videoRef.current
+    if (!el || !isFinite(el.duration)) return
+    const remaining = el.duration - el.currentTime
+    if (remaining <= FADE_MS / 1000 && !fading) {
+      setFading(true)
+    }
   }
 
   return(
@@ -136,9 +169,10 @@ export const Hero = ({
             autoPlay
             muted
             playsInline
-            // We do not loop a single video element; instead we advance to the next source on end.
+            onTimeUpdate={ handleTimeUpdate }
             onEnded={ advance }
             onError={ advance }
+            className={ fading ? 'fadeOut' : fadingIn ? 'fadeIn' : undefined }
           >
             <source key={ sources[index] } src={ sources[index] } type="video/webm" />
             Your browser does not support the video tag.
@@ -149,4 +183,3 @@ export const Hero = ({
 
   )
 }
-
