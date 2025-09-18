@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@components": ["src/components"],
+      "@email": ["src/components/Email/Components"],
+      "@codeColors": ["src/components/Code/Colors"],
+      "@contracts": ["src/contracts"],
+      "@forms/*": ["src/forms/*"],
+      "@gql": ["src/gql"],
+      "@lib": ["src/lib"],
+      "@pages": ["src/pages"],
+      "@public/*": ["public/*"],
+      "@theme": [ "src/theme/stitches.config.ts" ],
+      "@types": ["src/types"],
+      "@copy/*": ["src/copy/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./src/types"]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.graphql", "src/lib/index.js"],
+  "exclude": ["node_modules"]
+}
