@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { styled } from '@theme'
+import { styled, keyframes } from '@theme'
 import { Heading } from '@components'
 
 const CountdownWrap = styled('div', {
@@ -38,10 +38,71 @@ const Number = styled('div', {
   padding: '0 16px',
   background: '$bgSecondary',
   borderRadius: '$r1',
+  overflow: 'hidden',
+})
+
+const slideInUp = keyframes({
+  '0%': { transform: 'translateY(40%)', opacity: 0 },
+  '60%': { transform: 'translateY(0%)', opacity: 1 },
+  '100%': { transform: 'translateY(0%)', opacity: 1 }
+})
+
+const slideOutUp = keyframes({
+  '0%': { transform: 'translateY(0%)', opacity: 1 },
+  '60%': { transform: 'translateY(-40%)', opacity: 0 },
+  '100%': { transform: 'translateY(-40%)', opacity: 0 }
+})
+
+const DigitBase = styled('div', {
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+})
+
+const DigitIn = styled(DigitBase, {
+  animation: `${slideInUp} 380ms ease both`
+})
+
+const DigitOut = styled(DigitBase, {
+  animation: `${slideOutUp} 380ms ease both`
 })
 
 interface CountdownProps {
   targetDate: string | Date
+}
+
+const TickingNumber: React.FC<{ value: number | string }> = ({ value }) => {
+  const [prev, setPrev] = useState<number | string | null>(null)
+  const [showOut, setShowOut] = useState(false)
+  const prevRef = React.useRef<number | string | null>(value)
+
+  useEffect(() => {
+    if (prevRef.current !== value) {
+      setPrev(prevRef.current)
+      setShowOut(true)
+      prevRef.current = value
+      const t = setTimeout(() => setShowOut(false), 380)
+      return () => clearTimeout(t)
+    }
+  }, [value])
+
+  return (
+    <>
+      {showOut && (
+        <DigitOut>
+          <Heading heavy size="l4" title={ String(prev) } />
+        </DigitOut>
+      )}
+      <DigitIn key={ String(value) }>
+        <Heading heavy size="l4" title={ String(value) } />
+      </DigitIn>
+    </>
+  )
 }
 
 export const Countdown = ({ targetDate }: CountdownProps) => {
@@ -83,22 +144,22 @@ export const Countdown = ({ targetDate }: CountdownProps) => {
 
       <NumberWrap>
         <NumberBlock>
-          <Number><Heading heavy size="l4" title={ timeLeft.days } /></Number>
+          <Number><TickingNumber value={ timeLeft.days } /></Number>
           <Heading size="l0" title="days" />
         </NumberBlock>
 
         <NumberBlock>
-          <Number><Heading heavy size="l4" title={ timeLeft.hours } /></Number>
+          <Number><TickingNumber value={ timeLeft.hours } /></Number>
           <Heading size="l0" title="hours" />
         </NumberBlock>
 
         <NumberBlock>
-          <Number><Heading heavy size="l4" title={ timeLeft.minutes } /></Number>
+          <Number><TickingNumber value={ timeLeft.minutes } /></Number>
           <Heading size="l0" title="mins" />
         </NumberBlock>
 
         <NumberBlock>
-          <Number><Heading heavy size="l4" title={ timeLeft.seconds } /></Number>
+          <Number><TickingNumber value={ timeLeft.seconds } /></Number>
           <Heading size="l0" title="secs" />
         </NumberBlock>
       </NumberWrap>

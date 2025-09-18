@@ -8,6 +8,7 @@ interface DropProps {
   image?: string
   video?: string
   videos?: any
+  titles?: any
 }
 
 export const Drop = ({
@@ -15,13 +16,14 @@ export const Drop = ({
     subTitle,
     image,
     video,
-    videos
+    videos,
+    titles
   }:DropProps) => {
 
   return(
 
     <>
-      <Hero {...{ title, subTitle, image, video, videos }} />
+      <Hero {...{ title, subTitle, image, video, videos, titles }} />
       <Countdown targetDate="2025-10-01T23:59:59" />
     </>
 

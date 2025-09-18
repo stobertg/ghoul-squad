@@ -2,6 +2,17 @@ import React, { useEffect, useRef, useState } from 'react'
 import { styled, keyframes } from '@theme'
 import { Heading } from '@components'
 
+const fadeOutText = keyframes({
+  '0%': { opacity: 1, transform: 'translateY( 0 )' },
+  '90%': { opacity: 0, transform: 'translateY( -30% )' },
+  '100%': { opacity: 0, transform: 'translateY( 30% )' }
+})
+
+const fadeInText = keyframes({
+  '0%': { opacity: 0, transform: 'translateY( 30% )' },
+  '100%': { opacity: 1, transform: 'translateY( 0 )' }
+})
+
 // For the master container of the hero section of the drop section
 // This holds the title of the characters on the top of the container and the image/video below
 
@@ -20,7 +31,13 @@ const HeroText = styled('div', {
   alignItems: 'center',
   gap: 8,
   position: 'relative',
-  width: '100%'
+  width: '100%',
+  '&.fadeOut': { 
+    '> *:first-child': { animation: `${fadeOutText} 600ms ease forwards` }
+  },
+  '&.fadeIn': {
+     '> *:first-child': { animation: `${fadeInText} 600ms ease forwards` }
+  }
 })
 
 const HeroImage = styled('div', {
@@ -69,10 +86,10 @@ const VideoWrap = styled('div', {
     pointerEvents: 'none',
 
     '&.fadeOut': {
-      animation: `${fadeOutKF} 600ms ease forwards`
+      animation: `${fadeOutKF} 500ms ease forwards`
     },
     '&.fadeIn': {
-      animation: `${fadeInKF} 600ms ease forwards`
+      animation: `${fadeInKF} 500ms ease forwards`
     }
   }
 })
@@ -85,6 +102,8 @@ interface HeroProps {
   video?: string
   /** Sequence of videos to play one-at-a-time (loops the list). */
   videos?: string[]
+  /** Sequence of titles matching the `videos` array. */
+  titles?: string[]
 }
 
 export const Hero = ({
@@ -92,7 +111,8 @@ export const Hero = ({
     subTitle,
     image,
     video,
-    videos
+    videos,
+    titles
   }:HeroProps) => {
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -106,6 +126,8 @@ export const Hero = ({
     if (Array.isArray(videos) && videos.length > 0) return videos
     return video ? [video] : []
   }, [videos, video])
+
+  const currentTitle = (Array.isArray(titles) && titles[index]) || title
 
   // When source changes, ensure autoplay resumes (especially on Safari/iOS).
   useEffect(() => {
@@ -151,8 +173,8 @@ export const Hero = ({
   return(
 
     <HeroWrap>
-      <HeroText>
-        <Heading heavy size="l7" title={ title } />
+      <HeroText className={ fading ? 'fadeOut' : fadingIn ? 'fadeIn' : undefined }>
+        <Heading heavy size="l7" title={ currentTitle } />
         <Heading color="secondary" title={ subTitle } />
       </HeroText>
 

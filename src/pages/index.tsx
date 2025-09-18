@@ -68,7 +68,13 @@ export default function Home() {
         <PhoneHeader overlay />
 
         <Drop 
-          title="Sir Casper"
+          title=""
+          titles={[
+            'Sir Casper',
+            'Sir Frank',
+            'Sir Pump',
+            'Sir Vamp'
+          ]}
           subTitle="Ghoul Squad"
           videos={[
             '/ghouls/casper.webm',
