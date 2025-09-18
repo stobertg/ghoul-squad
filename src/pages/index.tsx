@@ -74,7 +74,7 @@ export default function Home() {
             '/ghouls/casper.webm',
             '/ghouls/frank.webm',
             '/ghouls/pump.webm',
-            // '/ghouls/vampire.webm'
+            '/ghouls/vamp.webm'
           ]}
         />
       </Phone>

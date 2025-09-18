@@ -6,7 +6,7 @@ const CountdownWrap = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: 20,
+  gap: 16,
   position: 'relative',
   width: '100%'
 })
@@ -24,7 +24,7 @@ const NumberBlock = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: 12,
+  gap: 8,
   position: 'relative'
 })
 

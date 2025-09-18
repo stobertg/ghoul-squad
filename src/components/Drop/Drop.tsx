@@ -22,7 +22,7 @@ export const Drop = ({
 
     <>
       <Hero {...{ title, subTitle, image, video, videos }} />
-      <Countdown targetDate="2025-12-31T23:59:59" />
+      <Countdown targetDate="2025-10-01T23:59:59" />
     </>
 
 
