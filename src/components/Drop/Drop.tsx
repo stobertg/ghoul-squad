@@ -17,6 +17,7 @@ const DropMain = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  gap: 20,
   position: 'relative',
   width: '100%'
 })

@@ -44,14 +44,49 @@ const PhoneContent = styled('div', {
 const PhoneContentMain = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: 12,
+  // gap: 12,
   position: 'relative',
   width: '100%',
-  paddingTop: 8,
+  // paddingTop: 8,
 
   variants: {
     hasHero: {
       true: { paddingTop: 0 }
+    }
+  }
+})
+
+
+// For the dismiss line on the bottom of the container
+// This is static, doesn't have a function
+
+const IphoneBottom = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+  bottom: 0,
+  width: '100%',
+  zIndex: 9000,
+
+  // For the close bar on the bottom of the container
+  // Position horizonatally centered in the parent container
+
+  '&:after': {
+    content: '',
+    position: 'absolute',
+    bottom: 12,
+    width: 120,
+    height: 4,
+    background: '#fff',
+    borderRadius: '$pill'
+  },
+
+  // For Darkmode, we change the background of the dismiss bar to white
+
+  variants: { 
+    darkMode: {
+      true: { '&:after': { background: '$white' }}
     }
   }
 })
@@ -73,6 +108,7 @@ export const Phone = ({ children, hasHero, darkBg, lighterBg }:PhoneProps) => {
         <PhoneContentMain {...{ hasHero }}>{ children }</PhoneContentMain>
       </PhoneContent>
 
+      <IphoneBottom />
       {/* <PhoneBg {...{ lighterBg }} /> */}
     </PhoneWrap>
 
