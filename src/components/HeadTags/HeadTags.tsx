@@ -22,8 +22,8 @@ export const HeadTags = () => {
       <meta property="og:url" content="https://www.ghoulsquad.com/" />
       <meta property="og:description" content="Ghoul Squad" />
       <meta property="og:type" content="website" />
-      <meta name="msapplication-TileColor" content="#da532c" />
-      <meta name="theme-color" content="#2b2b2b" />
+      <meta name="msapplication-TileColor" content="#252525" />
+      <meta name="theme-color" content="#252525" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon.png" />

@@ -4,8 +4,7 @@ import { Heading } from '@components'
 
 const fadeOutText = keyframes({
   '0%': { opacity: 1, transform: 'translateY( 0 )' },
-  '90%': { opacity: 0, transform: 'translateY( -30% )' },
-  '100%': { opacity: 0, transform: 'translateY( 30% )' }
+  '100%': { opacity: 0, transform: 'translateY( -80% )' },
 })
 
 const fadeInText = keyframes({
