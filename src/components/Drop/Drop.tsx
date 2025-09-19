@@ -8,7 +8,7 @@ const DropWrap = styled('div', {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  gap: 50,
+  gap: 32,
   position: 'relative',
   width: '100%',
   '@mobile': { gap: 32 }

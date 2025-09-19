@@ -3,17 +3,22 @@ import { styled } from '@theme'
 import { Heading } from '@components'
 import { TrustBadge } from './Parts/TrustBadge'
 
-const ChipWrap = styled ('div', {
+const ChipWrap = styled ('button', {
   display: 'inline-flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: 8,
+  gap: 12,
   position: 'relative',
-  height: 40,
   margin: '0 auto',
-  padding: '8px 12px',
+  padding: 8,
   background: '#000',
-  borderRadius: '$pill'
+  border: '1px solid $bgSecondary',
+  borderRadius: '$pill',
+  transition: '$s1',
+
+  '&:active': {
+    transform: 'scale( 0.9 )'
+  }
 })
 
 const ChipImage = styled('div', {
@@ -21,8 +26,8 @@ const ChipImage = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   position: 'relative',
-  width: 24,
-  height: 24,
+  width: 28,
+  height: 28,
   borderRadius: '50%',
   overflow: 'hidden',
 
