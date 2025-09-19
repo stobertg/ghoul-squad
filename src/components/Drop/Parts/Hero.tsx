@@ -86,9 +86,12 @@ const VideoWrap = styled('div', {
     background: 'transparent',
     pointerEvents: 'none',
     opacity: 0,
-    transition: 'opacity 300ms ease',
+    transition: 'opacity 0ms linear',
+    willChange: 'opacity, transform',
 
     '&.active': { opacity: 1 },
+
+    '&.fadeIn, &.fadeOut': { transition: 'none' },
 
     '&.fadeOut': {
       animation: `${fadeOutKF} 500ms ease forwards`
@@ -220,20 +223,20 @@ export const Hero = ({
     const prev = prevIndexRef.current
     if (!vids || vids.length === 0) return
 
-    // Pause previous, clear classes
-    const prevEl = vids[prev]
-    if (prevEl && prev !== index) {
-      try { prevEl.pause() } catch {}
-      prevEl.classList.remove('active', 'fadeIn', 'fadeOut')
-    }
+    // Pause and reset classes on all videos except the current
+    vids.forEach((v, idx) => {
+      if (!v) return
+      if (idx !== index) {
+        try { v.pause() } catch {}
+        v.classList.remove('active', 'fadeIn', 'fadeOut')
+      }
+    })
 
-    // Play current, ensure active class
+    // Activate current
     const curEl = vids[index]
     if (curEl) {
       curEl.classList.add('active')
-      // On iOS/Safari autoplay can be finicky; attempt play on metadata
-      const onLoaded = () => { try { curEl.play() } catch {} }
-      curEl.addEventListener('loadedmetadata', onLoaded, { once: true })
+      try { curEl.currentTime = 0 } catch {}
       try { curEl.play() } catch {}
     }
 
@@ -269,13 +272,13 @@ export const Hero = ({
       )}
 
       { selectedLane.length > 0 && (
-        <VideoWrap>
+        <VideoWrap style={{ visibility: selectedLane.length ? 'visible' : 'hidden' }}>
           { selectedLane.map((src, i) => (
             <video
               key={ src }
               ref={ el => { if (el) videoRefs.current[i] = el } }
               src={ src }
-              autoPlay={ i === index }
+              autoPlay
               muted
               playsInline
               preload="auto"
@@ -283,7 +286,8 @@ export const Hero = ({
               onError={ () => { if (i === index) advance() } }
               className={ [
                 i === index ? 'active' : '',
-                (i === index && (fading || fadingIn)) ? (fading ? 'fadeOut' : 'fadeIn') : ''
+                i === index && fading ? 'fadeOut' : '',
+                i === index && !fading && fadingIn ? 'fadeIn' : ''
               ].filter(Boolean).join(' ') }
             />
           ))}
