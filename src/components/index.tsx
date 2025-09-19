@@ -1,6 +1,7 @@
 export { BrandChip } from './BrandChip/BrandChip'
 export { ButtonIcon } from './ButtonIcon/ButtonIcon'
 export { Drop } from './Drop/Drop'
+export { FallAnimation } from './Seasons/Fall'
 export { Heading } from './Heading/Heading'
 export { HeadTags } from './HeadTags/HeadTags'
 export { Icon } from './Icon/Icon'
