@@ -42,11 +42,11 @@ const ClipWrap = styled('div', {
   overflow: 'hidden',
   pointerEvents: 'none',
   zIndex: 0,
-  opacity: 0.3
+  opacity: 0.2
 })
 
 const FallWrap = styled('div', {
-  width: 320,
+  width: 280,
   height: '100%',
   transform: 'rotate(-60deg)',
   transformStyle: 'preserve-3d'
@@ -81,7 +81,7 @@ export const FallAnimation = () => {
   // Generate a stable random config per render cycle
   const leaves = useMemo(() => {
     const rnd = (min: number, max: number) => Math.random() * (max - min) + min
-    const durNum = 12 // constant duration keeps throughput uniform
+    const durNum = 9 // shorter duration makes animation faster
     const slot = durNum / numLeaves
     return Array.from({ length: numLeaves }, (_, i) => {
       const left = `${Math.round(rnd(2, 98))}%`
