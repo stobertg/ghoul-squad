@@ -5,6 +5,7 @@ export default function Home() {
   // Hoist data so we can preload the assets
   const titles = useMemo(() => [
     'Sir Casper',
+    'Jeremy',
     'Sir Frank',
     'Sir Pump',
     'Sir Vamp'
@@ -12,6 +13,7 @@ export default function Home() {
 
   const videos = useMemo(() => [
     '/ghouls/casper.webm',
+    '/ghouls/jeremy.webm',
     '/ghouls/frank.webm',
     '/ghouls/pump.webm',
     '/ghouls/vamp.webm'
@@ -19,6 +21,7 @@ export default function Home() {
 
   const appleFallback = useMemo(() => [
     '/ghouls/apple-fallback/casper.mov',
+    '/ghouls/apple-fallback/jeremy.mov',
     '/ghouls/apple-fallback/frank.mov',
     '/ghouls/apple-fallback/pump.mov',
     '/ghouls/apple-fallback/vamp.mov'
