@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { styled, keyframes } from '@theme'
-import { Heading, FallAnimation } from '@components'
+import { Heading } from '@components'
 
 const fadeOutText = keyframes({
   '0%': { opacity: 1, transform: 'translateY( 0 )' },
@@ -304,8 +304,6 @@ export const Hero = ({
           ))}
         </VideoWrap>
       )}
-
-      {/* <FallAnimation /> */}
     </HeroWrap>
 
   )
