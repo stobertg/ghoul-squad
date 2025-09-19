@@ -32,6 +32,12 @@ const PhoneWrap = styled('div', {
         paddingTop: 0
       }
     }
+  },
+
+  '@mobile': {
+    maxWidth: '100%',
+    borderRadius: 0,
+    border: 'none'
   }
 })
 
@@ -88,6 +94,10 @@ const IphoneBottom = styled('div', {
     darkMode: {
       true: { '&:after': { background: '$white' }}
     }
+  },
+
+  '@mobile': {
+    display: 'none'
   }
 })
 

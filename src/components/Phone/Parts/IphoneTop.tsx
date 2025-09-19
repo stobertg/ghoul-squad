@@ -21,7 +21,8 @@ const IphoneHeader = styled('div', {
   lineHeight: 1,
   zIndex: 10,
   '> *:first-child': { marginLeft: 12 },
-  '> *:last-child': { marginRight: 12, fontSize: 13 }
+  '> *:last-child': { marginRight: 12, fontSize: 13 },
+  '@mobile': { display: 'none' }
 })
 
 // For the container of the camera section in the center of the container

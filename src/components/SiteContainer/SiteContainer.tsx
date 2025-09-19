@@ -4,7 +4,8 @@ import { styled } from '@theme'
 const SiteWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  margin: '32px auto'
+  margin: '32px auto',
+  '@mobile': { margin: '0 auto' }
 })
 
 interface SiteProps {
