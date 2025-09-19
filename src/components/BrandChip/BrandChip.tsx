@@ -12,7 +12,6 @@ const ChipWrap = styled ('button', {
   margin: '0 auto',
   padding: 8,
   background: '#000',
-  border: '1px solid $bgSecondary',
   borderRadius: '$pill',
   transition: '$s1',
 
