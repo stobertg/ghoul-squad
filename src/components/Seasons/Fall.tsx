@@ -48,7 +48,7 @@ const ClipWrap = styled('div', {
 const FallWrap = styled('div', {
   width: 280,
   height: '100%',
-  transform: 'rotate(-60deg)',
+  transform: 'rotate(-65deg)',
   transformStyle: 'preserve-3d'
 })
 
