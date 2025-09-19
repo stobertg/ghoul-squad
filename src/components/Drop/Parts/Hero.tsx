@@ -83,6 +83,7 @@ const VideoWrap = styled('div', {
     width: '100%',
     height: 'auto',
     display: 'block',
+    background: 'transparent',
     pointerEvents: 'none',
 
     '&.fadeOut': {
@@ -102,6 +103,10 @@ interface HeroProps {
   video?: string
   /** Sequence of videos to play one-at-a-time (loops the list). */
   videos?: string[]
+  /** Single HEVC-with-alpha source for Safari/iOS fallback. */
+  hevcVideo?: string
+  /** Sequence of HEVC-with-alpha videos matching `videos` index. */
+  hevcVideos?: string[]
   /** Sequence of titles matching the `videos` array. */
   titles?: string[]
 }
@@ -112,6 +117,8 @@ export const Hero = ({
     image,
     video,
     videos,
+    hevcVideo,
+    hevcVideos,
     titles
   }:HeroProps) => {
 
@@ -121,11 +128,24 @@ export const Hero = ({
   const [fading, setFading] = useState(false)
   const [fadingIn, setFadingIn] = useState(true)
 
+  // Runtime feature-detect: can this browser play HEVC (hvc1) in MP4?
+  const supportsHevc = React.useMemo(() => {
+    if (typeof document === 'undefined') return false
+    const probe = document.createElement('video')
+    // Safari reports 'probably'/'maybe' for hvc1; Chromium/Firefox return ''
+    return !!probe.canPlayType && probe.canPlayType('video/mp4; codecs="hvc1"') !== ''
+  }, [])
+
   // Normalize sources: prefer `videos` if provided; otherwise fall back to single `video`.
   const sources: string[] = React.useMemo(() => {
     if (Array.isArray(videos) && videos.length > 0) return videos
     return video ? [video] : []
   }, [videos, video])
+
+  const hevcSources: string[] = React.useMemo(() => {
+    if (Array.isArray(hevcVideos) && hevcVideos.length > 0) return hevcVideos
+    return hevcVideo ? [hevcVideo] : []
+  }, [hevcVideos, hevcVideo])
 
   const currentTitle = (Array.isArray(titles) && titles[index]) || title
 
@@ -137,7 +157,9 @@ export const Hero = ({
     setFadingIn(true)
     setTimeout(() => setFadingIn(false), FADE_MS)
     // Force restart when the src changes
-    el.load()
+    if ((sources.length > 0 || hevcSources.length > 0)) {
+      el.load()
+    }
     const play = () => {
       const p = el.play()
       if (p && typeof p.then === 'function') {
@@ -156,9 +178,10 @@ export const Hero = ({
   }, [index])
 
   const advance = () => {
-    if (sources.length <= 1) return // Nothing to advance
+    const laneLength = Math.max(sources.length, hevcSources.length)
+    if (laneLength <= 1) return // Nothing to advance
     setFading(false)
-    setIndex((i) => (i + 1) % sources.length)
+    setIndex((i) => (i + 1) % laneLength)
   }
 
   const handleTimeUpdate = () => {
@@ -184,7 +207,7 @@ export const Hero = ({
         </HeroImage>
       )}
 
-      { sources.length > 0 && (
+      { (sources.length > 0 || hevcSources.length > 0) && (
         <VideoWrap>
           <video
             ref={ videoRef }
@@ -196,7 +219,41 @@ export const Hero = ({
             onError={ advance }
             className={ fading ? 'fadeOut' : fadingIn ? 'fadeIn' : undefined }
           >
-            <source key={ sources[index] } src={ sources[index] } type="video/webm" />
+            { supportsHevc && hevcSources[index] && (
+              // Browser can play HEVC: offer HEVC first (alpha on Safari/iOS/macOS), then WebM as a secondary option
+              <>
+                <source
+                  key={`hevc-${hevcSources[index]}`}
+                  src={ hevcSources[index] }
+                  type={ `video/mp4; codecs=\"hvc1\"` }
+                />
+                { sources[index] && (
+                  <source
+                    key={`webm-${sources[index]}`}
+                    src={ sources[index] }
+                    type={ `video/webm; codecs=\"vp9\"` }
+                  />
+                )}
+              </>
+            )}
+
+            { !supportsHevc && sources[index] && (
+              // Browser cannot play HEVC: serve only WebM to avoid HEVC probes that can block playback
+              <source
+                key={`webm-only-${sources[index]}`}
+                src={ sources[index] }
+                type={ `video/webm; codecs=\"vp9\"` }
+              />
+            )}
+
+            { supportsHevc && !sources[index] && hevcSources[index] && (
+              // No WebM provided for this index; fall back to HEVC when supported
+              <source
+                key={`hevc-only-${hevcSources[index]}`}
+                src={ hevcSources[index] }
+                type={ `video/mp4; codecs=\"hvc1\"` }
+              />
+            )}
             Your browser does not support the video tag.
           </video>
         </VideoWrap>

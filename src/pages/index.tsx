@@ -82,6 +82,12 @@ export default function Home() {
             '/ghouls/pump.webm',
             '/ghouls/vamp.webm'
           ]}
+          appleFallback={[
+            '/ghouls/apple-fallback/casper.mov',
+            '/ghouls/apple-fallback/frank.mov',
+            '/ghouls/apple-fallback/pump.mov',
+            '/ghouls/apple-fallback/vamp.mov'
+          ]}
         />
       </Phone>
     </>

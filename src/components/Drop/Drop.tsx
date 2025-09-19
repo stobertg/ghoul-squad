@@ -29,6 +29,7 @@ interface DropProps {
   video?: string
   videos?: any
   titles?: any
+  appleFallback?: any
 }
 
 export const Drop = ({
@@ -37,14 +38,15 @@ export const Drop = ({
     image,
     video,
     videos,
-    titles
+    titles,
+    appleFallback
   }:DropProps) => {
 
   return(
 
     <DropWrap>
       <DropMain>
-        <Hero {...{ title, subTitle, image, video, videos, titles }} />
+        <Hero {...{ title, subTitle, image, video, videos, titles }} hevcVideos={ appleFallback } />
         <Countdown targetDate="2025-10-01T23:59:59" />
       </DropMain>
 
