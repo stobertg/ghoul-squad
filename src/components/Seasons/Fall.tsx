@@ -3,13 +3,13 @@ import { styled, keyframes } from '@theme'
 
 // ----- Keyframes -----
 const leafMotion = keyframes({
-  '0%':   { transform: 'translateY(-10%) translateX(calc(var(--amp) * -1)) rotateZ(0turn) rotateX(0turn)', opacity: 0 },
+  '0%':   { transform: 'translate3d(calc(var(--amp) * -1), -10%, 0) rotateZ(0turn) rotateX(0deg)', opacity: 0 },
   '5%':   { opacity: 1 },
-  '25%':  { transform: 'translateY(22.5vh) translateX(var(--amp)) rotateZ(calc(var(--rz) * 0.25)) rotateX(calc(var(--rx) * 0.25))' },
-  '50%':  { transform: 'translateY(45vh) translateX(calc(var(--amp) * -1)) rotateZ(calc(var(--rz) * 0.5)) rotateX(calc(var(--rx) * 0.5))' },
-  '75%':  { transform: 'translateY(77.5vh) translateX(var(--amp)) rotateZ(calc(var(--rz) * 0.75)) rotateX(calc(var(--rx) * 0.75))' },
+  '25%':  { transform: 'translate3d(var(--amp), 22.5%, 0) rotateZ(calc(var(--rz) * 0.25)) rotateX(calc(var(--rx) * 0.25))' },
+  '50%':  { transform: 'translate3d(calc(var(--amp) * -1), 45%, 0) rotateZ(calc(var(--rz) * 0.5)) rotateX(calc(var(--rx) * 0.5))' },
+  '75%':  { transform: 'translate3d(var(--amp), 77.5%, 0) rotateZ(calc(var(--rz) * 0.75)) rotateX(calc(var(--rx) * 0.75))' },
   '95%':  { opacity: 1 },
-  '100%': { transform: 'translateY(110vh) translateX(calc(var(--amp) * -1)) rotateZ(var(--rz)) rotateX(var(--rx))', opacity: 0 }
+  '100%': { transform: 'translate3d(calc(var(--amp) * -1), 110%, 0) rotateZ(var(--rz)) rotateX(var(--rx))', opacity: 0 }
 })
 
 // ----- Styled -----
@@ -39,6 +39,9 @@ const Leaf = styled('div', {
   '--delay': '0s',
   '--rx': '1turn',
   '--rz': '1turn',
+  backfaceVisibility: 'hidden',
+  transform: 'translateZ(0)',
+  contain: 'paint',
   img: { display: 'block', width: 'var(--size)', backfaceVisibility: 'hidden', transform: 'translateZ(0)' }
 })
 
@@ -53,9 +56,8 @@ export const FallAnimation = () => {
       const durNum = rnd(6, 12)
       const dur = `${durNum.toFixed(2)}s`
       const delay = `-${rnd(0, durNum).toFixed(2)}s` // negative delay starts each leaf mid‑animation
-      const turns = () => Math.max(1, Math.round(rnd(1, 4)));
-      const rx = `${turns()}turn`;
-      const rz = `${turns()}turn`;
+      const rx = `${(Math.random() < 0.5 ? -1 : 1) * Math.round(rnd(15, 45))}deg`;
+      const rz = `${Math.max(1, Math.round(rnd(1, 4)))}turn`;
       const amp = `${Math.round(rnd(12, 40))}px`
       const size = `${Math.round(rnd(18, 42))}px`
       return {
