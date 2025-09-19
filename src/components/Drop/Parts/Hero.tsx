@@ -140,9 +140,20 @@ export const Hero = ({
   // Runtime feature-detect: can this browser play HEVC (hvc1) in MP4?
   const supportsHevc = React.useMemo(() => {
     if (typeof document === 'undefined') return false
-    const probe = document.createElement('video')
-    // Safari reports 'probably'/'maybe' for hvc1; Chromium/Firefox return ''
-    return !!probe.canPlayType && probe.canPlayType('video/mp4; codecs="hvc1"') !== ''
+    const v = document.createElement('video')
+    if (!v || !v.canPlayType) return false
+    const test = (t: string) => v.canPlayType(t)
+    // Test both codec strings and both common containers; some encoders label HEVC as "hev1" instead of "hvc1".
+    const candidates = [
+      'video/mp4; codecs="hvc1"',
+      'video/mp4; codecs="hev1"',
+      'video/quicktime; codecs="hvc1"',
+      'video/quicktime; codecs="hev1"'
+    ]
+    return candidates.some(c => {
+      const ans = test(c)
+      return ans === 'probably' || ans === 'maybe'
+    })
   }, [])
 
   // Normalize sources: prefer `videos` if provided; otherwise fall back to single `video`.
