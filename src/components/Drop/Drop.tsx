@@ -10,7 +10,8 @@ const DropWrap = styled('div', {
   alignItems: 'center',
   gap: 50,
   position: 'relative',
-  width: '100%'
+  width: '100%',
+  '@mobile': { gap: 32 }
 })
 
 const DropMain = styled('div', {

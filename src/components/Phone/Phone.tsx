@@ -23,7 +23,8 @@ const PhoneWrap = styled('div', {
     width: '100%',
     height: 440,
     background: '$bgSecondary',
-    borderRadius: '0 0 50% 50%'
+    borderRadius: '0 0 50% 50%',
+    '@mobile': { height: 380 }
   },
 
   variants: {
@@ -38,7 +39,9 @@ const PhoneWrap = styled('div', {
     maxWidth: '100%',
     borderRadius: 0,
     border: 'none',
-    paddingTop: 0
+    paddingTop: 0,
+    paddingBottom: 40,
+    height: 'auto'
   }
 })
 
