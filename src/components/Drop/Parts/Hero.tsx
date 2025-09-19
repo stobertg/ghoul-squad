@@ -85,6 +85,10 @@ const VideoWrap = styled('div', {
     display: 'block',
     background: 'transparent',
     pointerEvents: 'none',
+    opacity: 0,
+    transition: 'opacity 300ms ease',
+
+    '&.active': { opacity: 1 },
 
     '&.fadeOut': {
       animation: `${fadeOutKF} 500ms ease forwards`
@@ -123,6 +127,8 @@ export const Hero = ({
   }:HeroProps) => {
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
+  const videoRefs = useRef<HTMLVideoElement[]>([])
+  const prevIndexRef = useRef<number>(0)
   const [index, setIndex] = useState(0)
   const FADE_MS = 400
   const [fading, setFading] = useState(false)
@@ -157,30 +163,10 @@ export const Hero = ({
 
   // When source changes, ensure autoplay resumes (especially on Safari/iOS).
   useEffect(() => {
-    const el = videoRef.current
-    if (!el) return
     setFading(false)
     setFadingIn(true)
-    setTimeout(() => setFadingIn(false), FADE_MS)
-    // Force restart when the src changes
-    if ((sources.length > 0 || hevcSources.length > 0)) {
-      el.load()
-    }
-    const play = () => {
-      const p = el.play()
-      if (p && typeof p.then === 'function') {
-        p.catch(() => {
-          // Autoplay can fail on some browsers without user gesture; ignore.
-        })
-      }
-    }
-    // Try on metadata ready to reduce flashes
-    const onLoaded = () => play()
-    el.addEventListener('loadedmetadata', onLoaded)
-    play()
-    return () => {
-      el.removeEventListener('loadedmetadata', onLoaded)
-    }
+    const t = setTimeout(() => setFadingIn(false), FADE_MS)
+    return () => clearTimeout(t)
   }, [index])
 
   // Preload subsequent videos in the background so advancing is instant in production
@@ -229,20 +215,43 @@ export const Hero = ({
     }
   }, [index, selectedLane, supportsHevc, hevcSources.length])
 
-  const advance = () => {
-    const laneLength = Math.max(sources.length, hevcSources.length)
-    if (laneLength <= 1) return // Nothing to advance
-    setFading(false)
-    setIndex((i) => (i + 1) % laneLength)
-  }
+  useEffect(() => {
+    const vids = videoRefs.current
+    const prev = prevIndexRef.current
+    if (!vids || vids.length === 0) return
 
-  const handleTimeUpdate = () => {
-    const el = videoRef.current
-    if (!el || !isFinite(el.duration)) return
-    const remaining = el.duration - el.currentTime
-    if (remaining <= FADE_MS / 1000 && !fading) {
-      setFading(true)
+    // Pause previous, clear classes
+    const prevEl = vids[prev]
+    if (prevEl && prev !== index) {
+      try { prevEl.pause() } catch {}
+      prevEl.classList.remove('active', 'fadeIn', 'fadeOut')
     }
+
+    // Play current, ensure active class
+    const curEl = vids[index]
+    if (curEl) {
+      curEl.classList.add('active')
+      // On iOS/Safari autoplay can be finicky; attempt play on metadata
+      const onLoaded = () => { try { curEl.play() } catch {} }
+      curEl.addEventListener('loadedmetadata', onLoaded, { once: true })
+      try { curEl.play() } catch {}
+    }
+
+    prevIndexRef.current = index
+  }, [index])
+
+  useEffect(() => {
+    const first = selectedLane[0]
+    if (!first) return
+    // Touch the first video element to keep it warm in memory for loop restarts
+    const v0 = videoRefs.current[0]
+    if (v0) { try { v0.load() } catch {} }
+  }, [selectedLane])
+
+  const advance = () => {
+    if (selectedLane.length <= 1) return
+    setFading(false)
+    setIndex((i) => (i + 1) % selectedLane.length)
   }
 
   return(
@@ -259,56 +268,25 @@ export const Hero = ({
         </HeroImage>
       )}
 
-      { (sources.length > 0 || hevcSources.length > 0) && (
+      { selectedLane.length > 0 && (
         <VideoWrap>
-          <video
-            ref={ videoRef }
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            onTimeUpdate={ handleTimeUpdate }
-            onEnded={ advance }
-            onError={ advance }
-            className={ fading ? 'fadeOut' : fadingIn ? 'fadeIn' : undefined }
-          >
-            { supportsHevc && hevcSources[index] && (
-              // Browser can play HEVC: offer HEVC first (alpha on Safari/iOS/macOS), then WebM as a secondary option
-              <>
-                <source
-                  key={`hevc-${hevcSources[index]}`}
-                  src={ hevcSources[index] }
-                  type={ `video/mp4; codecs=\"hvc1\"` }
-                />
-                { sources[index] && (
-                  <source
-                    key={`webm-${sources[index]}`}
-                    src={ sources[index] }
-                    type={ `video/webm; codecs=\"vp9\"` }
-                  />
-                )}
-              </>
-            )}
-
-            { !supportsHevc && sources[index] && (
-              // Browser cannot play HEVC: serve only WebM to avoid HEVC probes that can block playback
-              <source
-                key={`webm-only-${sources[index]}`}
-                src={ sources[index] }
-                type={ `video/webm; codecs=\"vp9\"` }
-              />
-            )}
-
-            { supportsHevc && !sources[index] && hevcSources[index] && (
-              // No WebM provided for this index; fall back to HEVC when supported
-              <source
-                key={`hevc-only-${hevcSources[index]}`}
-                src={ hevcSources[index] }
-                type={ `video/mp4; codecs=\"hvc1\"` }
-              />
-            )}
-            Your browser does not support the video tag.
-          </video>
+          { selectedLane.map((src, i) => (
+            <video
+              key={ src }
+              ref={ el => { if (el) videoRefs.current[i] = el } }
+              src={ src }
+              autoPlay={ i === index }
+              muted
+              playsInline
+              preload="auto"
+              onEnded={ () => { if (i === index) advance() } }
+              onError={ () => { if (i === index) advance() } }
+              className={ [
+                i === index ? 'active' : '',
+                (i === index && (fading || fadingIn)) ? (fading ? 'fadeOut' : 'fadeIn') : ''
+              ].filter(Boolean).join(' ') }
+            />
+          ))}
         </VideoWrap>
       )}
     </HeroWrap>
