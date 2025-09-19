@@ -147,6 +147,12 @@ export const Hero = ({
     return hevcVideo ? [hevcVideo] : []
   }, [hevcVideos, hevcVideo])
 
+  // Pick the lane this browser will actually play (prevents wasted preloads)
+  const selectedLane: string[] = React.useMemo(() => {
+    const lane = (supportsHevc && hevcSources.length > 0) ? hevcSources : sources
+    return lane
+  }, [supportsHevc, hevcSources, sources])
+
   const currentTitle = (Array.isArray(titles) && titles[index]) || title
 
   // When source changes, ensure autoplay resumes (especially on Safari/iOS).
@@ -176,6 +182,52 @@ export const Hero = ({
       el.removeEventListener('loadedmetadata', onLoaded)
     }
   }, [index])
+
+  // Preload subsequent videos in the background so advancing is instant in production
+  useEffect(() => {
+    if (selectedLane.length === 0) return
+    // decide MIME for preload links based on lane type
+    const isHevcLane = (supportsHevc && hevcSources.length > 0)
+    const mime = isHevcLane ? 'video/mp4; codecs="hvc1"' : 'video/webm; codecs="vp9"'
+
+    // Helper: ensure a single <link rel="preload" as="video"> exists for a given href
+    const ensureVideoPreload = (href: string, type?: string) => {
+      if (typeof document === 'undefined') return
+      if (!href) return
+      const sel = `link[rel="preload"][as="video"][href="${href}"]`
+      if (document.head.querySelector(sel)) return
+      const link = document.createElement('link')
+      link.rel = 'preload'
+      link.as = 'video'
+      link.href = href
+      if (type) link.type = type
+      document.head.appendChild(link)
+    }
+
+    // Preload the next 2 items via <link rel="preload"> to get high priority over H2/HTTP3
+    for (let step = 1; step <= 2 && step < selectedLane.length; step++) {
+      const nextIdx = (index + step) % selectedLane.length
+      ensureVideoPreload(selectedLane[nextIdx], mime)
+    }
+
+    // Also create off-DOM <video> elements with preload=auto to warm browser cache reliably
+    const warmers: HTMLVideoElement[] = []
+    for (let step = 1; step < selectedLane.length; step++) {
+      const nextIdx = (index + step) % selectedLane.length
+      const src = selectedLane[nextIdx]
+      const v = document.createElement('video')
+      v.muted = true
+      v.preload = 'auto'
+      v.src = src
+      try { v.load() } catch {}
+      warmers.push(v)
+    }
+
+    return () => {
+      // clean up references; let cache keep the response
+      warmers.forEach(v => { try { v.removeAttribute('src'); /* @ts-ignore */ v.srcObject = null } catch {} })
+    }
+  }, [index, selectedLane, supportsHevc, hevcSources.length])
 
   const advance = () => {
     const laneLength = Math.max(sources.length, hevcSources.length)
@@ -214,6 +266,7 @@ export const Hero = ({
             autoPlay
             muted
             playsInline
+            preload="auto"
             onTimeUpdate={ handleTimeUpdate }
             onEnded={ advance }
             onError={ advance }
