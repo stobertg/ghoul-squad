@@ -26,18 +26,20 @@ interface ButtonProps {
   variant?: 'primary'
   onClick?: any
   icon: string
+  size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' 
 }
 
 export const ButtonIcon = ({ 
     variant,
     onClick,
-    icon 
+    icon,
+    size
   }:ButtonProps) => {
 
   return(
 
     <ButtonWrap {...{ variant, onClick }}>
-      <Icon {...{ icon }} />
+      <Icon {...{ icon, size }} />
     </ButtonWrap>
 
   )

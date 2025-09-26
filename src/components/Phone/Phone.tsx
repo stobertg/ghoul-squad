@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { IphoneTop } from './Parts/IphoneTop'
-import { FallAnimation } from '@components'
+import { FallAnimation, BottomSheet } from '@components'
 
 const PhoneWrap = styled('div', {
   position: 'relative',
@@ -33,6 +33,12 @@ const PhoneWrap = styled('div', {
       true: {
         paddingTop: 0
       }
+    },
+
+    removeBg: {
+      true: {
+        '&:before': { display: 'none' }
+      }
     }
   },
 
@@ -63,6 +69,10 @@ const PhoneContentMain = styled('div', {
   variants: {
     hasHero: {
       true: { paddingTop: 0 }
+    },
+
+    blockSpacing: {
+      l1: { gap: 20 }
     }
   }
 })
@@ -110,21 +120,23 @@ interface PhoneProps {
   children: React.ReactNode
   hasHero?: boolean
   darkBg?: boolean
-  lighterBg?: boolean
+  fall?: boolean
+  removeBg?: boolean
 }
 
-export const Phone = ({ children, hasHero, darkBg, lighterBg }:PhoneProps) => {
+export const Phone = ({ children, hasHero, darkBg, fall, removeBg }:PhoneProps) => {
   return(
 
     <PhoneWrap {...{ hasHero }}>
       <IphoneTop {...{ darkBg }} />
 
-      <PhoneContent>
+      <PhoneContent {...{ removeBg }}>
         <PhoneContentMain {...{ hasHero }}>{ children }</PhoneContentMain>
       </PhoneContent>
 
+      {/* <BottomSheet>This is some content in the container</BottomSheet> */}
       <IphoneBottom />
-      <FallAnimation />
+      { fall && ( <FallAnimation /> )}
       {/* <PhoneBg {...{ lighterBg }} /> */}
     </PhoneWrap>
 

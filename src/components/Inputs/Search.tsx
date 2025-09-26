@@ -7,10 +7,10 @@ const SearchWrap = styled('div', {
   flexDirection: 'row',
   alignItems: 'center',
   position: 'relative',
-  width: 220,
+  width: 210,
   height: 42,
   padding: '0 16px',
-  background: '$border',
+  background: '#333',
   borderRadius: '$pill',
   fontFamily: '$sansSerif',
 

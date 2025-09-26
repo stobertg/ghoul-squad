@@ -133,7 +133,7 @@ export default function Home() {
 
       {/* Main content hidden under the preloader until ready */}
       <div style={{ opacity: isReady ? 1 : 0.001, transition: 'opacity 300ms ease' }}>
-        <Phone>
+        <Phone fall>
           <PhoneHeader overlay />
           <Drop
             title=""

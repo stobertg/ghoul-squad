@@ -1,9 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading, InputSearch, ButtonIcon } from '@components'
-import { IconStar } from './IconStar'
-import { IconShare } from './IconShare'
-import { BackButton } from './'
+import { InputSearch, ButtonContainer, ButtonIcon, Avatar } from '@components'
 
 const HeaderWrap = styled('div', {
   position: 'relative',
@@ -54,7 +51,7 @@ const MenuButtonWrap = styled('button', {
     position: 'absolute',
     width: '100%',
     height: '100%',
-    background: '$bgPrimary',
+    background: '$bgTert',
     borderRadius: '50%',
     transform: 'scale( 0.5 )',
     opacity: 0,
@@ -77,15 +74,15 @@ const MenuButton = styled('div', {
   position: 'relative',
   width: 16,
   height: 12,
-  borderTop: '2px solid #000',
-  borderBottom: '2px solid #000',
+  borderTop: '1px solid $buttonPrimary',
+  borderBottom: '1px solid $buttonPrimary',
 
   '&:after': {
     content: '',
     position: 'absolute',
     width: '100%',
-    height: 2,
-    background: '#000'
+    height: 1,
+    background: '$buttonPrimary'
   }
 })
 
@@ -113,22 +110,43 @@ const Headshot = styled('div', {
 
 
 interface HeaderProps {
+  home?: boolean
   overlay?: boolean
 }
 
-export const PhoneHeader = ({ overlay }:HeaderProps) => {
+export const PhoneHeader = ({ overlay, home }:HeaderProps) => {
   return(
 
     <HeaderWrap {...{ overlay }}>
       <HeaderContent>
         <ContentBlock>
-          { overlay ? <ButtonIcon variant="primary" icon="arrow-left" /> : <MenuButtonWrap><MenuButton /></MenuButtonWrap> }
+          { overlay ? 
+            ( <ButtonIcon variant="primary" icon="arrow-left" /> ) 
+            : <MenuButtonWrap><MenuButton /></MenuButtonWrap> 
+            }
           { overlay ?? <InputSearch /> }
         </ContentBlock>
 
         <ContentBlock>
-          <ButtonIcon icon="share" />
-          <ButtonIcon icon="star" />
+          { home ? (
+
+            <ButtonContainer spacing="l1">
+              <ButtonIcon icon="bell" />
+              <Avatar image="/people/isabella.webp" name="Isabella" />
+            </ButtonContainer>
+            
+          ) : (
+
+            <ButtonContainer 
+              icons
+              buttons={[
+                { icon: 'message-circle', onClick: () => alert('AI Chat') },
+                { icon: 'share', onClick: () => alert('Share') },
+                { icon: 'star', onClick: () => alert('Star') },
+              ]}
+            />
+
+          )}    
         </ContentBlock>
       </HeaderContent>
     </HeaderWrap>
