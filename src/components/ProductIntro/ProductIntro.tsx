@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { CollectableTag, Rating, Condition } from '@components'
+import { CollectableTag, Rating, Condition, QuantitySelection } from '@components'
 
 const IntroWrap = styled('div', {
   position: 'relative',
@@ -13,7 +13,7 @@ const IntroContent = styled('div', {
   alignItems: 'center',
   justifyContent: 'space-between',
   position: 'relative',
-  maxWidth: 340,
+  maxWidth: '98%',
   width: '100%'
 })
 
@@ -21,7 +21,7 @@ const IntroAttr = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: 20,
+  gap: 16,
   position: 'relative'
 })
 

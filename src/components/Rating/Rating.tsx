@@ -35,7 +35,7 @@ export const Rating = ({}:RatingProps) => {
         </svg>
       </RatingIcon>
 
-      <Heading size="l1" title="5.0" />
+      <Heading size="l0" title="5.0" />
     </RatingWrap>
       
   )

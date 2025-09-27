@@ -35,7 +35,7 @@ export const Condition = ({}:ConditionProps) => {
         </svg>
       </ConditionIcon>
 
-      <Heading size="l1" title="New" />
+      <Heading size="l0" title="New" />
     </ConditionWrap>
 
   )
