@@ -35,7 +35,7 @@ export const CollectableTag = ({}:CollectProps) => {
     <CollectWrap>
       <CollectContent>
         <CollectImage><img src="/badges/badge_collab.png" alt="Collectable Badge" /></CollectImage>
-        <Heading bold size="l0" title={<>Collectable <em>#347</em> / 500</>} />
+        <Heading size="l0" title={<>Collectable <em>#347</em> / 500</>} />
       </CollectContent>
     </CollectWrap>
 

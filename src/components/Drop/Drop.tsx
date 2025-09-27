@@ -51,7 +51,11 @@ export const Drop = ({
         <Countdown targetDate="2025-10-01T23:59:59" />
       </DropMain>
 
-      <BrandChip />
+      <BrandChip 
+        image="/brand/ghoul.jpg"
+        title="Ghoul Squad"
+        onClick={ () => alert( 'hello' )}
+      />
     </DropWrap>
 
   )

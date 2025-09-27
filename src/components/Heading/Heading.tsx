@@ -20,7 +20,7 @@ const HeadingWrap = styled('div', {
       l1: { fontSize: '$s1', lineHeight: 1.1 },
       l2: { fontSize: '$s2', lineHeight: 1.1 },
       l3: { fontSize: '$s3', lineHeight: 1.3 },
-      l4: { fontSize: '$s4', lineHeight: 1.1 },
+      l4: { fontSize: '$s4', lineHeight: 1.3 },
       l5: { fontSize: '$s5', lineHeight: 1.3 },
       l6: { fontSize: '$s6', lineHeight: 1.1 },
       l7: { fontSize: '$s7', lineHeight: 1.1 },

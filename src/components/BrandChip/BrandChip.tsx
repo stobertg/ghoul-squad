@@ -1,57 +1,65 @@
 import React from 'react'
 import { styled } from '@theme'
 import { Heading } from '@components'
-import { TrustBadge } from './Parts/TrustBadge'
+import { ChipBase } from './Parts/Base'
 
-const ChipWrap = styled ('button', {
-  display: 'inline-flex',
+const ChipWrap = styled('div', {
+  display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: 12,
-  position: 'relative',
-  margin: '0 auto',
-  padding: 8,
-  background: '#000',
-  borderRadius: '$pill',
-  transition: '$s1',
-
-  '&:active': {
-    transform: 'scale( 0.9 )'
-  }
-})
-
-const ChipImage = styled('div', {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'relative',
-  width: 28,
-  height: 28,
-  borderRadius: '50%',
-  overflow: 'hidden',
-
-  img: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover'
-  }
+  gap: 8,
+  position: 'relative'
 })
 
 interface BrandProps {
-
+  size?: 'l0'
+  image?: string
+  title?: string
+  hasBy?: boolean
+  onClick?: any
+  brands?: {
+    image: string
+    title: string
+    onClick?: any
+  }[]
 }
 
-export const BrandChip = ({}:BrandProps) => {
+export const BrandChip = ({ 
+    image,
+    title,
+    hasBy, 
+    brands,
+    onClick,
+    size
+  }:BrandProps) => {
+  
   return(
 
-    <div>
-      <ChipWrap>
-        <ChipImage><img src="/brand/ghoul.jpg" alt="Ghoul icon" /></ChipImage>
-        <Heading size="l1" title="Ghoul Squad" />
-        <TrustBadge />
-      </ChipWrap>
-    </div>
+    <ChipWrap>
+      { hasBy && ( <Heading size="l0" title="By" /> )}
+
+      { brands ? (
+
+        <>
+          { brands.map(( brand, i ) => (
+
+            <ChipBase 
+              key={`brand-${ i }`}
+              image={ brand.image }
+              title={ brand.title }
+              onClick={ brand.onClick }
+              size={ size }
+            />
+
+          ))}
+        </>
+      
+      ) : (
+
+        <ChipBase {...{ image, title, onClick, size }} />
+
+      )}
+    </ChipWrap>
 
   )
 }
