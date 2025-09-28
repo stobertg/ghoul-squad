@@ -11,6 +11,7 @@ export const colors = {
 
   rating: '#ffc220',
 
-  border: '#3a3a3a'
+  border: '#3a3a3a',
+  borderActive: '#4646B7'
 }
 

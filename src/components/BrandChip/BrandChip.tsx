@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading } from '@components'
+import { Heading, ButtonContainer } from '@components'
 import { ChipBase } from './Parts/Base'
 
 const ChipWrap = styled('div', {
@@ -40,7 +40,7 @@ export const BrandChip = ({
 
       { brands ? (
 
-        <>
+        <ButtonContainer spacing="l0">
           { brands.map(( brand, i ) => (
 
             <ChipBase 
@@ -52,7 +52,7 @@ export const BrandChip = ({
             />
 
           ))}
-        </>
+        </ButtonContainer>
       
       ) : (
 

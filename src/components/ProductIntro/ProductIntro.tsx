@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { CollectableTag, Rating, Condition, Heading, BrandChip, QuantitySelection } from '@components'
+import { CollectableTag, Rating, Condition, Heading, BrandChip, ButtonSelect } from '@components'
 
 const IntroWrap = styled('div', {
   position: 'relative',
@@ -65,10 +65,13 @@ export const ProductIntro = ({}:IntroProps) => {
             hasBy
             size="l0"
             brands={[
-              { image: '/brand/ghoul.jpg', title: 'Ghoul Squad', onClick: () => alert( 'hello' ) }
+              { image: '/brand/ghoul.jpg', title: 'Ghoul Squad', onClick: () => alert( 'hello' ) },
+              { image: '/badges/badge_collab.png', title: 'Finds Exclusive', onClick: () => alert( 'hello' ) }
             ]} 
           />
         </IntroTitle>
+
+        <div><ButtonSelect /></div>
       </IntroContent>
     </IntroWrap>
 
