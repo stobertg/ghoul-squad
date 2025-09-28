@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { CollectableTag, Rating, Condition, Heading, BrandChip, ButtonSelect } from '@components'
+import { CollectableTag, Rating, Condition, Heading, BrandChip, ButtonSelect, ButtonContainer } from '@components'
 
 const IntroWrap = styled('div', {
   position: 'relative',
@@ -71,7 +71,20 @@ export const ProductIntro = ({}:IntroProps) => {
           />
         </IntroTitle>
 
-        <div><ButtonSelect /></div>
+        <ButtonContainer>
+          <ButtonSelect 
+            selected 
+            image="/ghouls/mystery-box.png"
+            title="Single Box"
+            price="$27.99"
+          />
+
+          <ButtonSelect 
+            image="/ghouls/mystery-box.png"
+            title="Whole Set"
+            price="$111.96"
+          />
+        </ButtonContainer>
       </IntroContent>
     </IntroWrap>
 

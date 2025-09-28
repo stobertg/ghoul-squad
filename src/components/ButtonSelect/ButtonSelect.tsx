@@ -15,17 +15,29 @@ const ButtonContent = styled('div', {
   gap: 8,
   position: 'relative',
   width: '100%',
-  paddingRight: 32,
+  paddingRight: 24,
   background: '$bgTert',
   borderRadius: '$r1',
   overflow: 'hidden',
 
+  '&:before': {
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: '$borderActive',
+    opacity: 0.4,
+    display: 'none'
+  },
+
   variants: {
     selected: {
       true: {
-        background: '$borderActive',
-        // backgroundOpacity: 0.4,
-        border: '1px solid $borderActive'
+        background: 'none',
+        border: '1px solid $borderActive',
+        '&:before': { display: 'block' }
       }
     }
   }
@@ -58,21 +70,30 @@ const ButtonText = styled('div', {
 })
 
 interface ButtonProps {
-
+  selected?: boolean
+  image: string
+  title: string
+  price: string | number
 }
 
-export const ButtonSelect = ({}:ButtonProps) => {
+export const ButtonSelect = ({ 
+    selected,
+    image,
+    title,
+    price
+  }:ButtonProps) => {
+
   return(
 
     <ButtonWrap>
-      <ButtonContent>
+      <ButtonContent {...{ selected }}>
         <ButtonImage>
-          <img src="/ghouls/mystery-box.png" alt="Ghoul Squad" />
+          <img src={ image } alt={ title } />
         </ButtonImage>
 
         <ButtonText>
-          <Heading bold size="l1" title="Single Box" />
-          <Heading size="l0" color="secondary" title="$27.99" />
+          <Heading bold size="l1" title={ title } />
+          <Heading size="l0" color="secondary" title={ price } />
         </ButtonText>
       </ButtonContent>
     </ButtonWrap>
