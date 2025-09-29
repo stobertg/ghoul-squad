@@ -4,7 +4,7 @@ import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Head
 export default function Home() {
   return (
     <>
-      <HeadTags bgColor="#222" />
+      <HeadTags bgColor="#181818" />
       <Phone removeBg blockSpacing="l2">
         <PhoneHeader overlay />
 
@@ -20,6 +20,7 @@ export default function Home() {
             <Heading size="l0" color="secondary" title="Details" />
             <Heading bold size="l3" title="The Ghoul Squad isn&apos;t just a toy. It&apos;s a whole world of scare." />
           </div>
+
           <DropDetails 
             triggers={[
               { image: '/ghouls/static/pump.png', title: 'Sir Pump' },
