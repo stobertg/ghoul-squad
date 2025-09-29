@@ -40,7 +40,7 @@ const NavContent = styled('div', {
   boxShadow: '0 2px 10px rgba( 0,0,0, 0.2 )',
 
   '@mobile': {
-    padding: '12px 28px 12px 28px'
+    padding: '12px 20px 12px 20px'
   }
 })
 
