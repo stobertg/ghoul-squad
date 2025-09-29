@@ -1,7 +1,7 @@
 import React from 'react'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { styled } from '@theme'
-import { Grid, Heading, Text } from '@components'
+import { Grid, Heading, FallAnimation } from '@components'
 import { DropSeller } from './Parts/DropSeller'
 
 const DetailWrap = styled('div', {
@@ -17,7 +17,11 @@ const DetailContent = styled('div', {
 })
 
 const TabsWrap = styled( TabsPrimitive.Root, {
- 
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 20,
+  position: 'relative',
+  width: '100%'
 })
 
 const TabsList = styled( TabsPrimitive.List, {
@@ -88,8 +92,36 @@ const DropIntro = styled('div', {
   wdith: '100%'
 })
 
-const DropStage = styled('div', {
+const DropStageWrap = styled('div', {
+  position: 'relative',
+  width: '100%',
+  border: '1px solid $border',
+  borderRadius: '$r2',
+  overflow: 'hidden'
+})
 
+const DropStage = styled('div', {
+  position: 'relative',
+  zIndex: 10
+})
+
+const DropStageContent = styled('div', {
+
+})
+
+const DropStageImage = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  width: '100%',
+  height: 200,
+
+  img: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain'
+  }
 })
 
 interface DetailProps {
@@ -99,7 +131,7 @@ interface DetailProps {
     title: string
   }[]
   tabContent: {
-
+    image: string
   }[]
 }
 
@@ -137,16 +169,23 @@ export const DropDetails = ({ defaultTab, triggers, tabContent }:DetailProps) =>
             </Grid>
           </TabsList>
           
-          { tabContent.map(( content, i ) => (
-            <TabsContent 
-              key={`tab-${ i }`} 
-              value={`tab${ i + 1 }`}
-            >
-              <>
-                
-              </>
-            </TabsContent>
-          ))}
+          <DropStageWrap>
+            { tabContent.map(( content, i ) => (
+
+              <TabsContent 
+                key={`tab-${ i }`} 
+                value={`tab${ i + 1 }`}
+              >
+                <DropStage>
+                  <DropStageContent>
+                    <DropStageImage><img src={ content.image } alt="Ghoul Squad" /></DropStageImage>
+                  </DropStageContent>
+                </DropStage>
+              </TabsContent>
+
+            ))}
+            <FallAnimation />
+          </DropStageWrap>
         </TabsWrap>
 
         <DropSeller />

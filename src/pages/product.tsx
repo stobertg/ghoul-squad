@@ -22,10 +22,10 @@ export default function Home() {
               { image: '/ghouls/static/vamp.png', title: 'Sir Vamp' }
             ]}
             tabContent={[
-              {},
-              {},
-              {},
-              {}
+              { image: '/ghouls/static/pump.png' },
+              { image: '/ghouls/static/casper.png' },
+              { image: '/ghouls/static/frank.png' },
+              { image: '/ghouls/static/vamp.png' }
             ]}
           />
         </AppBlock>
