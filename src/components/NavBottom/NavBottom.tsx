@@ -9,7 +9,10 @@ const NavWrap = styled('div', {
   width: '100%',
   zIndex: 9000,
 
-  '@mobile': { position: 'fixed' }
+  '@mobile': { 
+    position: 'fixed',
+    bottom: 12
+  }
 })
 
 const NavContent = styled('div', {
