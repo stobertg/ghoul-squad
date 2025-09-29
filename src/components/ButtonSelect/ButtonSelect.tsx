@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from '@theme'
 import { Heading } from '@components'
 
-const ButtonWrap = styled('button', {
+const ButtonWrap = styled('div', {
   display: 'inline-flex',
   position: 'relative',
   textAlign: 'left',

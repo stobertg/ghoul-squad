@@ -1,12 +1,13 @@
 import React from 'react'
-import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, Hero, AppBlock, DropDetails } from '@components'
+import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails } from '@components'
 
 export default function Home() {
   return (
     <>
       <HeadTags />
-      <Phone>
+      <Phone removeBg blockSpacing="l2">
         <PhoneHeader overlay />
+
         <AppBlock blockSpacing="l1">
           <ProductHero video="/ghouls/ghoul-box.mp4" />
           <ProductIntro 
@@ -14,7 +15,11 @@ export default function Home() {
           />
         </AppBlock> 
 
-        <AppBlock>
+        <AppBlock bgColor="subtle" blockSpacing="l1">
+          <div>
+            <Heading size="l0" color="secondary" title="Details" />
+            <Heading bold size="l3" title="The Ghoul Squad isn&apos;t just a toy. It&apos;s a whole world of scare." />
+          </div>
           <DropDetails 
             triggers={[
               { image: '/ghouls/static/pump.png', title: 'Sir Pump' },

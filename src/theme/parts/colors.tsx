@@ -2,6 +2,7 @@ export const colors = {
   bgPrimary: '#181818',
   bgSecondary: '#252525',
   bgTert: '#333',
+  bgSubtle: '#222',
   bgInvert: '#fff',
 
   textPrimary: '#fff',

@@ -3,7 +3,13 @@ import { styled } from '@theme'
 
 const BlockWrap = styled('div', {
   position: 'relative',
-  width: '100%'
+  width: '100%',
+
+  variants: {
+    bgColor: {
+      subtle: { background: '$bgSubtle' }
+    }
+  }
 })  
 
 const BlockContent = styled('div', {
@@ -17,6 +23,10 @@ const BlockContent = styled('div', {
   variants: {
     blockSpacing: {
       l1: { gap: 12 }
+    },
+
+    hasBg: {
+      true: { padding: '40px 20px' }
     }
   }
 })
@@ -24,13 +34,24 @@ const BlockContent = styled('div', {
 interface BlockProps {
   children: React.ReactNode
   blockSpacing?: 'l1'
+  bgColor?: 'subtle'
 }
 
-export const AppBlock = ({ children, blockSpacing }:BlockProps) => {
+export const AppBlock = ({ 
+    children, 
+    blockSpacing,
+    bgColor
+  }:BlockProps) => {
+
   return(
 
-    <BlockWrap>
-      <BlockContent {...{ blockSpacing }}>{ children }</BlockContent>
+    <BlockWrap {...{ bgColor }}>
+      <BlockContent 
+        hasBg={ bgColor ? true : false }
+        {...{ blockSpacing }}
+      >
+        { children }
+      </BlockContent>
     </BlockWrap>
       
   )

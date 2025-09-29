@@ -37,7 +37,7 @@ const PhoneWrap = styled('div', {
 
     removeBg: {
       true: {
-        '&:before': { display: 'none' }
+        '&:before': { display: 'none', opacity: 0 }
       }
     }
   },
@@ -74,7 +74,8 @@ const PhoneContentMain = styled('div', {
     },
 
     blockSpacing: {
-      l1: { gap: 20 }
+      l1: { '> *:not(:first-child)': { marginBottom: 20 } },
+      l2: { '> *:not(:first-child)': { marginBottom: 40 } }
     }
   }
 })
@@ -124,16 +125,25 @@ interface PhoneProps {
   darkBg?: boolean
   fall?: boolean
   removeBg?: boolean
+  blockSpacing?: 'l1' | 'l2'
 }
 
-export const Phone = ({ children, hasHero, darkBg, fall, removeBg }:PhoneProps) => {
+export const Phone = ({ 
+    children, 
+    hasHero, 
+    darkBg, 
+    fall, 
+    removeBg,
+    blockSpacing
+  }:PhoneProps) => {
+
   return(
 
-    <PhoneWrap {...{ hasHero }}>
+    <PhoneWrap {...{ hasHero, removeBg }}>
       <IphoneTop {...{ darkBg }} />
 
-      <PhoneContent {...{ removeBg }}>
-        <PhoneContentMain {...{ hasHero }}>{ children }</PhoneContentMain>
+      <PhoneContent>
+        <PhoneContentMain {...{ hasHero, blockSpacing }}>{ children }</PhoneContentMain>
       </PhoneContent>
 
       {/* <BottomSheet>This is some content in the container</BottomSheet> */}

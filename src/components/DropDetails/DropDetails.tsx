@@ -1,7 +1,7 @@
 import React from 'react'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { styled } from '@theme'
-import { Heading } from '@components'
+import { Grid, Heading } from '@components'
 
 const DetailWrap = styled('div', {
 
@@ -28,11 +28,31 @@ const TabsContainer = styled('div', {
 })
 
 const TabsTrigger = styled( TabsPrimitive.Trigger, {
-  
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: 0,
+  position: 'relative',
+  height: 55,
+  background: '$bgTert',
+  borderRadius: '$r1',
+  overflow: 'hidden'
 })
 
 const TriggerImage = styled('div', {
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'flex-start',
+  position: 'relative',
+  width: 60,
+  height: '100%',
 
+  img: {
+    position: 'absolute',
+    width: '160%',
+    height: '160%',
+    objectFit: 'cover'
+  }
 })
 
 const TabsContent = styled( TabsPrimitive.Content, {
@@ -59,7 +79,7 @@ export const DropDetails = ({ defaultTab, triggers, tabContent }:DetailProps) =>
 
         <TabsWrap defaultValue={ `tab${ defaultTab ? defaultTab : 1 }` }>
           <TabsList aria-label="Manage your account">
-            <TabsContainer>
+            <Grid>
               { triggers.map(( trigger, i ) => (
 
                 <TabsTrigger 
@@ -72,12 +92,12 @@ export const DropDetails = ({ defaultTab, triggers, tabContent }:DetailProps) =>
                       <img src={ trigger.image } alt={ trigger.title } />
                     </TriggerImage> 
                   )}
-                  
-                  <Heading title={ trigger.title } />
+
+                  <Heading bold title={ trigger.title } />
                 </TabsTrigger>
            
               ))}
-            </TabsContainer>
+            </Grid>
           </TabsList>
           
           { tabContent.map(( content, i ) => (
