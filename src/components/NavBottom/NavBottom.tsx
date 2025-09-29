@@ -34,7 +34,7 @@ const NavContent = styled('div', {
   position: 'relative',
   width: '100%',
   margin: '0 auto',
-  padding: '16px 28px 32px 28px',
+  padding: '16px 24px 32px 24px',
   background: 'rgba( 24,24,24, 0.8 )',
   overflow: 'hidden',
   boxShadow: '0 2px 10px rgba( 0,0,0, 0.2 )',
