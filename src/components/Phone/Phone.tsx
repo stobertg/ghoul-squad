@@ -55,7 +55,9 @@ const PhoneWrap = styled('div', {
 const PhoneContent = styled('div', {
   position: 'relative',
   width: '100%',
-  zIndex: 1
+  height: '100%',
+  zIndex: 1,
+  overflow: 'scroll'
 })
 
 const PhoneContentMain = styled('div', {

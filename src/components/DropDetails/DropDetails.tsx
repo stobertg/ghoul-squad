@@ -1,6 +1,7 @@
 import React from 'react'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { styled } from '@theme'
+import { Heading } from '@components'
 
 const DetailWrap = styled('div', {
 
@@ -27,7 +28,11 @@ const TabsContainer = styled('div', {
 })
 
 const TabsTrigger = styled( TabsPrimitive.Trigger, {
- 
+  
+})
+
+const TriggerImage = styled('div', {
+
 })
 
 const TabsContent = styled( TabsPrimitive.Content, {
@@ -37,7 +42,8 @@ const TabsContent = styled( TabsPrimitive.Content, {
 interface DetailProps {
   defaultTab?: number
   triggers: {
-
+    image?: string
+    title: string
   }[]
   tabContent: {
 
@@ -55,13 +61,19 @@ export const DropDetails = ({ defaultTab, triggers, tabContent }:DetailProps) =>
           <TabsList aria-label="Manage your account">
             <TabsContainer>
               { triggers.map(( trigger, i ) => (
+
                 <TabsTrigger 
                   key={ `trigger-${ i + 1 }`} 
                   value={`tab${ i + 1 }`}
                 
                 > 
+                  { trigger.image && ( 
+                    <TriggerImage>
+                      <img src={ trigger.image } alt={ trigger.title } />
+                    </TriggerImage> 
+                  )}
                   
-                  <></>
+                  <Heading title={ trigger.title } />
                 </TabsTrigger>
            
               ))}

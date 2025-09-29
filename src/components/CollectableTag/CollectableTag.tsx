@@ -21,8 +21,8 @@ const CollectContent = styled('div', {
 
 const CollectImage = styled('div', {
   position: 'relative',
-  width: 28,
-  height: 28
+  width: 24,
+  height: 24
 })
 
 interface CollectProps {

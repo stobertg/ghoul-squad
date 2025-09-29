@@ -11,9 +11,7 @@ const HeroContent = styled('div', {
   width: '100%',
   height: 340,
   borderRadius: '$r2',
-  overflow: 'hidden',
-
-  '@mobile': { height: 400 }
+  overflow: 'hidden'
 })
 
 const Video = styled('div', {
