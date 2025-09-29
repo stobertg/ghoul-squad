@@ -2,9 +2,10 @@ import React from 'react'
 import { styled } from '@theme'
 import { Heading } from '@components'
 
-const ButtonWrap = styled('div', {
+const ButtonWrap = styled('button', {
   display: 'inline-flex',
   position: 'relative',
+  textAlign: 'left',
   height: 56
 })
 
@@ -19,6 +20,9 @@ const ButtonContent = styled('div', {
   background: '$bgTert',
   borderRadius: '$r1',
   overflow: 'hidden',
+
+  // For the background of the selected button state
+  // This shows the purple background 
 
   '&:before': {
     content: '',
