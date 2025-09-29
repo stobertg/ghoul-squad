@@ -4,30 +4,11 @@ import { Heading, Button } from '@components'
 
 const NavWrap = styled('div', {
   position: 'absolute',
-  bottom: 24,
+  bottom: 0,
   left: 0,
   width: '100%',
-  zIndex: 9000,
-
-  '@mobile': { 
-    position: 'fixed',
-    bottom: 12
-  }
-})
-
-const NavContent = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  position: 'relative',
-  width: '95%',
-  margin: '0 auto',
-  padding: '12px 20px',
-  background: 'rgba( 0,0,0, 0.8 )',
-  borderRadius: '$r2',
-  overflow: 'hidden',
-  boxShadow: '0 2px 10px rgba( 0,0,0, 0.2 )',
+  borderTop: '1px solid $border',
+  zIndex: 8000,
 
   '&:before': {
     content: '',
@@ -37,9 +18,29 @@ const NavContent = styled('div', {
     width: '100%',
     height: '100%',
     backdropFilter: 'blur( 10px )',
-    borderRadius: '$r2',
-    overflow: 'hidden',
     zIndex: 0
+  },
+
+  '@mobile': { 
+    position: 'fixed'
+  }
+})
+
+const NavContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  position: 'relative',
+  width: '100%',
+  margin: '0 auto',
+  padding: '16px 28px 32px 28px',
+  background: 'rgba( 24,24,24, 0.8 )',
+  overflow: 'hidden',
+  boxShadow: '0 2px 10px rgba( 0,0,0, 0.2 )',
+
+  '@mobile': {
+    padding: '16px 28px 16px 28px'
   }
 })
 
