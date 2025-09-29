@@ -93,7 +93,7 @@ export const DropDetails = ({ defaultTab, triggers, tabContent }:DetailProps) =>
                     </TriggerImage> 
                   )}
 
-                  <Heading bold title={ trigger.title } />
+                  <Heading bold size="l1" title={ trigger.title } />
                 </TabsTrigger>
            
               ))}
