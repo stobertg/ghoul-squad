@@ -7,8 +7,9 @@ const ButtonWrap = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   position: 'relative',
-  minWidth: 120,
+  minWidth: 100,
   height: 40,
+  padding: '0 24px',
   background: '$brandPrimary',
   borderRadius: '$r2'
 })

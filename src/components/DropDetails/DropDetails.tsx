@@ -1,18 +1,19 @@
 import React from 'react'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { styled } from '@theme'
-import { Grid, Heading } from '@components'
+import { Grid, Heading, Text } from '@components'
+import { DropSeller } from './Parts/DropSeller'
 
 const DetailWrap = styled('div', {
 
 })
 
 const DetailContent = styled('div', {
-
-})
-
-const DetailTabs = styled('div', {
-
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 20,
+  position: 'relative',
+  width: '100%'
 })
 
 const TabsWrap = styled( TabsPrimitive.Root, {
@@ -34,9 +35,29 @@ const TabsTrigger = styled( TabsPrimitive.Trigger, {
   gap: 0,
   position: 'relative',
   height: 55,
-  background: '$bgTert',
+  border: '1px solid $bgTert',
   borderRadius: '$r1',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  transition: '$s1',
+
+  '&:before': {
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: '$bgTert'
+  },
+
+  '&[data-state="active"]': {
+    border: '1px solid $borderActive',
+
+    '&:before': {  
+      background: '$borderActive',
+      opacity: 0.4 
+    }
+  }
 })
 
 const TriggerImage = styled('div', {
@@ -59,6 +80,18 @@ const TabsContent = styled( TabsPrimitive.Content, {
 
 })
 
+const DropIntro = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 4,
+  position: 'relative',
+  wdith: '100%'
+})
+
+const DropStage = styled('div', {
+
+})
+
 interface DetailProps {
   defaultTab?: number
   triggers: {
@@ -75,7 +108,11 @@ export const DropDetails = ({ defaultTab, triggers, tabContent }:DetailProps) =>
 
     <DetailWrap>
       <DetailContent>
-        <DetailTabs></DetailTabs>
+
+        <DropIntro>
+          <Heading size="l0" color="secondary" title="Details" />
+          <Heading bold size="l3" title="The Ghoul Squad isn&apos;t just a toy. It&apos;s a whole world of scare." />
+        </DropIntro>
 
         <TabsWrap defaultValue={ `tab${ defaultTab ? defaultTab : 1 }` }>
           <TabsList aria-label="Manage your account">
@@ -105,10 +142,14 @@ export const DropDetails = ({ defaultTab, triggers, tabContent }:DetailProps) =>
               key={`tab-${ i }`} 
               value={`tab${ i + 1 }`}
             >
-              <></>
+              <>
+                
+              </>
             </TabsContent>
           ))}
         </TabsWrap>
+
+        <DropSeller />
       </DetailContent>
     </DetailWrap>
 

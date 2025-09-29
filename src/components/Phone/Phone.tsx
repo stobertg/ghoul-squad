@@ -76,6 +76,12 @@ const PhoneContentMain = styled('div', {
     blockSpacing: {
       l1: { '> *:not(:first-child)': { marginBottom: 20 } },
       l2: { '> *:not(:first-child)': { marginBottom: 40 } }
+    },
+
+    hasBottomNav: {
+      true: {
+        paddingBottom: 50
+      }
     }
   }
 })
@@ -145,7 +151,12 @@ export const Phone = ({
       <IphoneTop {...{ darkBg }} />
 
       <PhoneContent>
-        <PhoneContentMain {...{ hasHero, blockSpacing }}>{ children }</PhoneContentMain>
+        <PhoneContentMain 
+          hasBottomNav={ bottomNav ? true : false }
+          {...{ hasHero, blockSpacing }}
+        >
+          { children }
+        </PhoneContentMain>
       </PhoneContent>
 
       {/* <BottomSheet>This is some content in the container</BottomSheet> */}

@@ -10,17 +10,10 @@ export default function Home() {
 
         <AppBlock blockSpacing="l1">
           <ProductHero video="/ghouls/ghoul-box.mp4" />
-          <ProductIntro 
-
-          />
+          <ProductIntro />
         </AppBlock> 
 
         <AppBlock bgColor="subtle" blockSpacing="l1">
-          <div>
-            <Heading size="l0" color="secondary" title="Details" />
-            <Heading bold size="l3" title="The Ghoul Squad isn&apos;t just a toy. It&apos;s a whole world of scare." />
-          </div>
-
           <DropDetails 
             triggers={[
               { image: '/ghouls/static/pump.png', title: 'Sir Pump' },
