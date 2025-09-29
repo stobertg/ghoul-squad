@@ -4,7 +4,7 @@ import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Head
 export default function Home() {
   return (
     <>
-      <HeadTags />
+      <HeadTags bgColor="#222" />
       <Phone removeBg blockSpacing="l2">
         <PhoneHeader overlay />
 

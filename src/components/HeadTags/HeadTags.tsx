@@ -1,7 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
 
-export const HeadTags = () => {
+interface TagProps {
+  bgColor?: string
+}
+
+export const HeadTags = ({ bgColor }:TagProps) => {
   return(
 
     <Head>
@@ -25,8 +29,8 @@ export const HeadTags = () => {
       <meta property="og:url" content="https://www.ghoulsquad.com/" />
       <meta property="og:description" content="Ghoul Squad" />
       <meta property="og:type" content="website" />
-      <meta name="msapplication-TileColor" content="#252525" />
-      <meta name="theme-color" content="#252525" />
+      <meta name="msapplication-TileColor" content={ bgColor ? bgColor : "#252525"} />
+      <meta name="theme-color" content={ bgColor ? bgColor : "#252525"} />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta name="twitter:card" content="summary_large_image" />
