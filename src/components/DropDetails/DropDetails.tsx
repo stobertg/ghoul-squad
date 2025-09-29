@@ -106,7 +106,9 @@ const DropStage = styled('div', {
 })
 
 const DropStageContent = styled('div', {
-
+  position: 'relative',
+  width: '100%',
+  padding: '32px 0'
 })
 
 const DropStageImage = styled('div', {
@@ -115,7 +117,7 @@ const DropStageImage = styled('div', {
   alignItems: 'center',
   position: 'relative',
   width: '100%',
-  height: 200,
+  height: 240,
 
   img: {
     width: '100%',
@@ -170,20 +172,23 @@ export const DropDetails = ({ defaultTab, triggers, tabContent }:DetailProps) =>
           </TabsList>
           
           <DropStageWrap>
-            { tabContent.map(( content, i ) => (
+            <DropStageContent>
+              { tabContent.map(( content, i ) => (
 
-              <TabsContent 
-                key={`tab-${ i }`} 
-                value={`tab${ i + 1 }`}
-              >
-                <DropStage>
-                  <DropStageContent>
-                    <DropStageImage><img src={ content.image } alt="Ghoul Squad" /></DropStageImage>
-                  </DropStageContent>
-                </DropStage>
-              </TabsContent>
+                <TabsContent 
+                  key={`tab-${ i }`} 
+                  value={`tab${ i + 1 }`}
+                >
+                  <DropStage>
+                    <DropStageImage>
+                      <img src={ content.image } alt="Ghoul Squad" />
+                    </DropStageImage>
+                  </DropStage>
+                </TabsContent>
 
-            ))}
+              ))}
+            </DropStageContent>
+
             <FallAnimation />
           </DropStageWrap>
         </TabsWrap>
