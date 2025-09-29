@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <HeadTags bgColor="#181818" />
-      <Phone removeBg blockSpacing="l2">
+      <Phone removeBg bottomNav blockSpacing="l2">
         <PhoneHeader overlay />
 
         <AppBlock blockSpacing="l1">

@@ -126,6 +126,7 @@ interface PhoneProps {
   fall?: boolean
   removeBg?: boolean
   blockSpacing?: 'l1' | 'l2'
+  bottomNav?: boolean
 }
 
 export const Phone = ({ 
@@ -134,7 +135,8 @@ export const Phone = ({
     darkBg, 
     fall, 
     removeBg,
-    blockSpacing
+    blockSpacing,
+    bottomNav
   }:PhoneProps) => {
 
   return(
@@ -150,7 +152,7 @@ export const Phone = ({
       <IphoneBottom />
       { fall && ( <FallAnimation /> )}
       {/* <PhoneBg {...{ lighterBg }} /> */}
-      <NavBottom />
+      { bottomNav && ( <NavBottom /> )}
     </PhoneWrap>
 
   )
