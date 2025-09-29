@@ -8,7 +8,8 @@ export const colors = {
   textPrimary: '#fff',
   textSecondary: '#b2b2b2',
 
-  buttonPrimary: '#fff',
+  brandPrimary: '#0053e2',
+  buttonSecondary: '#fff',
 
   rating: '#ffc220',
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { IphoneTop } from './Parts/IphoneTop'
-import { FallAnimation, BottomSheet } from '@components'
+import { FallAnimation, BottomSheet, NavBottom } from '@components'
 
 const PhoneWrap = styled('div', {
   position: 'relative',
@@ -150,6 +150,7 @@ export const Phone = ({
       <IphoneBottom />
       { fall && ( <FallAnimation /> )}
       {/* <PhoneBg {...{ lighterBg }} /> */}
+      <NavBottom />
     </PhoneWrap>
 
   )

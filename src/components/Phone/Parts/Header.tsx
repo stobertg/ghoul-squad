@@ -121,7 +121,7 @@ export const PhoneHeader = ({ overlay, home }:HeaderProps) => {
       <HeaderContent>
         <ContentBlock>
           { overlay ? 
-            ( <ButtonIcon variant="primary" icon="arrow-left" /> ) 
+            ( <ButtonIcon variant="secondary" icon="arrow-left" /> ) 
             : <MenuButtonWrap><MenuButton /></MenuButtonWrap> 
             }
           { overlay ?? <InputSearch /> }
