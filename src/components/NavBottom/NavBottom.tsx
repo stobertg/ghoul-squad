@@ -7,7 +7,9 @@ const NavWrap = styled('div', {
   bottom: 24,
   left: 0,
   width: '100%',
-  zIndex: 9000
+  zIndex: 9000,
+
+  '@mobile': { position: 'fixed' }
 })
 
 const NavContent = styled('div', {
@@ -16,7 +18,7 @@ const NavContent = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
   position: 'relative',
-  width: '92%',
+  width: '95%',
   margin: '0 auto',
   padding: '12px 20px',
   background: 'rgba( 0,0,0, 0.8 )',
