@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { ProfileHero, ProfileIntro, Reputation } from './Parts'
-import { AppBlock } from '@components'
+import { AppBlock, Reviews } from '@components'
 
 const ProfileWrap = styled('div', {
 
@@ -50,6 +50,10 @@ export const Profile = ({}:ProfileProps) => {
               { title: 'Verified', subtitle: 'By Walmart'}
             ]}
           />
+        </AppBlock>
+
+        <AppBlock width="l0">
+          <Reviews />
         </AppBlock>
       </ProfileContent>
     </ProfileWrap>

@@ -27,6 +27,11 @@ const BlockContent = styled('div', {
 
     hasBg: {
       true: { padding: '40px 20px' }
+    },
+
+    width: {
+      full: { padding: '0 0' },
+      l0: { padding: '0 8px' }
     }
   }
 })
@@ -35,12 +40,14 @@ interface BlockProps {
   children: React.ReactNode
   blockSpacing?: 'l1'
   bgColor?: 'subtle'
+  width?: 'full'  | 'l0'
 }
 
 export const AppBlock = ({ 
     children, 
     blockSpacing,
-    bgColor
+    bgColor,
+    width
   }:BlockProps) => {
 
   return(
@@ -48,7 +55,7 @@ export const AppBlock = ({
     <BlockWrap {...{ bgColor }}>
       <BlockContent 
         hasBg={ bgColor ? true : false }
-        {...{ blockSpacing }}
+        {...{ blockSpacing, width }}
       >
         { children }
       </BlockContent>
