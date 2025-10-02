@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { IphoneTop } from './Parts/IphoneTop'
-import { FallAnimation, BottomSheet, NavBottom } from '@components'
+import { FallAnimation, BottomSheet, NavBottom, AiChat } from '@components'
 
 const PhoneWrap = styled('div', {
   position: 'relative',
@@ -97,7 +97,7 @@ const IphoneBottom = styled('div', {
   position: 'absolute',
   bottom: 0,
   width: '100%',
-  zIndex: 9000,
+  zIndex: 9999,
 
   // For the close bar on the bottom of the container
   // Position horizonatally centered in the parent container
@@ -164,6 +164,10 @@ export const Phone = ({
       { fall && ( <FallAnimation /> )}
       {/* <PhoneBg {...{ lighterBg }} /> */}
       { bottomNav && ( <NavBottom /> )}
+
+      {/* <BottomSheet>
+        <AiChat />
+      </BottomSheet> */}
     </PhoneWrap>
 
   )
