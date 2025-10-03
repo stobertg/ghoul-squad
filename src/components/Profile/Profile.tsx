@@ -44,10 +44,10 @@ export const Profile = ({}:ProfileProps) => {
         <AppBlock>
           <Reputation 
             items={[
-              { title: '5.0', subtitle: 'Trust Score'},
-              { title: '1,123', subtitle: 'Collectables sold'},
-              { title: '1,004', subtitle: 'Positive reviews'},
-              { title: 'Verified', subtitle: 'By Walmart'}
+              { icon: 'star', title: '5.0', subtitle: 'Trust Score'},
+              { icon: 'tags', title: '1,123', subtitle: 'Collectables sold'},
+              { icon: 'thumbs-up', title: '1,004', subtitle: 'Positive reviews'},
+              { icon: 'circle-check', title: 'Verified', subtitle: 'By Walmart'}
             ]}
           />
         </AppBlock>

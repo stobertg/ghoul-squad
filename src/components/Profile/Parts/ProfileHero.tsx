@@ -37,8 +37,8 @@ const HeroInfo = styled('div', {
   left: 0,
   right: 0,
   bottom: 0,
-  maxWidth: 320,
   width: '100%',
+  padding: '0 20px',
   margin: 'auto',
 })
 
@@ -72,6 +72,7 @@ export const ProfileHero = ({}:HeroProps) => {
 
     <HeroWrap>
       <HeroBg><img src="/ghouls/hero.jpg" alt="Ghoul Squad" /></HeroBg>
+
       <HeroInfo>
         <HeroAvatar><img src="/ghouls/static/pump.png" /></HeroAvatar>
 

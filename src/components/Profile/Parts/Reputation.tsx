@@ -16,27 +16,30 @@ const RepItem = styled('div', {
   alignItems: 'center',
   position: 'relative',
   width: '100%',
-  height: 82,
+  height: 100,
   border: '1px solid $border',
   borderRadius: '$r2',
   textAlign: 'center'
 })
 
 const RepMain = styled('div', {
-  
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 4,
+  position: 'relative'
 })
 
 const RepIcon = styled('div', {
   position: 'absolute',
   top: 10,
   left: 10,
-
 })
 
 interface RepProps {
   items: {
     title: string
     subtitle: string
+    icon: string
   }[]
 }
 
@@ -55,7 +58,7 @@ export const Reputation = ({ items }:RepProps) => {
               <Heading size="l0" color="secondary" title={ item.subtitle } />
             </RepMain>
 
-            <RepIcon><Icon /></RepIcon>
+            <RepIcon><Icon size="l0" icon={ item.icon } /></RepIcon>
           </RepItem>
 
         ))}
