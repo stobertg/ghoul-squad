@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { ReviewOverview } from './Parts'
+import { Review, ReviewOverview } from './Parts'
 
 const ReviewWrap = styled('div', {
   display: 'flex',
@@ -18,6 +18,7 @@ export const Reviews = ({}:ReviewProps) => {
 
     <ReviewWrap>
       <ReviewOverview />
+      <Review />
     </ReviewWrap>
 
   )

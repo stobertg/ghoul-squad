@@ -31,7 +31,9 @@ const BlockContent = styled('div', {
 
     width: {
       full: { padding: '0 0' },
-      l0: { padding: '0 8px' }
+      l0: { padding: '0 8px' },
+      l1: { padding: '0 32px' },
+      l2: { padding: '0 40px' }
     }
   }
 })
@@ -40,7 +42,7 @@ interface BlockProps {
   children: React.ReactNode
   blockSpacing?: 'l1'
   bgColor?: 'subtle'
-  width?: 'full'  | 'l0'
+  width?: 'full'  | 'l0' | 'l1' | 'l2'
 }
 
 export const AppBlock = ({ 

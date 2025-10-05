@@ -28,7 +28,8 @@ export const globalStyle = {
     color: '$textPrimary',
     webkitFontSmoothing: 'antialiased',
     mozFontSmoothing: 'none',
-    fontSmoothing: 'antialiased'
+    fontSmoothing: 'antialiased',
+    // background: '#2C2C2C'
   },
 
   a: { 

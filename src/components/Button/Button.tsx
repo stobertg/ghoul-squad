@@ -11,24 +11,35 @@ const ButtonWrap = styled('div', {
   height: 40,
   padding: '0 24px',
   background: '$brandPrimary',
-  borderRadius: '$r2'
+  borderRadius: '$r2',
+
+  variants: {
+    variant: {
+      secondary: { 
+        background: 'none',
+        border: '1px solid $border'
+      }
+    }
+  }
 })
 
 interface ButtonProps {
   title: string
   pageLink?: string
   onClick?: any
+  variant?: 'secondary'
 }
 
 export const Button = ({
     title,
     pageLink,
-    onClick
+    onClick,
+    variant
   }:ButtonProps) => {
   
   return(
 
-    <ButtonWrap>
+    <ButtonWrap {...{ variant }}>
       { onClick ? (
 
         <button {...{ onClick }}>

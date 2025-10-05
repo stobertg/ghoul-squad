@@ -8,11 +8,11 @@ export default function Home() {
       <Phone removeBg blockSpacing="l2">
         <PhoneHeader overlay />
 
-        <AppBlock blockSpacing="l1">
+        {/* <AppBlock blockSpacing="l1"> */}
           <Profile 
 
           />
-        </AppBlock> 
+        {/* </AppBlock>  */}
       </Phone>
       
     </>
