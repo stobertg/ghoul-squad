@@ -1,5 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
+import { Heading } from '@components'
 
 const HeroWrap = styled('div', {
   position: 'relative',
@@ -11,7 +12,15 @@ const HeroContent = styled('div', {
   width: '100%',
   height: 340,
   borderRadius: '$r2',
-  overflow: 'hidden'
+  overflow: 'hidden',
+
+  variants: {
+    isLive: {
+      true: {
+        height: 440
+      }
+    }
+  }
 })
 
 const Video = styled('div', {
@@ -25,27 +34,65 @@ const Video = styled('div', {
   video: {
     position: 'absolute',
     width: '101%', 
+  },
+
+  variants: {
+    alignVideo: {
+      top: { alignItems: 'flex-start' }
+    }
+  }
+})
+
+const LiveBadge = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: 8,
+  position: 'absolute',
+  bottom: 12,
+  right: 12,
+  padding: '10px 16px 10px 10px',
+  borderRadius: '$pill',
+  background: 'red',
+
+  span: {
+    display: 'inline-flex',
+    position: 'relative',
+    width: 16,
+    height: 16,
+    background: '#fff',
+    borderRadius: '50%'
   }
 })
 
 interface HeroProps {
   video?: string
+  alignVideo?: 'top'
+  videoMuted?: boolean
+  isLive?: boolean
 }
 
-export const ProductHero = ({ video }:HeroProps) => {
+export const ProductHero = ({ video, alignVideo, videoMuted, isLive }:HeroProps) => {
   return(
 
     <HeroWrap>
-      <HeroContent>
-        <Video>
+      <HeroContent {...{ isLive }}>
+        <Video {...{ alignVideo }}>
           <video
             src={ video }
             autoPlay
-            muted
+            muted={ videoMuted }
             playsInline
             loop
             preload="auto"
           />
+
+          { isLive && ( 
+            <LiveBadge>
+              <span />
+              <Heading bold color="white" size="l0" title="Live now" />
+            </LiveBadge>
+          )}
         </Video>
       </HeroContent>
     </HeroWrap>

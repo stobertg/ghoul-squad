@@ -10,7 +10,7 @@ const ProfileWrap = styled('div', {
 const ProfileContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: 50,
+  gap: 60,
   position: 'relative',
   width: '100%'
 })
@@ -41,7 +41,7 @@ export const Profile = ({}:ProfileProps) => {
     <ProfileWrap>
       <ProfileContent>
         <IntroContent>
-          <AppBlock width="l1">
+          <AppBlock>
             <ProfileHero />
           </AppBlock>
 
