@@ -51,6 +51,7 @@ const InputContent = styled('div', {
     background: 'transparent', 
     appearance: 'none',
     padding: '16px 20px',
+    fontSize: '$s1'
   }
 })
 

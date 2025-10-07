@@ -16,7 +16,12 @@ const LiveWrap = styled('div', {
   height: 840,
   background: '$bgPrimary',
   overflow: 'hidden',
-  zIndex: 9999
+  zIndex: 9999,
+
+  '@mobile': {
+    borderRadius: '$r2 $r2 0 0',
+    height: '100vh'
+  }
 })
 
 // For the container of all of the content wihtin the master container
