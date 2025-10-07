@@ -19,7 +19,7 @@ export default function Home() {
             isLive 
             videoMuted 
             alignVideo="top" 
-            video="/ghouls/livedrop.mp4" 
+            // video="/ghouls/livedrop.mp4" 
           />
           <ProductIntro />
         </AppBlock> 
