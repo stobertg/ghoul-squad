@@ -1,3 +1,4 @@
+export { ChatBubble } from './ChatBubble'
 export { Input } from './Input'
 export { LiveChat } from './LiveChat'
 export { LiveHeader } from './LiveHeader'

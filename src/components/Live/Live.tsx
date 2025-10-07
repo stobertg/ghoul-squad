@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { styled } from '@theme'
-import { LiveHeader, LiveProduct, LiveChat, Input } from './Parts'
-import { Heading, Icon } from '@components'
+import { LiveHeader, LiveProduct, LiveChat, Input, ChatBubble } from './Parts'
+import { Icon } from '@components'
 
 // For the master container of the live experience
 // This shows the video for the drop with the buying options and chat input on the bottom
@@ -88,7 +88,6 @@ const PlayWrap = styled('div', {
   flexDirection: 'row',
   justifyContent: 'flex-end',
   position: 'relative',
-  width: '100%',
   padding: '0 12px'
 })
 
@@ -123,6 +122,14 @@ const PlayButton = styled('button', {
   }
 })
 
+const Chat = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'flex-end',
+  position: 'relative',
+  width: '100%'
+})
+
 interface LiveProps {
 
 }
@@ -150,17 +157,51 @@ export const Live = ({}:LiveProps) => {
         <LiveHeader />
 
         <LiveBottom>
-          <LiveChat />
+          <Chat>
+            <LiveChat 
+              chats={[
+                {
+                  author: 'Tyler', 
+                  text: "Finallyyyyy it's here"
+                },
+                {
+                  author: 'Carissa', 
+                  text: "I need Sunny in my live! 🦊"
+                },
+                {
+                  author: 'Camila O', 
+                  text: "OMG these are sooo cute 😍"
+                },
+                {
+                  author: 'El Pablo', 
+                  text: "Just grabbed 3 boxes, for my daughter  🙌 "
+                },
+                {
+                  author: 'Kate C', 
+                  text: "Imagine lining them up on a shelf, they'd look cool"
+                },
+                {
+                  author: 'Lidija', 
+                  text: "Can we pick up at the Ghoul Squad shop???"
+                },
+                {
+                  author: 'Lidija', 
+                  text: "It's so close to my home!!!"
+                },
+                
+              ]}
+            />
 
-          <PlayWrap>
-            <PlayButton onClick={toggleMute} aria-label={isMuted ? 'Unmute video' : 'Mute video'}>
-              {isMuted ? (
-                <Icon size="l0" icon="sound-off" />
-              ) : (
-                <Icon size="l0" icon="sound" />
-              )}
-            </PlayButton>
-          </PlayWrap>
+            <PlayWrap>
+              <PlayButton onClick={toggleMute} aria-label={isMuted ? 'Unmute video' : 'Mute video'}>
+                {isMuted ? (
+                  <Icon size="l0" icon="sound-off" />
+                ) : (
+                  <Icon size="l0" icon="sound" />
+                )}
+              </PlayButton>
+            </PlayWrap>
+          </Chat>
 
           <LiveProduct 
             cards={[
