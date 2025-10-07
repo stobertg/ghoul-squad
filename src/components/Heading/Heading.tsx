@@ -34,7 +34,8 @@ const HeadingWrap = styled('div', {
     color: {
       secondary: { color: '$textSecondary' },
       white: { color: '$white' },
-      purple: { color: '$majorelleBlue' }
+      purple: { color: '$majorelleBlue' },
+      invert: { color: '$bgPrimary' }
     },
 
     font: {
@@ -52,7 +53,7 @@ const FontHeavy = styled('strong', {
 
 interface HeadingProps {
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5' | 'l6' | 'l7' | 'l8' | 'l9' | 'l10'
-  color?: 'secondary' | 'white' | 'purple'
+  color?: 'secondary' | 'white' | 'purple' | 'invert'
   title: any
   bold?: boolean
   heavy?: boolean

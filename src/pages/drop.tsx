@@ -1,15 +1,26 @@
 import React from 'react'
-import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails } from '@components'
+import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, Live } from '@components'
 
 export default function Home() {
   return (
+
     <>
       <HeadTags bgColor="#181818" />
-      <Phone removeBg bottomNav blockSpacing="l2">
+      <Phone 
+        removeBg 
+        hasHero={ true }
+        bottomNav={ false }
+        blockSpacing="l2"
+      >
         <PhoneHeader overlay />
 
         <AppBlock blockSpacing="l1">
-          <ProductHero isLive videoMuted alignVideo="top" video="/ghouls/livedrop.mp4" />
+          <ProductHero 
+            isLive 
+            videoMuted 
+            alignVideo="top" 
+            video="/ghouls/livedrop.mp4" 
+          />
           <ProductIntro />
         </AppBlock> 
 
@@ -29,10 +40,12 @@ export default function Home() {
             ]}
           />
         </AppBlock>
-        
-        {/* <CharacterVideo video="/ghouls/casper.webm" /> */}
+    
+        <Live />
       </Phone>
+
       
     </>
+
   )
 }

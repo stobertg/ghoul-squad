@@ -13,6 +13,11 @@ const ButtonWrap = styled('button', {
 
   variants: {
     variant: {
+      primary: {
+        background: '$brandPrimary',
+        color: '#fff'
+      },
+
       secondary: { 
         background: '$buttonSecondary',
         color: '$bgPrimary',
@@ -23,7 +28,7 @@ const ButtonWrap = styled('button', {
 })
 
 interface ButtonProps {
-  variant?: 'secondary'
+  variant?: 'primary' | 'secondary'
   onClick?: any
   icon: string
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' 

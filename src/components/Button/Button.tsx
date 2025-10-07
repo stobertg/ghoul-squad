@@ -12,6 +12,7 @@ const ButtonWrap = styled('div', {
   padding: '0 24px',
   background: '$brandPrimary',
   borderRadius: '$r2',
+  '*': { whiteSpace: 'nowrap' },
 
   variants: {
     variant: {
