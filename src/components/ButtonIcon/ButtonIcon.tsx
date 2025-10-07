@@ -22,13 +22,18 @@ const ButtonWrap = styled('button', {
         background: '$buttonSecondary',
         color: '$bgPrimary',
         'svg': { width: 20 }
+      },
+
+      neutral: {
+        background: '#fff',
+        color: '$bgPrimary'
       }
     }
   }
 })
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'neutral'
   onClick?: any
   icon: string
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' 

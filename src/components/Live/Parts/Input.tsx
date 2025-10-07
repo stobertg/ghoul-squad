@@ -15,7 +15,7 @@ const InputContent = styled('div', {
   position: 'relative',
   width: '92%',
   margin: '0 auto',
-  paddingRight: 8,
+  paddingRight: 12,
   border: '1px solid #494949',
   borderRadius: '$pill',
   overflow: 'hidden',
@@ -46,12 +46,15 @@ const InputContent = styled('div', {
   },
 
   input: {
+    display: 'flex',
+    flex: 1,
     border: 'none',
     outline: 'none',
     background: 'transparent', 
     appearance: 'none',
-    padding: '16px 20px',
-    fontSize: '$s1'
+    padding: '18px 20px',
+    fontSize: '$s1',
+    '&::placeholder': { color: '#fff' }
   }
 })
 
@@ -65,7 +68,7 @@ export const Input = ({}:InputProps) => {
     <InputWrap>
       <InputContent>
         <input placeholder="Add comment..." />
-        <ButtonIcon variant="primary" icon="arrow-up" />
+        <ButtonIcon size="l1" variant="neutral" icon="arrow-up" />
       </InputContent>
     </InputWrap>
 
