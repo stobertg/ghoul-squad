@@ -12,7 +12,7 @@ export default function Home() {
         bottomNav={ false }
         blockSpacing="l2"
       >
-        <PhoneHeader overlay />
+        {/* <PhoneHeader overlay />
 
         <AppBlock blockSpacing="l1">
           <ProductHero 
@@ -39,7 +39,7 @@ export default function Home() {
               { image: '/ghouls/static/vamp.png' }
             ]}
           />
-        </AppBlock>
+        </AppBlock> */}
     
         <Live />
       </Phone>

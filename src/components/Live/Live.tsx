@@ -14,9 +14,23 @@ const LiveWrap = styled('div', {
   left: 0,
   width: '100%',
   height: 840,
+  paddingTop: 64,
   background: '$bgPrimary',
   overflow: 'hidden',
   zIndex: 9999,
+
+  // For the gradient on the bottom of the container
+  // This will give the content more contrast and not overwhelm the attention of the video
+
+  '&:after': {
+    content: '',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '50%',
+    background: 'linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)',
+  },
 
   '@mobile': {
     borderRadius: '$r3 $r3 0 0',
@@ -43,7 +57,7 @@ const LiveContent = styled('div', {
 const LiveBottom = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: 16,
+  gap: 12,
   position: 'relative',
   width: '100%',
   paddingBottom: 32
@@ -102,9 +116,9 @@ export const Live = ({}:LiveProps) => {
         <video
           src="/ghouls/livedrop.mp4"
           autoPlay
-          playsInline
+          // playsInline
           loop
-          preload="auto"
+          // preload="auto"
         />
       </LiveVideo>
     </LiveWrap>
