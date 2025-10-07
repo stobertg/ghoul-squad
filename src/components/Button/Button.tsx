@@ -20,6 +20,10 @@ const ButtonWrap = styled('div', {
         background: 'none',
         border: '1px solid $border'
       }
+    },
+
+    width: {
+      auto: { padding: '0 12px' }
     }
   }
 })
@@ -29,18 +33,20 @@ interface ButtonProps {
   pageLink?: string
   onClick?: any
   variant?: 'secondary'
+  width?: 'auto'
 }
 
 export const Button = ({
     title,
     pageLink,
     onClick,
-    variant
+    variant,
+    width
   }:ButtonProps) => {
   
   return(
 
-    <ButtonWrap {...{ variant }}>
+    <ButtonWrap {...{ variant, width }}>
       { onClick ? (
 
         <button {...{ onClick }}>

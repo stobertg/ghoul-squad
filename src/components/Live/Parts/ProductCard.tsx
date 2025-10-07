@@ -95,7 +95,8 @@ const CardText = styled('div', {
   display: 'flex',
   gap: 4,
   flexDirection: 'column',
-  position: 'relative'
+  position: 'relative',
+  marginTop: 4
 })
 
 // -------------- Typescript declarations -------------- //
@@ -128,7 +129,7 @@ export const ProductCard = ({
             <Heading size="l1" color="invert" title={ price } />
           </CardText>
 
-          <Button title="Buy now" />
+          <Button width="auto" title="Buy now" />
         </CardInfo>
       </CardContent>
     </CardWrap>

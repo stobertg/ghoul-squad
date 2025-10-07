@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { styled } from '@theme'
 import { LiveHeader, LiveProduct, LiveChat, Input } from './Parts'
+import { Heading, Icon } from '@components'
 
 // For the master container of the live experience
 // This shows the video for the drop with the buying options and chat input on the bottom
@@ -82,19 +83,85 @@ const LiveVideo = styled('div', {
   }
 })
 
+const PlayWrap = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  position: 'relative',
+  width: '100%',
+  padding: '0 12px'
+})
+
+const PlayButton = styled('button', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  width: 40,
+  height: 40,
+  borderRadius: '50%',
+  '> *': { zIndex: 3 },
+
+  '&:before, &:after': {
+    content: '',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    borderRadius: '50%'
+  },
+
+  '&:before': { 
+    backdropFilter: 'blur( 10px )',
+    zIndex: 1
+  },
+
+  '&:after': { 
+    background: 'rgba( 0,0,0, 0.5 )',
+    zIndex: 2
+  }
+})
+
 interface LiveProps {
 
 }
 
 export const Live = ({}:LiveProps) => {
-  return(
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const [isMuted, setIsMuted] = useState(true)
 
+  // Keep the video playing; tie element.muted to state
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el) return
+    el.muted = isMuted
+    const p = el.play()
+    if (p && typeof p.catch === 'function') p.catch(() => {})
+  }, [isMuted])
+
+  const toggleMute = () => {
+    setIsMuted((m) => !m)
+  }
+
+  return(
     <LiveWrap>
       <LiveContent>
         <LiveHeader />
 
         <LiveBottom>
           <LiveChat />
+
+          <PlayWrap>
+            <PlayButton onClick={toggleMute} aria-label={isMuted ? 'Unmute video' : 'Mute video'}>
+              {isMuted ? (
+                <Icon size="l0" icon="sound-off" />
+              ) : (
+                <Icon size="l0" icon="sound" />
+              )}
+            </PlayButton>
+          </PlayWrap>
+
           <LiveProduct 
             cards={[
               {
@@ -115,14 +182,22 @@ export const Live = ({}:LiveProps) => {
 
       <LiveVideo>
         <video
+          ref={videoRef}
           src="/ghouls/livedrop.mp4"
           autoPlay
-          // playsInline
+          muted={isMuted}
+          playsInline
           loop
-          // preload="auto"
+          preload="auto"
+          onError={(e) => {
+            const el = e.currentTarget as HTMLVideoElement;
+            console.error('Video failed to load/play', {
+              error: el.error?.code,
+              src: el.currentSrc || el.src
+            });
+          }}
         />
       </LiveVideo>
     </LiveWrap>
-
   )
 }
