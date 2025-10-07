@@ -78,6 +78,7 @@ export const LiveHeader = ({}:HeaderProps) => {
           <ButtonContainer 
             icons
             buttons={[
+              { icon: 'more', onClick: () => alert( 'hello' )},
               { icon: 'share', onClick: () => alert( 'hello' )},
               { icon: 'star', onClick: () => alert( 'hello' )}
             ]}
