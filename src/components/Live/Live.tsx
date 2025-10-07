@@ -20,7 +20,7 @@ const LiveWrap = styled('div', {
 
   '@mobile': {
     borderRadius: '$r3 $r3 0 0',
-    height: '100vh'
+    height: '100dvh'
   }
 })
 
