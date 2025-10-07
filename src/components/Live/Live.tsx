@@ -19,7 +19,7 @@ const LiveWrap = styled('div', {
   zIndex: 9999,
 
   '@mobile': {
-    borderRadius: '$r2 $r2 0 0',
+    borderRadius: '$r3 $r3 0 0',
     height: '100vh'
   }
 })
