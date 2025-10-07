@@ -1,11 +1,17 @@
 import React from 'react'
+import { styled } from '@theme'
 import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, Live, LockScreen } from '@components'
+
+const StupidGap = styled('div', {
+  paddingTop: 40
+})
 
 export default function Home() {
   return (
 
     <>
       <HeadTags bgColor="#181818" />
+      
       <Phone 
         removeBg 
         hasHero={ true }
@@ -13,9 +19,11 @@ export default function Home() {
         blockSpacing="l2"
       >
         
-
-        <PhoneHeader overlay />
-
+        <div>
+          <StupidGap />
+          <PhoneHeader overlay />
+        </div>
+        
         <AppBlock blockSpacing="l1">
           <ProductHero 
             isLive 
