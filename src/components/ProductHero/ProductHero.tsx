@@ -17,7 +17,7 @@ const HeroContent = styled('div', {
   variants: {
     isLive: {
       true: {
-        height: 440
+        height: 380
       }
     }
   }

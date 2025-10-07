@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, Live } from '@components'
+import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, Live, LockScreen } from '@components'
 
 export default function Home() {
   return (
@@ -12,6 +12,8 @@ export default function Home() {
         bottomNav={ false }
         blockSpacing="l2"
       >
+        
+
         <PhoneHeader overlay />
 
         <AppBlock blockSpacing="l1">
@@ -19,7 +21,7 @@ export default function Home() {
             isLive 
             videoMuted 
             alignVideo="top" 
-            // video="/ghouls/livedrop.mp4" 
+            video="/ghouls/livedrop.mp4" 
           />
           <ProductIntro />
         </AppBlock> 
@@ -41,7 +43,7 @@ export default function Home() {
           />
         </AppBlock>
     
-        <Live />
+        {/* <Live /> */}
       </Phone>
 
       

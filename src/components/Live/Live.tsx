@@ -160,35 +160,13 @@ export const Live = ({}:LiveProps) => {
           <Chat>
             <LiveChat 
               chats={[
-                {
-                  author: 'Tyler', 
-                  text: "Finallyyyyy it's here"
-                },
-                {
-                  author: 'Carissa', 
-                  text: "I need Sunny in my live! 🦊"
-                },
-                {
-                  author: 'Camila O', 
-                  text: "OMG these are sooo cute 😍"
-                },
-                {
-                  author: 'El Pablo', 
-                  text: "Just grabbed 3 boxes, for my daughter  🙌 "
-                },
-                {
-                  author: 'Kate C', 
-                  text: "Imagine lining them up on a shelf, they'd look cool"
-                },
-                {
-                  author: 'Lidija', 
-                  text: "Can we pick up at the Ghoul Squad shop???"
-                },
-                {
-                  author: 'Lidija', 
-                  text: "It's so close to my home!!!"
-                },
-                
+                { author: 'Camila O', text: "OMG these are sooo cute 😍" },
+                { author: 'El Pablo', text: "Just grabbed 3 boxes, for my daughter  🙌 " },
+                { author: 'Tyler', text: "Finallyyyyy it's here" },
+                { author: 'Carissa', text: "I need Sunny in my live! 🦊" },
+                { author: 'Kate C', text: "Imagine lining them up on a shelf, they'd look cool" },
+                { author: 'Lidija', text: "Can we pick up at the Ghoul Squad shop???" },
+                { author: 'Lidija', text: "It's so close to my home!!!" }
               ]}
             />
 

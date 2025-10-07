@@ -67,7 +67,8 @@ const TextWrap = styled('div', {
     },
 
     color: {
-      darkBg: { p:{ color: '$textDarkBg' }}
+      darkBg: { p: { color: '$textDarkBg' }},
+      invert: { color: '#000' }
     }
   }
 })
@@ -79,7 +80,7 @@ interface TextProps {
   width?: 'small'
   alignment?: 'center'
   font?: 'serif' | 'sansSerif'
-  color?: 'darkBg'
+  color?: 'darkBg' | 'invert'
   children: React.ReactNode
 }
 

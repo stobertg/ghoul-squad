@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { IphoneTop } from './Parts/IphoneTop'
-import { FallAnimation, BottomSheet, NavBottom, AiChat } from '@components'
+import { FallAnimation, BottomSheet, NavBottom, AiChat, LockScreen } from '@components'
 
 const PhoneWrap = styled('div', {
   position: 'relative',
@@ -148,6 +148,8 @@ export const Phone = ({
   return(
 
     <PhoneWrap {...{ hasHero, removeBg }}>
+      <LockScreen />
+      
       <IphoneTop {...{ darkBg }} />
 
       <PhoneContent>
