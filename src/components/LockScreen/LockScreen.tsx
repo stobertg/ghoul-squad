@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
-import {  TextAlert } from './Parts'
+import { TextAlert, AppLaunch } from './Parts'
 
 const ScreenWrap = styled('div', {
   position: 'absolute',
@@ -14,7 +14,8 @@ const ScreenWrap = styled('div', {
   variants: {
     hidden: {
       true: {
-        transform: 'translateY( -110% )'
+        transform: 'translateY( -110% )',
+        pointerEvents: 'none'
       }
     }
   }
@@ -50,23 +51,28 @@ interface ScreenProps {
 
 export const LockScreen = ({}:ScreenProps) => {
   const [ hideScreen, setHideScreen ] = useState( false )
+  const [ appLaunch, setAppLaunch ] = useState( false )
 
-  const removeScreen = () => {
+  const removeScreen = () => { 
     setHideScreen( true )
+    setAppLaunch( true )
   }
-
+  
   return(
 
-    <ScreenWrap hidden={ hideScreen }>
-      <ScreenContent>
+    <>
+      <ScreenWrap hidden={ hideScreen }>
+        <ScreenContent>
+          <AlertWrap>
+            <TextAlert onClick={ removeScreen } />
+          </AlertWrap>
+        </ScreenContent>
 
-        <AlertWrap>
-          <TextAlert onClick={ removeScreen } />
-        </AlertWrap>
-      </ScreenContent>
+        <ScreenBg><img src="/lockscreen/homescreen.webp" alt="Lock Screen" /></ScreenBg>
+      </ScreenWrap>
 
-      <ScreenBg><img src="/lockscreen/homescreen.webp" alt="Lock Screen" /></ScreenBg>
-    </ScreenWrap>
+      { appLaunch && ( <AppLaunch /> )}
+    </>
 
   )
 }

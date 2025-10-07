@@ -133,6 +133,7 @@ interface PhoneProps {
   removeBg?: boolean
   blockSpacing?: 'l1' | 'l2'
   bottomNav?: boolean
+  hasLockScreen?: boolean
 }
 
 export const Phone = ({ 
@@ -142,14 +143,15 @@ export const Phone = ({
     fall, 
     removeBg,
     blockSpacing,
-    bottomNav
+    bottomNav,
+    hasLockScreen
   }:PhoneProps) => {
 
   return(
 
     <PhoneWrap {...{ hasHero, removeBg }}>
-      <LockScreen />
-      
+      { hasLockScreen && ( <LockScreen /> )}
+
       <IphoneTop {...{ darkBg }} />
 
       <PhoneContent>

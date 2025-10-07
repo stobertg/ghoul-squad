@@ -14,6 +14,7 @@ export default function Home() {
       
       <Phone 
         removeBg 
+        hasLockScreen
         hasHero={ true }
         bottomNav={ false }
         blockSpacing="l2"
@@ -23,7 +24,7 @@ export default function Home() {
           <StupidGap />
           <PhoneHeader overlay />
         </div>
-        
+
         <AppBlock blockSpacing="l1">
           <ProductHero 
             isLive 
