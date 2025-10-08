@@ -112,16 +112,18 @@ const Headshot = styled('div', {
 interface HeaderProps {
   home?: boolean
   overlay?: boolean
+  onBackClick?: any
+  onStar?: any
 }
 
-export const PhoneHeader = ({ overlay, home }:HeaderProps) => {
+export const PhoneHeader = ({ overlay, home, onBackClick, onStar }:HeaderProps) => {
   return(
 
     <HeaderWrap {...{ overlay }}>
       <HeaderContent>
         <ContentBlock>
           { overlay ? 
-            ( <ButtonIcon variant="secondary" icon="arrow-left" /> ) 
+            ( <ButtonIcon variant="secondary" icon="arrow-left" onClick={ onBackClick } /> ) 
             : <MenuButtonWrap><MenuButton /></MenuButtonWrap> 
             }
           { overlay ?? <InputSearch /> }
@@ -142,7 +144,7 @@ export const PhoneHeader = ({ overlay, home }:HeaderProps) => {
               buttons={[
                 { icon: 'message-circle', onClick: () => alert('AI Chat') },
                 { icon: 'share', onClick: () => alert('Share') },
-                { icon: 'star', onClick: () => alert('Star') },
+                { icon: 'star', onClick:  onStar },
               ]}
             />
 

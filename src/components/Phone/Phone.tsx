@@ -78,6 +78,8 @@ const PhoneContentMain = styled('div', {
   position: 'relative',
   paddingTop: 50,
   width: '100%',
+  minHeight: '100%',
+  
   '@mobile': { paddingTop: 0 },
   // paddingTop: 8,
 

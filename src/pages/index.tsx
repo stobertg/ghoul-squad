@@ -1,20 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled } from '@theme'
-import { HeadTags, SiteContainer, Phone, PhoneHeader, Drop, Profile } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, Drop, Profile, WatchList } from '@components'
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
-// const ProfileWrap = styled('div', {
-//   position: 'absolute',
-//   top: 0,
-//   left: 0,
-//   paddingTop: 50,
-//   width: '100%',
-//   height: '100%',
-//   zIndex: 9999,
-//   background: '$bgPrimary',
-//   transform: 'translateX( 100% )'
-// })
+const ProfileWrap = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  paddingTop: 50,
+  width: '100%',
+  zIndex: 9999,
+  background: '$bgPrimary',
+  transform: 'translateX( 100% )',
+  borderRadius: '56px 0 0 0',
+  transition: '$s3',
+  transitionTimingFunction: 'cubic-bezier(.78,.07,.31,1)',
+
+  variants: {
+    showProfile: { true: { transform: 'translateX( 0 )' }}
+  }
+})
+
+const WatchWrap = styled('div', {
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  width: '100%',
+  zIndex: 9999,
+  pointerEvents: 'none',
+  transform: 'scale( 0.9 )',
+  transformOrigin: 'bottom center',
+  transition: '$s1',
+  transitionTimingFunction: 'ease',
+  opacity: 0,
+
+  variants: {
+    active: {
+      true: {
+        pointerEvents: 'auto',
+        transform: 'scale( 1 )',
+        opacity: 1
+      }
+    }
+  }
+})
 
 const imageUrls = [
   "/badges/badge_collab.png",
@@ -61,6 +91,12 @@ export default function Home() {
   const combinedProgress = Math.round(((progress || 0) + (fontProgress || 0)) / 2)
   const allLoaded = isLoaded && isFontLoaded
 
+  const [ profile, setProfile ] = useState( false )
+  const toggleProfile = () => { setProfile( !profile )}
+
+  const [ watch, setWatch ] = useState( false )
+  const toggleWatch = () => { setWatch( !watch )}
+
   return (
     <>
       <LoadingBar 
@@ -82,22 +118,30 @@ export default function Home() {
           <HeadTags />
 
           <Phone fall>
-            <PhoneHeader overlay />
+            <PhoneHeader 
+              overlay 
+              onStar={ toggleWatch }
+            />
             <Drop
               title=""
               titles={titles}
               subTitle="Ghoul Squad"
               videos={videos}
               appleFallback={appleFallback}
-              onBrandClick={ () => alert( 'hello' )}
+              onBrandClick={ toggleProfile }
             />
 
-            {/**
-            <ProfileWrap>
-              <PhoneHeader overlay />
+            <ProfileWrap showProfile={ profile }>
+              <PhoneHeader 
+                overlay 
+                onBackClick={ toggleProfile } 
+              />
               <Profile />
             </ProfileWrap>
-            **/}
+
+            <WatchWrap active={ watch }>
+              <WatchList closeWatch={ toggleWatch } />
+            </WatchWrap>
           </Phone>
         </SiteContainer>
       )}
