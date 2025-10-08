@@ -1,5 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { HeadTags, SiteContainer, Phone, PhoneHeader, Drop } from '@components'
+import { styled } from '@theme'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, Drop, Profile } from '@components'
+
+const ProfileWrap = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  zIndex: 9999,
+  background: '$bgPrimary'
+})
 
 export default function Home() {
   // Hoist data so we can preload the assets
@@ -93,6 +104,7 @@ export default function Home() {
   const progress = Math.round((loadedCount / Math.max(allUrls.length, 1)) * 100)
 
   return (
+
     <SiteContainer
       nav={[
         { icon: 'star', title: 'Drop hero', link: '/', active: true },
@@ -151,8 +163,11 @@ export default function Home() {
             videos={videos}
             appleFallback={appleFallback}
           />
+
+          {/* <ProfileWrap><Profile /></ProfileWrap> */}
         </Phone>
       </div>
     </SiteContainer>
+
   )
 }

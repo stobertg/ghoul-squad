@@ -10,7 +10,6 @@ const PhoneWrap = styled('div', {
   width: '100%',
   height: 850,
   margin: '0 auto',
-  paddingTop: 50,
   background: '#181818',
   borderRadius: 56,
   // border: '1px solid #e0e0e0',
@@ -57,7 +56,9 @@ const PhoneWrap = styled('div', {
 })
 
 const PhoneContent = styled('div', {
-  position: 'relative',
+  position: 'absolute',
+  top: 0,
+  left: 0,
   width: '100%',
   height: '100%',
   zIndex: 1,
@@ -75,6 +76,7 @@ const PhoneContentMain = styled('div', {
   flexDirection: 'column',
   // gap: 12,
   position: 'relative',
+  paddingTop: 50,
   width: '100%',
   // paddingTop: 8,
 
