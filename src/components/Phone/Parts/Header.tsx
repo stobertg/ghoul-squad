@@ -114,9 +114,10 @@ interface HeaderProps {
   overlay?: boolean
   onBackClick?: any
   onStar?: any
+  onChat?: any
 }
 
-export const PhoneHeader = ({ overlay, home, onBackClick, onStar }:HeaderProps) => {
+export const PhoneHeader = ({ overlay, home, onBackClick, onStar, onChat }:HeaderProps) => {
   return(
 
     <HeaderWrap {...{ overlay }}>
@@ -142,8 +143,8 @@ export const PhoneHeader = ({ overlay, home, onBackClick, onStar }:HeaderProps) 
             <ButtonContainer 
               icons
               buttons={[
-                { icon: 'message-circle', onClick: () => alert('AI Chat') },
-                { icon: 'share', onClick: () => alert('Share') },
+                { icon: 'message-circle', onClick: onChat },
+                { icon: 'share', onClick: () => alert('share') },
                 { icon: 'star', onClick:  onStar },
               ]}
             />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
-import { HeadTags, SiteContainer, Phone, PhoneHeader, Drop, Profile, WatchList } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, Drop, Profile, WatchList, AiChat } from '@components'
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
@@ -97,6 +97,9 @@ export default function Home() {
   const [ watch, setWatch ] = useState( false )
   const toggleWatch = () => { setWatch( !watch )}
 
+  const [ chat, setChat ] = useState( false )
+  const toggleChat = () => { setChat( !chat )}
+
   return (
     <>
       <LoadingBar 
@@ -121,6 +124,7 @@ export default function Home() {
             <PhoneHeader 
               overlay 
               onStar={ toggleWatch }
+              onChat={ toggleChat }
             />
             <Drop
               title=""
@@ -141,6 +145,10 @@ export default function Home() {
 
             <WatchWrap active={ watch }>
               <WatchList closeWatch={ toggleWatch } />
+            </WatchWrap>
+
+            <WatchWrap active={ chat }>
+              <AiChat closeChat={ toggleChat } />
             </WatchWrap>
           </Phone>
         </SiteContainer>

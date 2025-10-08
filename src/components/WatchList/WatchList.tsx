@@ -16,24 +16,24 @@ const WatchContent = styled('div', {
   flex: 1,
   position: 'relative',
   width: '100%',
-  height: 500,
+  minHeight: 500,
   background: 'rgba( 0,0,0, 0.7 )',
   padding: '32px 32px 50px 32px',
   borderRadius: '$r3 $r3 0 0',
   overflow: 'hidden',
 
-  '&:before': {
-    content: '',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backdropFilter: 'blur( 10px )',
-    borderRadius: '$r3 $r3 0 0',
-    overflow: 'hidden',
-    zIndex: 1
-  }
+  // '&:before': {
+  //   content: '',
+  //   position: 'absolute',
+  //   top: 0,
+  //   left: 0,
+  //   width: '100%',
+  //   height: '100%',
+  //   backdropFilter: 'blur( 10px )',
+  //   borderRadius: '$r3 $r3 0 0',
+  //   overflow: 'hidden',
+  //   zIndex: 1
+  // }
 })
 
 const WatchMain = styled('div', {
@@ -63,7 +63,38 @@ const WatchClose = styled('div', {
   position: 'absolute',
   top: 20,
   right: 20,
-  zIndex: 10
+  zIndex: 10,
+
+  svg: { color: '#000' }
+})
+
+const WatchVideo = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '80%',
+  margin: '0 auto',
+  zIndex: 2,
+
+  '&:before': {
+    content: '',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(0deg,rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%)'
+  },
+
+  video: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  }
 })
 
 interface WatchProps {
@@ -75,6 +106,16 @@ export const WatchList = ({ closeWatch }:WatchProps) => {
 
     <WatchWrap>
       <WatchContent>
+        <WatchVideo>
+            <video
+              src="/ghouls/watch2.mp4"
+              autoPlay
+              muted
+              playsInline
+              loop
+              preload="auto"
+            />
+          </WatchVideo>
         <WatchMain>
           <WatchText>
             <WatchTitle>
