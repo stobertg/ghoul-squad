@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { styled, keyframes } from '@theme'
 import { SiteContainer, HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, Live, AiInline, ItemCarousel } from '@components'
-import { useImagePreloader } from '@lib'
+import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
 const imageUrls = [
@@ -10,6 +10,10 @@ const imageUrls = [
   "/ghouls/static/frank.png",
   "/ghouls/static/vamp.png"
 ]
+
+const fontUrls = [
+  '/font/EverydaySans-Regular.woff'
+];
 
 const fadeIn = keyframes({
   '0%': { transform: 'translateX( 100% )' },
@@ -65,18 +69,21 @@ export default function Home() {
 
   const Video = "/ghouls/livedrop.mp4" 
 
-  const { progress, isLoaded } = useImagePreloader( imageUrls )
+  const { progress, isLoaded } = useImagePreloader(imageUrls);
+  const { progress: fontProgress, isLoaded: isFontLoaded } = useFontPreloader(fontUrls);
+  const combinedProgress = Math.round(((progress || 0) + (fontProgress || 0)) / 2);
+  const allLoaded = isLoaded && isFontLoaded;
 
   return (
 
     <>
       <LoadingBar 
         color="yellow"
-        progress={ progress }
+        progress={ combinedProgress }
         shadow={ true }
       />
 
-      { isLoaded && (
+      { allLoaded && (
 
         <SiteContainer
           nav={[

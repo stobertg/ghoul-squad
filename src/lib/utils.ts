@@ -21,6 +21,26 @@ export const preloadImages = (imageUrls: string[], onProgress?: ProgressCallback
   })
 }
 
+export const preloadFonts = (fontUrls: string[], onProgress?: ProgressCallback): Promise<void> => {
+  let loadedCount = 0;
+  return new Promise((resolve, reject) => {
+    Promise.all(
+      fontUrls.map(url => {
+        const fileName = url.split('/').pop() || '';
+        const family = fileName.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
+        const face = new FontFace(family, `url(${url})`);
+        return face.load().then(loadedFace => {
+          (document as any).fonts.add(loadedFace);
+          loadedCount++;
+          onProgress?.((loadedCount / fontUrls.length) * 100);
+        });
+      })
+    )
+      .then(() => resolve())
+      .catch(reject);
+  });
+};
+
 export const useImagePreloader = (imageUrls: string[]) => {
   const [progress, setProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,3 +53,16 @@ export const useImagePreloader = (imageUrls: string[]) => {
 
   return { progress, isLoaded };
 }
+
+export const useFontPreloader = (fontUrls: string[]) => {
+  const [progress, setProgress] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    preloadFonts(fontUrls, setProgress).then(() => {
+      setIsLoaded(true);
+    });
+  }, [fontUrls]);
+
+  return { progress, isLoaded };
+};

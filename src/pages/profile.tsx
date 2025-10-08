@@ -1,6 +1,6 @@
 import React from 'react'
 import { HeadTags, SiteContainer, Phone, PhoneHeader, AppBlock, Profile } from '@components'
-import { useImagePreloader } from '@lib'
+import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
 const imageUrls = [
@@ -10,19 +10,29 @@ const imageUrls = [
   "/ghouls/static/vamp.png"
 ]
 
+const fontUrls = [
+  '/font/EverydaySans-Black.woff',
+  '/font/EverydaySans-Bold.woff',
+  '/font/EverydaySans-Medium.woff',
+  '/font/EverydaySans-Regular.woff'
+];
+
 export default function Home() {
-  const { progress, isLoaded } = useImagePreloader( imageUrls )
+  const { progress, isLoaded } = useImagePreloader(imageUrls);
+  const { progress: fontProgress, isLoaded: isFontLoaded } = useFontPreloader(fontUrls);
+  const combinedProgress = Math.round(((progress || 0) + (fontProgress || 0)) / 2);
+  const allLoaded = isLoaded && isFontLoaded;
 
   return (
 
     <>
       <LoadingBar 
         color="yellow"
-        progress={ progress }
+        progress={ combinedProgress }
         shadow={ true }
       />
 
-      { isLoaded && (
+      { allLoaded && (
 
         <SiteContainer
           nav={[
