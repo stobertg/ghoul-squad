@@ -1,9 +1,17 @@
 import React from 'react'
-import { HeadTags, Phone, PhoneHeader, Hero, AppBlock, ProductCards } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, Hero, AppBlock, ProductCards } from '@components'
 
 export default function Home() {
   return (
-    <>
+
+    <SiteContainer
+      nav={[
+        { icon: 'star', title: 'Drop hero', link: '/' },
+        { icon: 'pumpkin', title: 'Product', link: '/' },
+        { icon: 'clapperboard', title: 'Live drop', link: '/' },
+        { icon: 'shopping-cart', title: 'Checkout', link: '/' }
+      ]}
+    >
       <HeadTags />
       <Phone>
         <PhoneHeader home />
@@ -24,7 +32,7 @@ export default function Home() {
         
         {/* <CharacterVideo video="/ghouls/casper.webm" /> */}
       </Phone>
-      
-    </>
+    </SiteContainer>
+
   )
 }

@@ -1,9 +1,17 @@
 import React from 'react'
-import { HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails } from '@components'
 
 export default function Home() {
   return (
-    <>
+
+    <SiteContainer
+      nav={[
+        { icon: 'star', title: 'Drop hero', link: '/' },
+        { icon: 'pumpkin', title: 'Product', link: '/product', active: true },
+        { icon: 'clapperboard', title: 'Live drop', link: '/' },
+        { icon: 'shopping-cart', title: 'Checkout', link: '/' }
+      ]}
+    >
       <HeadTags bgColor="#181818" />
       <Phone removeBg bottomNav blockSpacing="l2">
         <PhoneHeader overlay />
@@ -30,7 +38,7 @@ export default function Home() {
           />
         </AppBlock>
       </Phone>
-      
-    </>
+    </SiteContainer>
+
   )
 }

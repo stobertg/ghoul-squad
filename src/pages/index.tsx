@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { HeadTags, Phone, PhoneHeader, Drop } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, Drop } from '@components'
 
 export default function Home() {
   // Hoist data so we can preload the assets
@@ -93,7 +93,14 @@ export default function Home() {
   const progress = Math.round((loadedCount / Math.max(allUrls.length, 1)) * 100)
 
   return (
-    <>
+    <SiteContainer
+      nav={[
+        { icon: 'star', title: 'Drop hero', link: '/', active: true },
+        { icon: 'pumpkin', title: 'Product', link: '/product' },
+        { icon: 'clapperboard', title: 'Live drop', link: '/' },
+        { icon: 'shopping-cart', title: 'Checkout', link: '/' }
+      ]}
+    >
       <HeadTags />
 
       {/* Preloader overlay */}
@@ -101,6 +108,7 @@ export default function Home() {
         <div
           style={{
             position: 'fixed',
+            width: '100%',
             inset: 0,
             display: 'flex',
             alignItems: 'center',
@@ -144,6 +152,6 @@ export default function Home() {
           />
         </Phone>
       </div>
-    </>
+    </SiteContainer>
   )
 }

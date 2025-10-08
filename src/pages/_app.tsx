@@ -19,9 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
       enableSystem={ false }
       defaultTheme="light"
     > 
-      <SiteContainer>
-        <Component {...pageProps} />
-      </SiteContainer>
+      <Component {...pageProps} />
     </ThemeProvider>
   
   )

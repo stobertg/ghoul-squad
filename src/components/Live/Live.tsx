@@ -131,10 +131,11 @@ const Chat = styled('div', {
 })
 
 interface LiveProps {
-
+  video: string
+  backClick: any
 }
 
-export const Live = ({}:LiveProps) => {
+export const Live = ({ video, backClick }:LiveProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [isMuted, setIsMuted] = useState(true)
 
@@ -154,7 +155,7 @@ export const Live = ({}:LiveProps) => {
   return(
     <LiveWrap>
       <LiveContent>
-        <LiveHeader />
+        <LiveHeader {...{ backClick }} />
 
         <LiveBottom>
           <Chat>
@@ -164,7 +165,7 @@ export const Live = ({}:LiveProps) => {
                 { author: 'El Pablo', text: "Just grabbed 3 boxes, for my daughter  🙌 " },
                 { author: 'Tyler', text: "Finallyyyyy it's here" },
                 { author: 'Carissa', text: "I need Sunny in my live! 🦊" },
-                { author: 'Kate C', text: "Imagine lining them up on a shelf, they'd look cool" },
+                { author: 'Kate C', text: "Imagine lining them up on a shelf!" },
                 { author: 'Lidija', text: "Can we pick up at the Ghoul Squad shop???" },
                 { author: 'Lidija', text: "It's so close to my home!!!" }
               ]}
@@ -202,7 +203,7 @@ export const Live = ({}:LiveProps) => {
       <LiveVideo>
         <video
           ref={videoRef}
-          src="/ghouls/livedrop.mp4"
+          src={ video }
           autoPlay
           muted={isMuted}
           playsInline

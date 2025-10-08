@@ -57,6 +57,6 @@ export const fontSizes = {
   s6: '2rem', // 32px
   s7: '2.25rem', // 36px
   s8: '2.75rem', // 44px
-  s9: '3.5rem', // 56px
+  s9: '4.6rem', // 56px
   s10: '4rem' // 64px
 }

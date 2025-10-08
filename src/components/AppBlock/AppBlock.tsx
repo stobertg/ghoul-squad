@@ -26,7 +26,7 @@ const BlockContent = styled('div', {
     },
 
     hasBg: {
-      true: { padding: '40px 20px' }
+      true: { padding: '40px 28px' }
     },
 
     width: {

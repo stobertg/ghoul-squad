@@ -6,13 +6,15 @@ import { FallAnimation, BottomSheet, NavBottom, AiChat, LockScreen } from '@comp
 const PhoneWrap = styled('div', {
   position: 'relative',
   maxWidth: 400,
+  minWidth: 400,
   width: '100%',
   height: 850,
   margin: '0 auto',
   paddingTop: 50,
   background: '#181818',
   borderRadius: 56,
-  border: '1px solid #e0e0e0',
+  // border: '1px solid #e0e0e0',
+  border: '4px solid rgba( 37, 37, 37, 1 )',
   boxShadow: '0 2px 10px rgba( 0,0,0, 0.05 )',
   overflow: 'hidden',
 
@@ -44,6 +46,7 @@ const PhoneWrap = styled('div', {
 
   '@mobile': {
     maxWidth: '100%',
+    minWidth: '100%',
     borderRadius: 0,
     border: 'none',
     paddingTop: 0,

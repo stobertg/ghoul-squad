@@ -56,16 +56,21 @@ const HeaderRight = styled('div', {
 })
 
 interface HeaderProps {
-
+  backClick: any
 }
 
-export const LiveHeader = ({}:HeaderProps) => {
+export const LiveHeader = ({ backClick }:HeaderProps) => {
   return(
 
     <HeaderWrap>
       <HeaderContent>
         <HeaderLeft>
-          <ButtonIcon variant="secondary" icon="arrow-left" />
+          <ButtonIcon 
+            variant="secondary" 
+            icon="arrow-left" 
+            onClick={ backClick } 
+          />
+
           <LiveStats>
             <Watching>
               <Icon size="l1" icon="eye" />

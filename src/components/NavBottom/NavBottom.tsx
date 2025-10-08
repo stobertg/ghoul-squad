@@ -8,7 +8,7 @@ const NavWrap = styled('div', {
   left: 0,
   width: '100%',
   borderTop: '1px solid $border',
-  zIndex: 8000,
+  zIndex: 1000,
 
   '&:before': {
     content: '',
