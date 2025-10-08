@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled, keyframes } from '@theme'
-import { SiteContainer, HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, Live, LockScreen } from '@components'
+import { SiteContainer, HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, Live, AiInline, ItemCarousel } from '@components'
 
 const fadeIn = keyframes({
   '0%': { transform: 'translateX( 100% )' },
@@ -63,8 +63,8 @@ export default function Home() {
         { icon: 'star', title: 'Drop hero', link: '/' },
         { icon: 'pumpkin', title: 'Product', link: '/product' },
         { icon: 'clapperboard', title: 'Live drop', link: '/drop', active: true },
-        { icon: 'shopping-cart', title: 'Checkout', link: '/' },
-        { icon: 'user-check', title: 'Profile', link: '/' }
+        { icon: 'user-check', title: 'Profile', link: '/profile' },
+        { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
       ]}
     >
       <HeadTags bgColor="#181818" />
@@ -108,6 +108,45 @@ export default function Home() {
               { image: '/ghouls/static/vamp.png' }
             ]}
           />
+        </AppBlock>
+
+        <ItemCarousel 
+          items={[
+            {
+              image: "/ghouls/static/mystery-box.webp",
+              title: "Ghoul Squad Mystery Drop collaboration with Finds",
+              price: "$111.96"
+            },
+            {
+              image: "/ghouls/static/pump.webp",
+              title: "Sir Pump Blind Box",
+              price: "$27.99"
+            },
+            {
+              image: "/ghouls/static/casper.webp",
+              title: "Sir Casper Blind Box",
+              price: "$27.99"
+            },
+            {
+              image: "/ghouls/static/frank.webp",
+              title: "Sir Frank Blind Box",
+              price: "$27.99"
+            },
+            {
+              image: "/ghouls/static/vamp.webp",
+              title: "Sir Vamp Blind Box",
+              price: "$27.99"
+            },
+            {
+              image: "/ghouls/static/jeremy.webp",
+              title: "Jeremy Blind Box",
+              price: "$27.99"
+            },
+          ]}
+        />
+
+        <AppBlock>
+          <AiInline />
         </AppBlock>
 
         <AppScreen show={ live === true }>

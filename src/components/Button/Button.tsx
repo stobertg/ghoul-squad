@@ -10,7 +10,7 @@ const ButtonWrap = styled('div', {
   minWidth: 100,
   height: 40,
   padding: '0 24px',
-  background: '$brandPrimary',
+  background: '$borderActive',
   borderRadius: '$r2',
   '*': { whiteSpace: 'nowrap' },
 

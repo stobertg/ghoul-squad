@@ -98,8 +98,8 @@ export default function Home() {
         { icon: 'star', title: 'Drop hero', link: '/', active: true },
         { icon: 'pumpkin', title: 'Product', link: '/product' },
         { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
-        { icon: 'shopping-cart', title: 'Checkout', link: '/' },
-        { icon: 'user-check', title: 'Profile', link: '/' }
+        { icon: 'user-check', title: 'Profile', link: '/profile' },
+        { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
       ]}
     >
       <HeadTags />

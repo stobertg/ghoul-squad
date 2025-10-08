@@ -64,8 +64,6 @@ export const Profile = ({}:ProfileProps) => {
           </AppBlock>
         </IntroContent>
 
-        
-
         <ItemCarousel 
           items={[
             {

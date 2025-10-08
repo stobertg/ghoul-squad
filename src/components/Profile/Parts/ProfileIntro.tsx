@@ -24,7 +24,7 @@ export const ProfileIntro = ({
 
     <IntroWrap>
       <Heading bold size="l4" {...{ title }} />
-      <Text fontSize="l0">{ text }</Text>
+      <Text fontSize="l1">{ text }</Text>
     </IntroWrap>
 
   )

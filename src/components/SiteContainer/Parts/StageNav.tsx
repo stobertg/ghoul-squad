@@ -31,6 +31,12 @@ const NavItem = styled('a', {
       true: { 
         borderColor: '$borderActive',
         background: 'rgba( 70, 70, 183, 0.4 )'
+      },
+
+      false: {
+        pointerEvents: 'none',
+        opacity: 0.6,
+        '> *': { opacity: 0.2 }
       }
     }
   }
