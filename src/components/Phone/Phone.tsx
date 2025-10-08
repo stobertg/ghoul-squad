@@ -47,11 +47,11 @@ const PhoneWrap = styled('div', {
     width: '100vw',
     maxWidth: '100%',
     minWidth: '100%',
+    height: '100dvh',
     borderRadius: 0,
     border: 'none',
     paddingTop: 0,
-    paddingBottom: 40,
-    height: 'auto'
+    paddingBottom: 40
   }
 })
 
@@ -60,7 +60,7 @@ const PhoneContent = styled('div', {
   top: 0,
   left: 0,
   width: '100%',
-  height: '100%',
+  height: '100dvh',
   zIndex: 1,
   overflow: 'scroll',
 
@@ -78,6 +78,7 @@ const PhoneContentMain = styled('div', {
   position: 'relative',
   paddingTop: 50,
   width: '100%',
+  '@mobile': { paddingTop: 0 },
   // paddingTop: 8,
 
   variants: {

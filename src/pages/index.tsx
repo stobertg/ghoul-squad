@@ -2,17 +2,17 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { styled } from '@theme'
 import { HeadTags, SiteContainer, Phone, PhoneHeader, Drop, Profile } from '@components'
 
-const ProfileWrap = styled('div', {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  paddingTop: 50,
-  width: '100%',
-  height: '100%',
-  zIndex: 9999,
-  background: '$bgPrimary',
-  transform: 'translateX( 100% )'
-})
+// const ProfileWrap = styled('div', {
+//   position: 'absolute',
+//   top: 0,
+//   left: 0,
+//   paddingTop: 50,
+//   width: '100%',
+//   height: '100%',
+//   zIndex: 9999,
+//   background: '$bgPrimary',
+//   transform: 'translateX( 100% )'
+// })
 
 export default function Home() {
   // Hoist data so we can preload the assets
@@ -167,10 +167,10 @@ export default function Home() {
             onBrandClick={ () => alert( 'hello' )}
           />
 
-          <ProfileWrap>
+          {/* <ProfileWrap>
             <PhoneHeader overlay />
             <Profile />
-          </ProfileWrap>
+          </ProfileWrap> */}
         </Phone>
       </div>
     </SiteContainer>
