@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeadTags, SiteContainer, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, ItemCarousel } from '@components'
 
 export default function Home() {
   return (
@@ -37,6 +37,14 @@ export default function Home() {
             ]}
           />
         </AppBlock>
+            
+        <ItemCarousel 
+            items={[
+              {},
+              {},
+              {}
+            ]}
+          />
       </Phone>
     </SiteContainer>
 

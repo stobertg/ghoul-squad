@@ -45,6 +45,7 @@ const PhoneWrap = styled('div', {
   },
 
   '@mobile': {
+    width: '100vw',
     maxWidth: '100%',
     minWidth: '100%',
     borderRadius: 0,

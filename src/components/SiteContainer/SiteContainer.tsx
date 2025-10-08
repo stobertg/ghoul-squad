@@ -80,7 +80,8 @@ const StageRight = styled('div', {
   flexDirection: 'column',
   justifyContent: 'flex-end',
   position: 'relative',
-  height: '85%'
+  height: '85%',
+  '@mobile': { display: 'none' }
 })
 
 const BlobWrap = styled('div', {

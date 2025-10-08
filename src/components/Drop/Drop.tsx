@@ -11,7 +11,10 @@ const DropWrap = styled('div', {
   gap: 32,
   position: 'relative',
   width: '100%',
-  '@mobile': { gap: 32 }
+
+  '@mobile': { 
+    gap: 32 
+  }
 })
 
 const DropMain = styled('div', {

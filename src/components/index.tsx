@@ -1,4 +1,5 @@
 export { AiChat } from './AiChat/AiChat'
+export { AiInline } from './AiInline/AiInline'
 export { AppBlock } from './AppBlock/AppBlock'
 export { Avatar } from './Avatar/Avatar'
 export { BrandChip } from './BrandChip/BrandChip'

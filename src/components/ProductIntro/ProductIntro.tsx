@@ -41,6 +41,14 @@ const IntroTitle = styled('div', {
   width: '100%'
 })
 
+const TrendingWrap = styled('div', {
+
+})
+
+const TrendingContent = styled('div', {
+  
+})
+
 interface IntroProps {
 
 }
