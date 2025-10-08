@@ -19,7 +19,8 @@ export const HeadTags = ({ bgColor }:TagProps) => {
       <meta name="keywords" content="Ghoul Squad" />
       <meta name="author" content="Ghoul Squad" />
       <meta name="apple-mobile-web-app-title" content="Ghoul Squad" />
-      <meta name="googlebot" content="index, follow" />
+      {/* <meta name="googlebot" content="index, follow" /> */}
+      <meta name="robots" content="noindex, nofollow" />
       <meta property="og:title" content="Ghoul Squad" />
       <meta property="og:image" content="https://ghoul-squad.vercel.app/social/social-hero.jpg" />
       <meta property="og:image:width" content="1200" />

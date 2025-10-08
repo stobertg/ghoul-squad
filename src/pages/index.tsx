@@ -6,10 +6,12 @@ const ProfileWrap = styled('div', {
   position: 'absolute',
   top: 0,
   left: 0,
+  paddingTop: 50,
   width: '100%',
   height: '100%',
   zIndex: 9999,
-  background: '$bgPrimary'
+  background: '$bgPrimary',
+  transform: 'translateX( 100% )'
 })
 
 export default function Home() {
@@ -162,9 +164,13 @@ export default function Home() {
             subTitle="Ghoul Squad"
             videos={videos}
             appleFallback={appleFallback}
+            onBrandClick={ () => alert( 'hello' )}
           />
 
-          {/* <ProfileWrap><Profile /></ProfileWrap> */}
+          <ProfileWrap>
+            <PhoneHeader overlay />
+            <Profile />
+          </ProfileWrap>
         </Phone>
       </div>
     </SiteContainer>

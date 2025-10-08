@@ -34,6 +34,7 @@ interface DropProps {
   videos?: any
   titles?: any
   appleFallback?: any
+  onBrandClick?: any
 }
 
 export const Drop = ({
@@ -43,7 +44,8 @@ export const Drop = ({
     video,
     videos,
     titles,
-    appleFallback
+    appleFallback,
+    onBrandClick
   }:DropProps) => {
 
   return(
@@ -57,7 +59,7 @@ export const Drop = ({
       <BrandChip 
         image="/brand/ghoul.jpg"
         title="Ghoul Squad"
-        onClick={ () => alert( 'hello' )}
+        onClick={ onBrandClick }
       />
     </DropWrap>
 
