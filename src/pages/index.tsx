@@ -17,6 +17,7 @@ import LoadingBar from 'react-top-loading-bar'
 // })
 
 const imageUrls = [
+  "/badges/badge_collab.png",
   "/ghouls/static/pump.png",
   "/ghouls/static/frank.png",
   "/ghouls/static/vamp.png"
