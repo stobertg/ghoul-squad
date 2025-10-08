@@ -39,7 +39,6 @@ const AppScreen = styled('div', {
   height: '100%',
   overflow: 'hidden',
   pointerEvents: 'none',
-  transform: 'translateX( 100% )',
   zIndex: 9999,
 
   '> *': {
