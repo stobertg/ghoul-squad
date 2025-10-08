@@ -1,28 +1,47 @@
 import React from 'react'
 import { HeadTags, SiteContainer, Phone, PhoneHeader, AppBlock, Profile } from '@components'
+import { useImagePreloader } from '@lib'
+import LoadingBar from 'react-top-loading-bar'
+
+const imageUrls = [
+  // "/ghouls/ghoul-box.mp4",
+  "/ghouls/static/pump.png",
+  "/ghouls/static/frank.png",
+  "/ghouls/static/vamp.png"
+]
 
 export default function Home() {
+  const { progress, isLoaded } = useImagePreloader( imageUrls )
+
   return (
-    <SiteContainer
-      nav={[
-        { icon: 'star', title: 'Drop hero', link: '/' },
-        { icon: 'pumpkin', title: 'Product', link: '/product' },
-        { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
-        { icon: 'user-check', title: 'Profile', link: '/profile', active: true },
-        { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
-      ]}
-    >
-      <HeadTags bgColor="#181818" />
-      <Phone removeBg blockSpacing="l2">
-        <PhoneHeader overlay />
 
-        {/* <AppBlock blockSpacing="l1"> */}
-          <Profile 
+    <>
+      <LoadingBar 
+        color="yellow"
+        progress={ progress }
+        shadow={ true }
+      />
 
-          />
-        {/* </AppBlock>  */}
-      </Phone>
-      
-    </SiteContainer>
+      { isLoaded && (
+
+        <SiteContainer
+          nav={[
+            { icon: 'star', title: 'Drop hero', link: '/' },
+            { icon: 'pumpkin', title: 'Product', link: '/product' },
+            { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
+            { icon: 'user-check', title: 'Profile', link: '/profile', active: true },
+            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
+          ]}
+        >
+          <HeadTags bgColor="#181818" />
+          <Phone removeBg blockSpacing="l2">
+            <PhoneHeader overlay />
+              <Profile />
+          </Phone>
+        </SiteContainer>
+
+      )}
+    </>
+
   )
 }

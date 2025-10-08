@@ -1,2 +1,1 @@
-export { useScrollPosition } from './utils'
-export { useScrollDirection } from './utils'
+export { useImagePreloader } from './utils'
