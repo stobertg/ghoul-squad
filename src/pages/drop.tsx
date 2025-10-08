@@ -12,8 +12,12 @@ const imageUrls = [
 ]
 
 const fontUrls = [
-  '/font/EverydaySans-Regular.woff'
-];
+  '/font/EverydaySans-Black.woff',
+  '/font/EverydaySans-Bold.woff',
+  '/font/EverydaySans-Medium.woff',
+  '/font/EverydaySans-Regular.woff',
+  '/font/EverydaySans-Light.woff'
+]
 
 const fadeIn = keyframes({
   '0%': { transform: 'translateX( 100% )' },

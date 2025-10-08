@@ -26,7 +26,8 @@ const fontUrls = [
   '/font/EverydaySans-Black.woff',
   '/font/EverydaySans-Bold.woff',
   '/font/EverydaySans-Medium.woff',
-  '/font/EverydaySans-Regular.woff'
+  '/font/EverydaySans-Regular.woff',
+  '/font/EverydaySans-Light.woff'
 ]
 
 const titles = [
