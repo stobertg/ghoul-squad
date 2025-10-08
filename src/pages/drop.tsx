@@ -7,6 +7,7 @@ import LoadingBar from 'react-top-loading-bar'
 const imageUrls = [
   // "/ghouls/ghoul-box.mp4",
   "/badges/badge_collab.png",
+  "/lockscreen/homescreen.webp",
   "/ghouls/static/pump.png",
   "/ghouls/static/frank.png",
   "/ghouls/static/vamp.png"
@@ -38,6 +39,7 @@ const AppScreen = styled('div', {
   height: '100%',
   overflow: 'hidden',
   pointerEvents: 'none',
+  transform: 'translateX( 100% )',
   zIndex: 9999,
 
   '> *': {
