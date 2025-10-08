@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeadTags, SiteContainer, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, ItemCarousel } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, ItemCarousel, AiInline } from '@components'
 
 export default function Home() {
   return (
@@ -39,12 +39,43 @@ export default function Home() {
         </AppBlock>
             
         <ItemCarousel 
-            items={[
-              {},
-              {},
-              {}
-            ]}
-          />
+          items={[
+            {
+              image: "/ghouls/static/mystery-box.webp",
+              title: "Ghoul Squad Mystery Drop collaboration with Finds",
+              price: "$111.96"
+            },
+            {
+              image: "/ghouls/static/pump.webp",
+              title: "Sir Pump Blind Box",
+              price: "$27.99"
+            },
+            {
+              image: "/ghouls/static/casper.webp",
+              title: "Sir Casper Blind Box",
+              price: "$27.99"
+            },
+            {
+              image: "/ghouls/static/frank.webp",
+              title: "Sir Frank Blind Box",
+              price: "$27.99"
+            },
+            {
+              image: "/ghouls/static/vamp.webp",
+              title: "Sir Vamp Blind Box",
+              price: "$27.99"
+            },
+            {
+              image: "/ghouls/static/jeremy.webp",
+              title: "Jeremy Blind Box",
+              price: "$27.99"
+            },
+          ]}
+        />
+
+        <AppBlock width="l1">
+          <AiInline />
+        </AppBlock>
       </Phone>
     </SiteContainer>
 

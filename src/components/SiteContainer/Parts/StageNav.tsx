@@ -4,7 +4,8 @@ import { Heading, Icon, Grid } from '@components'
 
 const NavWrap = styled('div', {
   position: 'relative',
-  maxWidth: 300
+  maxWidth: 480,
+  width: '100%'
 })
 
 const NavItem = styled('a', {
@@ -14,10 +15,16 @@ const NavItem = styled('a', {
   alignItems: 'center',
   gap: 12,
   position: 'relative',
-  padding: '20px 16px',
+  padding: '16px 16px',
   border: '1px solid $border',
   borderRadius: '$r2',
   cursor: 'pointer',
+  transition: '$s1',
+  
+  '&:hover': {
+    borderColor: '$borderActive',
+    background: 'rgba( 70, 70, 183, 0.4 )' 
+  },
 
   variants: {
     active: {
@@ -42,7 +49,7 @@ export const StageNav = ({ items }:NavProps) => {
   return(
 
     <NavWrap>
-      <Grid>
+      <Grid columns={ 3 }>
         { items?.map(( item, i ) => (
           <NavItem
             key={`item-${ i }`}

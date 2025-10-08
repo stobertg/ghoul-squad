@@ -61,7 +61,13 @@ const PhoneContent = styled('div', {
   width: '100%',
   height: '100%',
   zIndex: 1,
-  overflow: 'scroll'
+  overflow: 'scroll',
+
+  variants: {
+    bottomSpacing: {
+      true: { paddingBottom: 50 }
+    }
+  }
 })
 
 const PhoneContentMain = styled('div', {
@@ -153,12 +159,14 @@ export const Phone = ({
 
   return(
 
-    <PhoneWrap {...{ hasHero, removeBg }}>
+    <PhoneWrap 
+      {...{ hasHero, removeBg }}
+    >
       { hasLockScreen && ( <LockScreen /> )}
 
       <IphoneTop {...{ darkBg }} />
 
-      <PhoneContent>
+      <PhoneContent bottomSpacing={ bottomNav && true }>
         <PhoneContentMain 
           hasBottomNav={ bottomNav ? true : false }
           {...{ hasHero, blockSpacing }}

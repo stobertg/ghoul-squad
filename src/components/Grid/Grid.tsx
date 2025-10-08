@@ -13,17 +13,24 @@ const GridContent = styled('div', {
   gridColumnGap: '8px',
   gridRowGap: '8px',
   position: 'relative',
+
+  variants: {
+    columns: {
+      3: { gridTemplateColumns: 'repeat(3, 1fr)' }
+    }
+  }
 })
 
 interface GridProps {
   children: React.ReactNode
+  columns?: 3
 }
 
-export const Grid = ({ children }:GridProps) => {
+export const Grid = ({ children, columns }:GridProps) => {
   return(
 
     <GridWrap>
-      <GridContent>{ children }</GridContent>
+      <GridContent {...{ columns }}>{ children }</GridContent>
     </GridWrap>
 
   )

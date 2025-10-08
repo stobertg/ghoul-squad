@@ -58,7 +58,15 @@ export default function Home() {
 
   return (
 
-    <SiteContainer>
+    <SiteContainer
+      nav={[
+        { icon: 'star', title: 'Drop hero', link: '/' },
+        { icon: 'pumpkin', title: 'Product', link: '/product' },
+        { icon: 'clapperboard', title: 'Live drop', link: '/drop', active: true },
+        { icon: 'shopping-cart', title: 'Checkout', link: '/' },
+        { icon: 'user-check', title: 'Profile', link: '/' }
+      ]}
+    >
       <HeadTags bgColor="#181818" />
       
       <Phone 

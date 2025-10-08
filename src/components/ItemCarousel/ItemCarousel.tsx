@@ -16,7 +16,9 @@ const CarContent = styled('div', {
   gap: 8,
   position: 'relative',
   padding: '0 32px',
-  overflow: 'scroll'
+  overflow: 'scroll',
+  scrollbarWidth: 'none',
+  '&::-webkit-scrollbar': { display: 'none' }
 })
 
 const CarHeader = styled('div', {
@@ -31,7 +33,9 @@ const CarHeader = styled('div', {
 
 interface ItemProps {
   items: {
-
+    image: string
+    title: string
+    price: string | number
   }[]
 }
 
@@ -48,6 +52,9 @@ export const ItemCarousel = ({ items }:ItemProps) => {
         { items.map(( item, i ) => (
           <Item 
             key={`item${ i }`}
+            image={ item.image }
+            title={ item.title }
+            price={ item.price }
           />
         ))}
       </CarContent>

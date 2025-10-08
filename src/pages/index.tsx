@@ -97,8 +97,9 @@ export default function Home() {
       nav={[
         { icon: 'star', title: 'Drop hero', link: '/', active: true },
         { icon: 'pumpkin', title: 'Product', link: '/product' },
-        { icon: 'clapperboard', title: 'Live drop', link: '/' },
-        { icon: 'shopping-cart', title: 'Checkout', link: '/' }
+        { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
+        { icon: 'shopping-cart', title: 'Checkout', link: '/' },
+        { icon: 'user-check', title: 'Profile', link: '/' }
       ]}
     >
       <HeadTags />
