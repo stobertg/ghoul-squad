@@ -7,7 +7,7 @@ const BlockWrap = styled('div', {
 
   variants: {
     bgColor: {
-      subtle: { background: '$bgSubtle' }
+      subtle: { background: '$bgSecondary' }
     }
   }
 })  

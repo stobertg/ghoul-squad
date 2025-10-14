@@ -10,7 +10,7 @@ const PhoneWrap = styled('div', {
   width: '100%',
   height: 850,
   margin: '0 auto',
-  background: '#181818',
+  background: '#131313',
   borderRadius: 56,
   // border: '1px solid #e0e0e0',
   border: '4px solid rgba( 37, 37, 37, 1 )',
