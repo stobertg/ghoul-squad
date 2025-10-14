@@ -121,7 +121,7 @@ export const Unbox = ({}:UnboxProps) => {
             </BoxTextIntro>
             
             <Text fontSize="l1">
-              Welcome to the Ghoul Squad! Your collection is growing so don't stop here. Collect them all for exclusive 
+              Welcome to the Ghoul Squad! Your collection is growing so don&apos;t stop here. Collect them all for exclusive 
               benefits, discounts, and more!
             </Text>
           </BoxText>
