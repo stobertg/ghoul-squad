@@ -1,5 +1,6 @@
 import React from 'react'
-import { HeadTags, SiteContainer, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, ItemCarousel, AiInline } from '@components'
+import { styled } from '@theme'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, ItemCarousel, AiInline, BuyNow } from '@components'
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
@@ -41,6 +42,7 @@ export default function Home() {
             { icon: 'pumpkin', title: 'Product', link: '/product', active: true },
             { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
             { icon: 'user-check', title: 'Profile', link: '/profile' },
+            { icon: 'box', title: 'Unboxing', link: '/unbox' },
             { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
           ]}
         >
@@ -108,6 +110,8 @@ export default function Home() {
             <AppBlock width="l1">
               <AiInline />
             </AppBlock>
+
+            
           </Phone>
         </SiteContainer>
       

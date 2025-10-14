@@ -115,6 +115,7 @@ export default function Home() {
             { icon: 'pumpkin', title: 'Product', link: '/product' },
             { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
             { icon: 'user-check', title: 'Profile', link: '/profile' },
+            { icon: 'box', title: 'Unboxing', link: '/unbox' },
             { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
           ]}
         >

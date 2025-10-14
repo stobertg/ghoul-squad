@@ -3,7 +3,7 @@ import { styled } from '@theme'
 import { Heading } from '@components'
 
 const ButtonWrap = styled('div', {
-  display: 'flex',
+  display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',
   position: 'relative',
@@ -19,11 +19,31 @@ const ButtonWrap = styled('div', {
       secondary: { 
         background: 'none',
         border: '1px solid $border'
+      },
+
+      underline: {
+        background: 'none',
+        padding: 0,
+        minWidth: 'initial',
+        
+        '&:before': {
+          content: '',
+          position: 'absolute',
+          bottom: 12,
+          left: 0,
+          width: '100%',
+          height: 2,
+          background: '$bgTert'
+        }
       }
     },
 
     width: {
       auto: { padding: '0 12px' }
+    },
+
+    size: {
+      l1: { height: 50 }
     }
   }
 })
@@ -32,8 +52,9 @@ interface ButtonProps {
   title: string
   pageLink?: string
   onClick?: any
-  variant?: 'secondary'
+  variant?: 'secondary' | 'underline'
   width?: 'auto'
+  size?: 'l1'
 }
 
 export const Button = ({
@@ -41,12 +62,13 @@ export const Button = ({
     pageLink,
     onClick,
     variant,
-    width
+    width,
+    size
   }:ButtonProps) => {
   
   return(
 
-    <ButtonWrap {...{ variant, width }}>
+    <ButtonWrap {...{ variant, width, size }}>
       { onClick ? (
 
         <button {...{ onClick }}>

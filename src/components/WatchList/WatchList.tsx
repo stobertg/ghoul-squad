@@ -20,20 +20,7 @@ const WatchContent = styled('div', {
   background: 'rgba( 0,0,0, 0.7 )',
   padding: '32px 32px 50px 32px',
   borderRadius: '$r3 $r3 0 0',
-  overflow: 'hidden',
-
-  // '&:before': {
-  //   content: '',
-  //   position: 'absolute',
-  //   top: 0,
-  //   left: 0,
-  //   width: '100%',
-  //   height: '100%',
-  //   backdropFilter: 'blur( 10px )',
-  //   borderRadius: '$r3 $r3 0 0',
-  //   overflow: 'hidden',
-  //   zIndex: 1
-  // }
+  overflow: 'hidden'
 })
 
 const WatchMain = styled('div', {

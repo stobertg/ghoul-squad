@@ -22,8 +22,8 @@ const HeadingWrap = styled('div', {
       l3: { fontSize: '$s3', lineHeight: 1.3 },
       l4: { fontSize: '$s4', lineHeight: 1.3 },
       l5: { fontSize: '$s5', lineHeight: 1.3 },
-      l6: { fontSize: '$s6', lineHeight: 1.1 },
-      l7: { fontSize: '$s7', lineHeight: 1.1 },
+      l6: { fontSize: '$s6', lineHeight: 1.2 },
+      l7: { fontSize: '$s7', lineHeight: 1.2 },
       l8: { fontSize: '$s8', lineHeight: 1.1 },
       l9: { fontSize: '$s9', lineHeight: 1.1 },
       l10: { fontSize: '$s10', lineHeight: 1.1 }
@@ -33,6 +33,7 @@ const HeadingWrap = styled('div', {
 
     color: {
       secondary: { color: '$textSecondary' },
+      yellow: { color: '$rating' },
       white: { color: '$white' },
       purple: { color: '$majorelleBlue' },
       invert: { color: '$bgPrimary' }
@@ -53,7 +54,7 @@ const FontHeavy = styled('strong', {
 
 interface HeadingProps {
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5' | 'l6' | 'l7' | 'l8' | 'l9' | 'l10'
-  color?: 'secondary' | 'white' | 'purple' | 'invert'
+  color?: 'secondary' | 'white' | 'purple' | 'invert' | 'yellow'
   title: any
   bold?: boolean
   heavy?: boolean

@@ -74,7 +74,7 @@ export const ProductIntro = ({}:IntroProps) => {
             size="l0"
             brands={[
               { image: '/brand/ghoul.jpg', title: 'Ghoul Squad', onClick: () => alert( 'hello' ) },
-              { image: '/badges/badge_collab.png', title: 'Finds Exclusive', onClick: () => alert( 'hello' ) }
+              // { image: '/badges/badge_collab.png', title: 'Finds Exclusive', onClick: () => alert( 'hello' ) }
             ]} 
           />
         </IntroTitle>

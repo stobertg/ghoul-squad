@@ -42,7 +42,13 @@ const ClipWrap = styled('div', {
   overflow: 'hidden',
   pointerEvents: 'none',
   zIndex: 0,
-  opacity: 0.2
+  opacity: 0.2,
+
+  variants: {
+    placement: {
+      top: { top: 60, left: -10 }
+    }
+  }
 })
 
 const FallWrap = styled('div', {
@@ -75,7 +81,11 @@ const LeafInner = styled('div', {
   }
 })
 
-export const FallAnimation = () => {
+interface FallProps {
+  placement?: 'top'
+}
+
+export const FallAnimation = ({ placement }:FallProps) => {
   const numLeaves = 18
 
   // Generate a stable random config per render cycle
@@ -112,7 +122,7 @@ export const FallAnimation = () => {
 
   return (
     <PerspectiveRoot>
-      <ClipWrap>
+      <ClipWrap {...{ placement }}>
         <FallWrap>
           {leaves.map(({ key, style }) => (
             <Leaf key={key} style={style}>

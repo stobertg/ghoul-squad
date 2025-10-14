@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { IphoneTop } from './Parts/IphoneTop'
-import { FallAnimation, BottomSheet, NavBottom, AiChat, LockScreen } from '@components'
+import { FallAnimation, BottomSheet, NavBottom, AiChat, LockScreen, BuyNow, Unbox } from '@components'
 
 const PhoneWrap = styled('div', {
   position: 'relative',
@@ -140,6 +140,24 @@ const IphoneBottom = styled('div', {
   }
 })
 
+export const BuyNowWrap = styled('div', {
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  width: '100%',
+  height: '80%',
+  zIndex: 9999
+})
+
+const UnboxWrap = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  zIndex: 9999
+})
+
 interface PhoneProps {
   children: React.ReactNode
   hasHero?: boolean
@@ -189,6 +207,9 @@ export const Phone = ({
       {/* <BottomSheet>
         <AiChat />
       </BottomSheet> */}
+
+      {/* <BuyNowWrap><BuyNow /></BuyNowWrap> */}
+      {/* <UnboxWrap><Unbox /></UnboxWrap> */}
     </PhoneWrap>
 
   )

@@ -8,7 +8,7 @@ const SiteWrap = styled('div', {
   position: 'relative',
   width: '100%',
   minHeight: '100vh',
-  background: '#1e1e1e',
+  background: '#171717',
   overflow: 'hidden'
 })
 
@@ -89,7 +89,7 @@ const BlobWrap = styled('div', {
   top: 0,
   right: 0,
   zIndex: 0,
-  maxWidth: '80vw',
+  maxWidth: '90vw',
   '@mobile': { display: 'none' }
 })
 
