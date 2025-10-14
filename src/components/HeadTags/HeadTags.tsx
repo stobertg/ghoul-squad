@@ -30,8 +30,8 @@ export const HeadTags = ({ bgColor }:TagProps) => {
       <meta property="og:url" content="https://www.ghoulsquad.com/" />
       <meta property="og:description" content="Ghoul Squad" />
       <meta property="og:type" content="website" />
-      <meta name="msapplication-TileColor" content={ bgColor ? bgColor : "#252525"} />
-      <meta name="theme-color" content={ bgColor ? bgColor : "#252525"} />
+      <meta name="msapplication-TileColor" content={ bgColor ? bgColor : "##1b1b1b"} />
+      <meta name="theme-color" content={ bgColor ? bgColor : "#1b1b1b"} />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta name="twitter:card" content="summary_large_image" />
