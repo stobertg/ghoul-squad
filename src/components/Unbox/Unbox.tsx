@@ -89,10 +89,10 @@ const ButtonContainer = styled('div', {
 })
 
 interface UnboxProps {
-
+  shareCom: any
 }
 
-export const Unbox = ({}:UnboxProps) => {
+export const Unbox = ({ shareCom }:UnboxProps) => {
   return(
 
     <BoxWrap>
@@ -127,7 +127,7 @@ export const Unbox = ({}:UnboxProps) => {
           </BoxText>
 
           <ButtonContainer>
-            <div><Button size="l1" title="Share in community" /></div>
+            <div><Button size="l1" title="Share in community" onClick={ shareCom } /></div>
             <div><Button size="l1" variant="underline" title="View Profile" /></div>
           </ButtonContainer>
         </BoxContent>

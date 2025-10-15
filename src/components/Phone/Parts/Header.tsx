@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { InputSearch, ButtonContainer, ButtonIcon, Avatar } from '@components'
+import { InputSearch, ButtonContainer, ButtonIcon, Avatar, Button } from '@components'
 
 const HeaderWrap = styled('div', {
   position: 'relative',
@@ -115,9 +115,22 @@ interface HeaderProps {
   onBackClick?: any
   onStar?: any
   onChat?: any
+  task?: string
+  taskFunction?: any
+  taskDisabled?: boolean
 }
 
-export const PhoneHeader = ({ overlay, home, onBackClick, onStar, onChat }:HeaderProps) => {
+export const PhoneHeader = ({ 
+    overlay, 
+    home, 
+    onBackClick, 
+    onStar, 
+    onChat, 
+    task,
+    taskFunction,
+    taskDisabled
+  }:HeaderProps) => {
+
   return(
 
     <HeaderWrap {...{ overlay }}>
@@ -130,27 +143,41 @@ export const PhoneHeader = ({ overlay, home, onBackClick, onStar, onChat }:Heade
           { overlay ?? <InputSearch /> }
         </ContentBlock>
 
-        <ContentBlock>
-          { home ? (
-
-            <ButtonContainer spacing="l1">
-              <ButtonIcon icon="bell" />
-              <Avatar image="/people/isabella.webp" name="Isabella" />
-            </ButtonContainer>
-            
+        { task ? ( 
+          
+          <Button 
+            disabled={ taskDisabled }
+            title={ task }
+            size="l0" 
+            width="auto" 
+            onClick={ taskFunction } 
+          /> 
+        
           ) : (
 
-            <ButtonContainer 
-              icons
-              buttons={[
-                { icon: 'message-circle', onClick: onChat },
-                { icon: 'share', onClick: () => alert('share') },
-                { icon: 'star', onClick:  onStar },
-              ]}
-            />
+          <ContentBlock>
+            { home ? (
 
-          )}    
-        </ContentBlock>
+              <ButtonContainer spacing="l1">
+                <ButtonIcon icon="bell" />
+                <Avatar image="/people/isabella.webp" name="Isabella" />
+              </ButtonContainer>
+              
+            ) : (
+
+              <ButtonContainer 
+                icons
+                buttons={[
+                  { icon: 'message-circle', onClick: onChat },
+                  { icon: 'share', onClick: () => alert('share') },
+                  { icon: 'star', onClick:  onStar },
+                ]}
+              />
+
+            )}    
+          </ContentBlock>
+
+        )}
       </HeaderContent>
     </HeaderWrap>
 

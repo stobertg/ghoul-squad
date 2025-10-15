@@ -9,9 +9,11 @@ const ButtonWrap = styled('div', {
   position: 'relative',
   minWidth: 100,
   height: 40,
-  padding: '0 24px',
   background: '$borderActive',
   borderRadius: '$r2',
+  transition: '$s1',
+  cursor: 'pointer',
+  '&:hover': { background: '#33339b' },
   '*': { whiteSpace: 'nowrap' },
 
   variants: {
@@ -23,8 +25,9 @@ const ButtonWrap = styled('div', {
 
       underline: {
         background: 'none',
-        padding: 0,
         minWidth: 'initial',
+        '&:hover': { background: 'none', color: '#33339b' },
+        'button, a': { padding: 0, },
         
         '&:before': {
           content: '',
@@ -38,14 +41,44 @@ const ButtonWrap = styled('div', {
       }
     },
 
+    disabled: {
+      true: { background: '#222', color: '#555' }
+    },
+
     width: {
-      auto: { padding: '0 12px' }
+      auto: { 
+        minWidth: 'initial',
+        'button, a': { padding: '0 12px', }
+      }
     },
 
     size: {
+      l0: { height: 32, 'button, a': { padding: '0 20px' }},
       l1: { height: 50 }
     }
   }
+})
+
+const ButtonClick = styled('button', {
+  display: "flex",
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  height: '100%',
+  padding: '0 24px',
+
+  '&[disabled]': {  }
+})
+
+const PageLink = styled('a', {
+  display: "flex",
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  height: '100%',
+  padding: '0 24px',
+
+  '&[aria-disabled = true]': {  }
 })
 
 interface ButtonProps {
@@ -54,7 +87,8 @@ interface ButtonProps {
   onClick?: any
   variant?: 'secondary' | 'underline'
   width?: 'auto'
-  size?: 'l1'
+  size?: 'l0' | 'l1'
+  disabled?: boolean
 }
 
 export const Button = ({
@@ -63,23 +97,24 @@ export const Button = ({
     onClick,
     variant,
     width,
-    size
+    size,
+    disabled
   }:ButtonProps) => {
   
   return(
 
-    <ButtonWrap {...{ variant, width, size }}>
+    <ButtonWrap {...{ variant, width, size, disabled }}>
       { onClick ? (
 
-        <button {...{ onClick }}>
+        <ButtonClick {...{ onClick, disabled }}>
           <Heading bold size="l1" {...{ title }} />
-        </button>
+        </ButtonClick>
 
       ) : (
 
-        <a href={ pageLink }>
+        <PageLink href={ pageLink } aria-disabled={ disabled }>
           <Heading bold size="l1" {...{ title }} />
-        </a>
+        </PageLink>
 
       )}
     </ButtonWrap>
