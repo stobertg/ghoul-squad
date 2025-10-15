@@ -25,7 +25,7 @@ const RecordHeader = styled('div', {
   justifyContent: 'space-between',
   position: 'relative',
   width: '100%',
-  padding: '0 32px'
+  padding: '0 32px 12px 32px'
 })
 
 const RecordMain = styled('div', {

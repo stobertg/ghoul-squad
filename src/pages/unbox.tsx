@@ -96,7 +96,7 @@ export default function Home() {
             <PhoneHeader overlay />
             <Unbox shareCom={ onShare } />
             <ShareWrap active={ share }><Share onBackClick={ onShare } /></ShareWrap>
-            {/* <RecordWrap><Record /></RecordWrap> */}
+            <RecordWrap><Record /></RecordWrap>
           </Phone>
         </SiteContainer>
 
