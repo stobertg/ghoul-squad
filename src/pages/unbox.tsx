@@ -14,6 +14,7 @@ const ShareWrap = styled('div', {
   transition: '$s3',
   transform: 'translateX( 100% )',
   borderRadius: '50px 0 0 50px',
+  overflow: 'hidden',
   zIndex: 9999,
 
   variants: {
@@ -35,6 +36,7 @@ const RecordWrap = styled('div', {
   transition: '$s3',
   transform: 'translateX( 100% )',
   borderRadius: '50px 0 0 50px',
+  overflow: 'hidden',
   zIndex: 9999,
 
   variants: {
