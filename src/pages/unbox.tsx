@@ -33,7 +33,7 @@ const RecordWrap = styled('div', {
   height: '100%',
   background: '$bgPrimary',
   transition: '$s3',
-  // transform: 'translateX( 100% )',
+  transform: 'translateX( 100% )',
   borderRadius: '50px 0 0 50px',
   zIndex: 9999,
 
@@ -69,6 +69,9 @@ export default function Home() {
 
   const [ share, setShare ] = useState( false )
   const onShare = () => { setShare( !share ) }
+  
+  const [ record, setRecord ] = useState( false )
+  const onRecord = () => { setRecord( !record ) }
 
   return (
 
@@ -95,8 +98,8 @@ export default function Home() {
           <Phone removeBg blockSpacing="l2">
             <PhoneHeader overlay />
             <Unbox shareCom={ onShare } />
-            <ShareWrap active={ share }><Share onBackClick={ onShare } /></ShareWrap>
-            {/* <RecordWrap><Record /></RecordWrap> */}
+            <ShareWrap active={ share }><Share onBackClick={ onShare } onRecord={ onRecord } /></ShareWrap>
+            <RecordWrap active={ record }><Record onClose={ onRecord } /></RecordWrap>
           </Phone>
         </SiteContainer>
 

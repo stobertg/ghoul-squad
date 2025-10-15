@@ -166,9 +166,10 @@ const ItemImage = styled('div', {
 
 interface ShareProps {
 	onBackClick?: any
+	onRecord?: any
 }
 
-export const Share = ({ onBackClick }:ShareProps) => {
+export const Share = ({ onBackClick, onRecord }:ShareProps) => {
 	const [ typing, setTyping ] = useState(false)
 	const [ stage, setStage ] = useState(false)
 	const handleFocusChange = (focused: boolean) => { setStage(focused) }
@@ -219,7 +220,7 @@ export const Share = ({ onBackClick }:ShareProps) => {
 						</ItemCardWrap>
 
 						<InputOptions>
-							<OptionButton>
+							<OptionButton onClick={ onRecord }>
 								<Icon icon="video" />
 								<Heading title="Record video" />
 							</OptionButton>

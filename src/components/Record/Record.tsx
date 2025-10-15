@@ -25,7 +25,7 @@ const RecordHeader = styled('div', {
   justifyContent: 'space-between',
   position: 'relative',
   width: '100%',
-  padding: '0 32px 12px 32px'
+  padding: '0 16px 12px 16px'
 })
 
 const RecordMain = styled('div', {
@@ -50,7 +50,7 @@ const RecordBottomContent = styled('div', {
   justifyContent: 'space-between',
   position: 'relative',
   width: '100%',
-  padding: '0 32px 40px 32px'
+  padding: '0 32px 68px 32px'
 })
 
 const RecordButton = styled('div', {
@@ -93,22 +93,54 @@ const IconWrap = styled('div', {
   height: 40
 })
 
-interface RecordProps {
+const RecordVideo = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: 'calc( 100% - 50px )',
 
+  video: { 
+    width: '110%',
+    height: '100%' 
+  }
+})
+
+interface RecordProps {
+  onClose?: any
+  onDone?: any
 }
 
-export const Record = ({}:RecordProps) => {
+export const Record = ({
+    onClose,
+    onDone
+  }:RecordProps) => {
+  
   return(
 
     <RecordWrap>
       <RecordTop>
         <RecordHeader>
-          <ButtonIcon icon="x" />
-          <Button size="l0" title="Done" />
+          <ButtonIcon icon="x" onClick={ onClose } />
+          <Button size="l0" title="Done" onClick={ onDone } />
         </RecordHeader>
       </RecordTop>
       
       <RecordMain>
+        <RecordVideo>
+          <video
+            src="/ghouls/unboxing.mp4"
+            autoPlay
+            muted
+            playsInline
+            loop
+            preload="auto"
+          />
+        </RecordVideo>
+
         <RecordBottom>
           <RecordBottomContent>
             <ImageThumb><img src="/ghouls/static/mystery-box.webp" /></ImageThumb>
