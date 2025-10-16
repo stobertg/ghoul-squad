@@ -132,7 +132,7 @@ export const Record = ({
       <RecordMain>
         <RecordVideo>
           <video
-            src="/ghouls/unboxing.mp4"
+            src="/ghouls/unboxing2.mp4"
             autoPlay
             muted
             playsInline

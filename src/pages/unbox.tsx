@@ -75,6 +75,11 @@ export default function Home() {
   const [ record, setRecord ] = useState( false )
   const onRecord = () => { setRecord( !record ) }
 
+  const [ video, setVideo ] = useState( false )
+  const onVideoSubmit = () => { setVideo( true ) }
+  const onVideoRemove = () => { setVideo( false ) }
+
+
   return (
 
     <>
@@ -100,8 +105,22 @@ export default function Home() {
           <Phone removeBg blockSpacing="l2">
             <PhoneHeader overlay />
             <Unbox shareCom={ onShare } />
-            <ShareWrap active={ share }><Share onBackClick={ onShare } onRecord={ onRecord } /></ShareWrap>
-            <RecordWrap active={ record }><Record onClose={ onRecord } /></RecordWrap>
+
+            <ShareWrap active={ share }>
+              <Share 
+                onBackClick={ onShare } 
+                onRecord={ onRecord } 
+                hasMediaThumb={ video }
+                removeThumb={ onVideoRemove }
+              />
+            </ShareWrap>
+
+            <RecordWrap active={ record }>
+              <Record 
+                onClose={ onRecord } 
+                onDone={ () => { onRecord(), onVideoSubmit() }}
+              />
+            </RecordWrap>
           </Phone>
         </SiteContainer>
 

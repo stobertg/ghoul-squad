@@ -17,7 +17,8 @@ const ShareWrap = styled('div', {
 const ShareContent = styled('div', {
 	display: 'flex',
 	flexDirection: 'column',
-	justifyContent: 'space-between',
+	flex: 1,
+	// justifyContent: 'space-between',
 	position: 'relative',
 	wiidth: '100%'
 })
@@ -28,16 +29,19 @@ const ShareHeader = styled('div', {
 	alignItems: 'center',
 	justifyContent: 'space-between',
 	position: 'relative',
-	width: '100%'
+	width: '100%',
+	padding: '0 24px'
 })
 
 const ShareKeyboard = styled('div', {
 	display: 'flex',
 	flexDirection: 'column',
 	gap: 8,
-	position: 'relative',
+	position: 'absolute',
+	bottom: 0,
+	left: 0,
 	width: '100%',
-	transform: 'translateY( calc( 100% - 190px ))',
+	transform: 'translateY( calc( 100% - 180px ))',
 	transition: '$s2',
 
 	variants: {
@@ -81,9 +85,9 @@ const Community = styled('div', {
 	display: 'flex',
 	flexDirection: 'row',
 	alignItems: 'center',
-	gap: 8,
+	gap: 6,
 	position: 'relative',
-	padding: '12px 16px 12px 12px',
+	padding: '10px 14px 10px 10px',
 	border: '1px solid $border',
 	borderRadius: '$pill'
 })
@@ -114,7 +118,9 @@ const OptionButton = styled('button', {
 	minHeight: 44,
 	padding: '10px 16px',
 	background: '#30303080',
-	borderRadius: '$pill'
+	borderRadius: '$pill',
+  transition: '$s1',
+  '&:hover': { background: '$bgTert' }
 })
 
 const ItemCardWrap = styled('div', {
@@ -145,7 +151,7 @@ const ItemCard = styled('div', {
 	position: 'relative',
 	padding: 8,
 	border: '1px solid #333',
-	background: '$borderActive',
+	// background: '$borderActive',
 	borderRadius: '$r2'
 })
 
@@ -164,12 +170,54 @@ const ItemImage = styled('div', {
 	overflow: 'hidden'
 })
 
+const VideoPostThumb = styled('div', {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	position: 'relative',
+	width: 68,
+	height: 68,
+	borderRadius: '$r1',
+	border: '2px solid $bgTert',
+	overflow: 'hidden',
+	marginTop: 12,
+
+  button: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 4,
+    right: 4,
+    width: 20,
+    height: 20,
+    color: '#fff',
+    background: '#000',
+    borderRadius: '50%',
+
+    svg: { width: 12 }
+  }
+})
+
+const ShareInputs = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+	position: 'relative',
+	width: '100%',
+  height: '100%',
+	padding: '0 24px',
+	marginTop: 8
+})
+
 interface ShareProps {
 	onBackClick?: any
 	onRecord?: any
+  hasMediaThumb?: boolean
+  removeThumb?: any
 }
 
-export const Share = ({ onBackClick, onRecord }:ShareProps) => {
+export const Share = ({ onBackClick, onRecord, hasMediaThumb, removeThumb }:ShareProps) => {
 	const [ typing, setTyping ] = useState(false)
 	const [ stage, setStage ] = useState(false)
 	const handleFocusChange = (focused: boolean) => { setStage(focused) }
@@ -186,26 +234,33 @@ export const Share = ({ onBackClick, onRecord }:ShareProps) => {
 			/>
 
 			<ShareContent>
-				<AppBlock blockSpacing="l1">
-					<ShareHeader>
-						<Avatar 
-							size="l1"
-							image="/people/isabella.webp" 
-							name="Isabella Marks"
-							timeStamp="10.31.2025"
-						/>
-						
-						<Community>
-							<Icon size="l0" icon="globe" />
-							<Heading size="l0" title="Community" />
-						</Community>
-					</ShareHeader>
+        <ShareHeader>
+          <Avatar 
+            size="l1"
+            image="/people/isabella.webp" 
+            name="Isabella Marks"
+            timeStamp="10.31.2025"
+          />
+          
+          <Community>
+            <Icon size="l0" icon="globe" />
+            <Heading size="l0" title="Community" />
+          </Community>
+        </ShareHeader>
+        
+        <ShareInputs>
+          { hasMediaThumb && (
+            <VideoPostThumb>
+              <img src="/ghouls/unboxing-static.webp" />
+              <button onClick={ removeThumb }><Icon icon="x" /></button>
+            </VideoPostThumb>
+          )}
 
-					<ShareInput
-						onTypingChange={(isTyping) => setTyping(isTyping)}
-						onFocusChange={handleFocusChange}
-					/>
-				</AppBlock>
+          <ShareInput
+            onTypingChange={(isTyping) => setTyping(isTyping)}
+            onFocusChange={handleFocusChange}
+          />
+        </ShareInputs>
 
 				<ShareKeyboard active={ stage }>
 					<KeyboardOptions>
@@ -230,11 +285,6 @@ export const Share = ({ onBackClick, onRecord }:ShareProps) => {
 								<Heading title="Upload media" />
 							</OptionButton>
 						</InputOptions>
-						
-						{/* <KeyboardMain>
-							<ArrowButton><Icon icon="chevron-up" /></ArrowButton>
-							<Input />
-						</KeyboardMain> */}
 					</KeyboardOptions>
 
 					<Keyboard active={ stage }><img src="/utils/keyboard.webp" /></Keyboard>
