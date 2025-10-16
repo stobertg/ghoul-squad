@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
-import { HeadTags, SiteContainer, Phone, PhoneHeader, Unbox, Share, Record } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, Unbox, Share, Record, UserProfile } from '@components'
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
@@ -48,6 +48,31 @@ const RecordWrap = styled('div', {
   }
 })
 
+const ProfileWrap = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  background: '$bgPrimary',
+  transition: '$s2',
+  // transform: 'translateX( 100% )',
+  borderRadius: '50px 0 0 50px',
+  overflow: 'hidden',
+  zIndex: 9999,
+  pointerEvents: 'none',
+  opacity: 0,
+
+  variants: {
+    active: {
+      true: {
+        pointerEvents: 'auto',
+        opacity: 1,
+      }
+    }
+  }
+})
+
 const imageUrls = [
   "/badges/badge_collab.png",
   "/ghouls/static/pump.png",
@@ -78,6 +103,9 @@ export default function Home() {
   const [ video, setVideo ] = useState( false )
   const onVideoSubmit = () => { setVideo( true ) }
   const onVideoRemove = () => { setVideo( false ) }
+
+  const [ profile, setProfile ] = useState( false )
+  const onPost = () => { setProfile( !profile ) }
 
 
   return (
@@ -112,6 +140,7 @@ export default function Home() {
                 onRecord={ onRecord } 
                 hasMediaThumb={ video }
                 removeThumb={ onVideoRemove }
+                onPost={ onPost }
               />
             </ShareWrap>
 
@@ -121,6 +150,10 @@ export default function Home() {
                 onDone={ () => { onRecord(), onVideoSubmit() }}
               />
             </RecordWrap>
+
+            <ProfileWrap active={ profile }>
+              <UserProfile />
+            </ProfileWrap>
           </Phone>
         </SiteContainer>
 

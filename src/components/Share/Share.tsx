@@ -215,9 +215,10 @@ interface ShareProps {
 	onRecord?: any
   hasMediaThumb?: boolean
   removeThumb?: any
+  onPost?: any
 }
 
-export const Share = ({ onBackClick, onRecord, hasMediaThumb, removeThumb }:ShareProps) => {
+export const Share = ({ onBackClick, onRecord, hasMediaThumb, removeThumb, onPost }:ShareProps) => {
 	const [ typing, setTyping ] = useState(false)
 	const [ stage, setStage ] = useState(false)
 	const handleFocusChange = (focused: boolean) => { setStage(focused) }
@@ -229,7 +230,7 @@ export const Share = ({ onBackClick, onRecord, hasMediaThumb, removeThumb }:Shar
 				overlay 
 				taskDisabled={ !typing }
 				task="Post"
-				taskFunction={() => alert('hello')}
+				taskFunction={ onPost }
 				{...{ onBackClick }}
 			/>
 

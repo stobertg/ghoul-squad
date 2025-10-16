@@ -40,7 +40,9 @@ const TabsList = styled( TabsPrimitive.List, {
 const TabsContainer = styled('div', {
   display: 'flex',
   flexDirection: 'row',
-  position: 'relative'
+  justifyContent: 'center',
+  position: 'relative',
+  width: '100%',
 })
 
 // For the indivudual shared stying of the tab triggers within the master container
@@ -52,7 +54,7 @@ const TabsTrigger = styled( TabsPrimitive.Trigger, {
   justifyContent: 'center',
   position: 'relative',
   height: 55,
-  padding: '0 24px',
+  padding: '0 16px',
   color: '$textSecondary',
   fontSize: '$s1',
   transition: '$s1',
@@ -62,7 +64,7 @@ const TabsTrigger = styled( TabsPrimitive.Trigger, {
   // This will only trigger if an icon or logo is present to the left of the text
 
   '> *:not(:last-child)': { 
-    marginRight: 8 
+    marginRight: 16
   },
 
   // For the line on the bottom of the container
@@ -102,7 +104,7 @@ const TabsTrigger = styled( TabsPrimitive.Trigger, {
     tabSize: {
       tiny: {
         height: 32, 
-        padding: '0 12px',
+        padding: '0 16px',
         '*': { fontSize: '$s1' }
       },
       small: { 
@@ -201,7 +203,7 @@ export const Tabs = ({
               { trigger.logo && ( <>{ trigger.logo }</> )}
               { trigger.icon && ( <Icon size="l0" icon={ trigger.icon } /> )}
               { trigger.iconLayered && ( <Icon size="l1" iconAlt={ trigger.iconLayered } /> )}
-              { trigger.title && ( <Heading bold size="l2" title={ trigger.title } /> )}
+              { trigger.title && ( <Heading size="l2" title={ trigger.title } /> )}
             </TabsTrigger>
           ))}
         </TabsContainer>

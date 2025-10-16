@@ -128,7 +128,7 @@ export const Unbox = ({ shareCom }:UnboxProps) => {
 
           <ButtonContainer>
             <div><Button size="l1" title="Share in community" onClick={ shareCom } /></div>
-            <div><Button size="l1" variant="underline" title="View Profile" /></div>
+            <div><Button size="l1" variant="underline" title="View Profile" onClick={ () => alert( 'Click on Share in community for the full experience' ) } /></div>
           </ButtonContainer>
         </BoxContent>
 
