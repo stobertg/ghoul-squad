@@ -4,6 +4,8 @@ import { IphoneTop } from './Parts/IphoneTop'
 import { FallAnimation, BottomSheet, NavBottom, AiChat, LockScreen, BuyNow, Unbox } from '@components'
 
 const PhoneWrap = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
   position: 'relative',
   maxWidth: 400,
   minWidth: 400,
@@ -67,6 +69,14 @@ const PhoneContent = styled('div', {
   variants: {
     bottomSpacing: {
       true: { paddingBottom: 50 }
+    },
+
+    contentFullHeight: {
+      true: { 
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1
+      }
     }
   }
 })
@@ -167,6 +177,7 @@ interface PhoneProps {
   blockSpacing?: 'l1' | 'l2'
   bottomNav?: boolean
   hasLockScreen?: boolean
+  contentFullHeight?: boolean
 }
 
 export const Phone = ({ 
@@ -177,7 +188,8 @@ export const Phone = ({
     removeBg,
     blockSpacing,
     bottomNav,
-    hasLockScreen
+    hasLockScreen,
+    contentFullHeight
   }:PhoneProps) => {
 
   return(
@@ -192,7 +204,7 @@ export const Phone = ({
       <PhoneContent bottomSpacing={ bottomNav && true }>
         <PhoneContentMain 
           hasBottomNav={ bottomNav ? true : false }
-          {...{ hasHero, blockSpacing }}
+          {...{ hasHero, blockSpacing, contentFullHeight }}
         >
           { children }
         </PhoneContentMain>

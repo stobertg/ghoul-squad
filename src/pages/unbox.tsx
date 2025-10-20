@@ -126,6 +126,7 @@ export default function Home() {
             { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
             { icon: 'user-check', title: 'Profile', link: '/profile' },
             { icon: 'box', title: 'Unboxing', link: '/unbox', active: true },
+            { icon: 'tags', title: 'Buy now', link: '/buy-now' },
             { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
           ]}
         >
