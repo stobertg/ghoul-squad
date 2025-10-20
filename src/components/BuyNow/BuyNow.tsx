@@ -162,21 +162,21 @@ const Badge = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  width: 72,
-  height: 72,
+  width: 82,
+  height: 82,
   borderRadius: '50%',
   border: '1px solid #333'
   // background: '#111'
 })
 
 const BadgeImage = styled('div', {
-  width: 54,
+  width: 60,
   img: { display: 'flex' },
 
   variants: {
     size: {
-      l0: { width: 44 },
-      l1: { width: 50 }
+      l0: { width: 46 },
+      l1: { width: 54 }
     }
   }
 })
