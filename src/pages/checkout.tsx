@@ -3,6 +3,7 @@ import { styled } from '@theme'
 import { HeadTags, SiteContainer, Phone, PhoneHeader, BuyNow, Heading, ButtonIcon, HomePage, Alert, Confirmation } from '@components'
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
+import confetti from "canvas-confetti"
 
 const BottomSheet = styled('div', {
   position: 'absolute',
@@ -74,6 +75,46 @@ const Overlay = styled('div', {
   }
 })
 
+const ConfirmWrap = styled('div', {
+  position: 'absolute',
+  top: 50,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  background: '$bgSecondary',
+  transition: '$s3',
+  transform: 'translateX( 20% )',
+  pointerEvents: 'none',
+  opacity: 0,
+
+  variants: {
+    active: {
+      true: {
+        transform: 'translateX( 0 )',
+        pointerEvents: 'auto',
+        opacity: 1,
+        transitionDelay: '150ms'
+      }
+    }
+  }
+})
+
+const BuyNowWrap = styled('div', {
+  position: 'relative',
+  width: '100%',
+  transition: '$s3',
+
+  variants: {
+    active: {
+      true: {
+        transform: 'translateX( -20% )',
+        pointerEvents: 'none',
+        opacity: 0
+      }
+    }
+  }
+})
+
 const imageUrls = [
   "/badges/badge_collab.png",
   "/ghouls/static/pump.png",
@@ -98,6 +139,35 @@ export default function Home() {
   const [ buy, setBuy ] = useState( false )
   const onBuy = () => { setBuy( !buy ) }
 
+  const [ confirm, setConfirm ] = useState( false )
+  const onConfirm = () => { setConfirm( !confirm ) }
+
+  const handleClick = () => {
+    const end = Date.now() + 2 * 1000 // 3 seconds
+    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"]
+    const frame = () => {
+      if (Date.now() > end) return
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 0, y: 0.5 },
+        colors: colors,
+      })
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 1, y: 0.5 },
+        colors: colors,
+      })
+      requestAnimationFrame(frame)
+    }
+    frame()
+  }
+
   return (
 
     <>
@@ -115,8 +185,9 @@ export default function Home() {
             { icon: 'pumpkin', title: 'Product', link: '/product' },
             { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
             { icon: 'user-check', title: 'Profile', link: '/profile' },
-            { icon: 'box', title: 'Unboxing', link: '/unbox', active: true },
-            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
+            { icon: 'box', title: 'Unboxing', link: '/unbox' },
+            { icon: 'tags', title: 'Buy now', link: '/buy-now' },
+            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: true },
           ]}
         >
           <HeadTags bgColor="#181818" />
@@ -128,11 +199,12 @@ export default function Home() {
               <BottomSheetHeader>
                 <div>
                   <Heading bold title="Buy now" />
-                  <ButtonIcon size="l1" icon="x" onClick={ onBuy } />
+                  <ButtonIcon size="l1" icon="x" onClick={() => { onBuy(), onConfirm() }} />
                 </div>
               </BottomSheetHeader>
-              {/* <BuyNow /> */}
-              <Confirmation />
+
+              <BuyNowWrap active={ confirm }><BuyNow placeOrder={() => { onConfirm(), handleClick() }} /></BuyNowWrap>
+              <ConfirmWrap active={ confirm }><Confirmation /></ConfirmWrap>
             </BottomSheet>
 
             <Alert onBuyNow={ onBuy } />

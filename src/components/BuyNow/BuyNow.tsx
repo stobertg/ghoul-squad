@@ -182,10 +182,10 @@ const BadgeImage = styled('div', {
 })
 
 interface BuyProps {
-
+  placeOrder?: any
 }
 
-export const BuyNow = ({}:BuyProps) => {
+export const BuyNow = ({ placeOrder }:BuyProps) => {
   return(
 
     <BuyWrap>
@@ -285,7 +285,7 @@ export const BuyNow = ({}:BuyProps) => {
         </DetailButtons>
 
         <PayButton>
-          <Button size="l1" title="Place order" onClick={() => alert('hello') } />
+          <Button size="l1" title="Place order" onClick={ placeOrder } />
           <Heading 
             color="secondary"
             title={

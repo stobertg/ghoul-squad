@@ -1,13 +1,28 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading, Icon, PaymentMethod, ItemCarousel } from '@components'
+import { PaymentMethod, ItemCarousel } from '@components'
+import { Shipping } from './Parts/Shipping'
+import { Confirm } from './Parts/Confirm'
+import confetti from "canvas-confetti"
 
 const ConfirmWrap = styled('div', {
   position: 'relative',
-  width: '100%'
+  width: '100%',
+  height: '100%',
+  paddingBottom: 50,
+  overflow: 'scroll',
+  
+  '> *:not(:last-child)': {
+    marginBottom: 40,
+    paddingBottom: 40,
+    borderBottom: '1px solid $border'
+  }
 })
 
 const ConfirmContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 12,
   position: 'relative',
   width: '100%',
   padding: '0 20px'
@@ -24,93 +39,50 @@ const IconWrap = styled('div', {
   border: '1px solid $border'
 })
 
-const Shipping = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-  width: '100%',
-  padding: '20px 20px',
-  border: '1px solid $border',
-  borderRadius: '$r2',
-  
-  '> *:not(:last-child)': {
-    marginBottom: 20,
-    paddingBottom: 20,
-    borderBottom: '1px solid $border'
-  }
-})
-
-const ShippingTitle = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'flex-start',
-  gap: 12,
-  position: 'relative'
-})
-
-const ShippingInfo = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 6,
-  position: 'relative'
-})
-
-const ShippingDetails = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 6,
-})
-
-const ItemDetails = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 12
-})
-
-const ItemImage = styled('div', {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'relative',
-  width: 50,
-  height: 50,
-  borderRadius: '$r1',
-  overflow: 'hidden'
-})
-
 interface ConfirmProps {
 
 }
 
 export const Confirmation = ({}:ConfirmProps) => {
+  const handleClick = () => {
+    const end = Date.now() + 3 * 1000 // 3 seconds
+    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"]
+    const frame = () => {
+      if (Date.now() > end) return
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 0, y: 0.5 },
+        colors: colors,
+      })
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 1, y: 0.5 },
+        colors: colors,
+      })
+      requestAnimationFrame(frame)
+    }
+    frame()
+  }
+
   return(
 
     <ConfirmWrap>
       <ConfirmContent>
-        <Shipping>
-          <ShippingTitle>
-            <IconWrap><Icon size="l1" icon="truck" /></IconWrap>
-
-            <ShippingInfo>
-              <Heading bold size="l1" title="Free shipping, arrives between" />
-              <ShippingDetails>
-                <Heading bold size="l1" title="Today, 5-6pm" />
-                <Heading color="secondary" size="l1" title="Isabella Sparks" />
-                <Heading color="secondary" size="l1" title="113 1st St, Dallas, TX 75208" />
-              </ShippingDetails>
-            </ShippingInfo>
-          </ShippingTitle>
-
-          <ItemDetails>
-            <Heading size="l1" title={<><strong>Item details</strong> &#40;1&#41;</>} />
-            <ItemImage><img src="/ghouls/static/mystery-box.webp" /></ItemImage>
-          </ItemDetails>
-        </Shipping>
-
+        <Confirm />
+        <Shipping />
         <PaymentMethod />
       </ConfirmContent>
 
       <ItemCarousel 
+        noButton
+        width="l0"
+        title="Explore more Collectables"
         items={[
           {
             image: "/ghouls/static/mystery-box.webp",
@@ -123,13 +95,13 @@ export const Confirmation = ({}:ConfirmProps) => {
             price: "$27.99"
           },
           {
-            image: "/ghouls/static/casper.webp",
-            title: "Sir Casper Blind Box",
+            image: "/ghouls/static/frank.webp",
+            title: "Sir Frank Blind Box",
             price: "$27.99"
           },
           {
-            image: "/ghouls/static/frank.webp",
-            title: "Sir Frank Blind Box",
+            image: "/ghouls/static/casper.webp",
+            title: "Sir Casper Blind Box",
             price: "$27.99"
           },
           {

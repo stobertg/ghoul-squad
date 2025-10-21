@@ -88,7 +88,7 @@ export default function Home() {
             { icon: 'user-check', title: 'Profile', link: '/profile' },
             { icon: 'box', title: 'Unboxing', link: '/unbox' },
             { icon: 'tags', title: 'Buy now', link: '/buy-now', active: true },
-            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
+            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
           ]}
         >
           <HeadTags bgColor="#131313" />

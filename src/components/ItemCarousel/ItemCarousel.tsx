@@ -18,7 +18,13 @@ const CarContent = styled('div', {
   padding: '0 32px',
   overflow: 'scroll',
   scrollbarWidth: 'none',
-  '&::-webkit-scrollbar': { display: 'none' }
+  '&::-webkit-scrollbar': { display: 'none' },
+
+  variants: {
+    width: {
+      l0: { padding: '0 20px' }
+    }
+  }
 })
 
 const CarHeader = styled('div', {
@@ -28,10 +34,19 @@ const CarHeader = styled('div', {
   justifyContent: 'space-between',
   position: 'relative',
   width: '100%',
-  padding: '0 32px'
+  padding: '0 32px',
+
+  variants: {
+    width: {
+      l0: { padding: '0 20px' }
+    }
+  }
 })
 
 interface ItemProps {
+  title?: string
+  noButton?: boolean
+  width?: 'l0'
   items: {
     image: string
     title: string
@@ -39,16 +54,20 @@ interface ItemProps {
   }[]
 }
 
-export const ItemCarousel = ({ items }:ItemProps) => {
+export const ItemCarousel = ({ items, noButton, width, title }:ItemProps) => {
   return(
 
     <CarWrap>
-      <CarHeader>
-        <Heading bold size="l2" title="More from Ghoul Squad" />
-        <Button title="Shop" />
+      <CarHeader {...{ width }}>
+        <Heading 
+          bold 
+          size="l2" 
+          title={ title ?? "More from Ghoul Squad"} 
+        />
+        { noButton ?? ( <Button title="Shop" /> )}
       </CarHeader>
 
-      <CarContent>
+      <CarContent {...{ width }}>
         { items.map(( item, i ) => (
           <Item 
             key={`item${ i }`}

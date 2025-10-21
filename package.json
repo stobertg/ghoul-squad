@@ -11,9 +11,11 @@
   "dependencies": {
     "@radix-ui/react-tabs": "^1.1.13",
     "@stitches/react": "^1.2.8",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "18.14.2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "canvas-confetti": "^1.9.3",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.1",
     "next": "13.2.1",
