@@ -74,15 +74,15 @@ const MenuButton = styled('div', {
   position: 'relative',
   width: 16,
   height: 12,
-  borderTop: '1px solid $buttonPrimary',
-  borderBottom: '1px solid $buttonPrimary',
+  borderTop: '1px solid #fff',
+  borderBottom: '1px solid #fff',
 
   '&:after': {
     content: '',
     position: 'absolute',
     width: '100%',
     height: 1,
-    background: '$buttonPrimary'
+    background: '#fff'
   }
 })
 
@@ -158,9 +158,10 @@ export const PhoneHeader = ({
           <ContentBlock>
             { home ? (
 
-              <ButtonContainer spacing="l1">
+              <ButtonContainer>
                 <ButtonIcon icon="bell" />
-                <Avatar image="/people/isabella.webp" name="Isabella" />
+                <ButtonIcon icon="cart" />
+                {/* <Avatar image="/people/isabella.webp" /> */}
               </ButtonContainer>
               
             ) : (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { styled } from '@theme'
-import { HeadTags, SiteContainer, Phone, PhoneHeader, BuyNow, Heading, ButtonIcon } from '@components'
+import { HeadTags, SiteContainer, Phone, PhoneHeader, BuyNow, Heading, ButtonIcon, HomePage, Alert, Confirmation } from '@components'
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
@@ -8,9 +8,27 @@ const BottomSheet = styled('div', {
   position: 'absolute',
   bottom: 0,
   left: 0,
+  width: '100%',
+  height: 730,
   background: '$bgSecondary',
   borderRadius: '$r3 $r3 0 0',
-  paddingBottom: 32
+  paddingBottom: 32,
+  zIndex: 9999,
+  pointerEvents: 'none',
+  opacity: 0,
+  transform: 'translateY( 30px )',
+  overflow: 'hidden',
+
+  variants: {
+    active: {
+      true: { 
+        opacity: 1, 
+        pointerEvents: 'auto' ,
+        transform: 'translateY( 0 )',
+        transition: '$s2',
+      }
+    }
+  }
 })
 
 const BottomSheetHeader = styled('div', {
@@ -30,6 +48,28 @@ const BottomSheetHeader = styled('div', {
     '> *:last-child': {
       position: 'absolute',
       right: 0
+    }
+  }
+})
+
+const Overlay = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  background: 'rgba( 0,0,0, 0.8 )',
+  zIndex: 9000,
+  opacity: 0,
+  pointerEvents: 'none',
+
+  variants: {
+    active: {
+      true: { 
+        opacity: 1, 
+        pointerEvents: 'auto',
+        transition: '$s1' 
+      }
     }
   }
 })
@@ -55,19 +95,8 @@ export default function Home() {
   const combinedProgress = Math.round(((progress || 0) + (fontProgress || 0)) / 2);
   const allLoaded = isLoaded && isFontLoaded;
 
-  const [ share, setShare ] = useState( false )
-  const onShare = () => { setShare( !share ) }
-  
-  const [ record, setRecord ] = useState( false )
-  const onRecord = () => { setRecord( !record ) }
-
-  const [ video, setVideo ] = useState( false )
-  const onVideoSubmit = () => { setVideo( true ) }
-  const onVideoRemove = () => { setVideo( false ) }
-
-  const [ profile, setProfile ] = useState( false )
-  const onPost = () => { setProfile( !profile ) }
-
+  const [ buy, setBuy ] = useState( false )
+  const onBuy = () => { setBuy( !buy ) }
 
   return (
 
@@ -91,18 +120,23 @@ export default function Home() {
           ]}
         >
           <HeadTags bgColor="#181818" />
-          <Phone removeBg>
-            {/* <PhoneHeader overlay /> */}
-            <BottomSheet>
+          <Phone removeBg hasAlert>
+            <PhoneHeader home />
+            <HomePage />
+
+            <BottomSheet active={ buy }>
               <BottomSheetHeader>
                 <div>
                   <Heading bold title="Buy now" />
-                  <ButtonIcon size="l1" icon="x" />
+                  <ButtonIcon size="l1" icon="x" onClick={ onBuy } />
                 </div>
               </BottomSheetHeader>
-
-              <BuyNow />
+              {/* <BuyNow /> */}
+              <Confirmation />
             </BottomSheet>
+
+            <Alert onBuyNow={ onBuy } />
+            <Overlay active={ buy } />
           </Phone>
         </SiteContainer>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from '@theme'
 import { IphoneTop } from './Parts/IphoneTop'
-import { FallAnimation, BottomSheet, NavBottom, AiChat, LockScreen, BuyNow, Unbox } from '@components'
+import { FallAnimation, BottomSheet, NavBottom, AiChat, LockScreen, BuyNow, Unbox, Alert } from '@components'
 
 const PhoneWrap = styled('div', {
   display: 'flex',
@@ -89,6 +89,7 @@ const PhoneContentMain = styled('div', {
   paddingTop: 50,
   width: '100%',
   minHeight: '100%',
+  height: '100%',
   
   '@mobile': { paddingTop: 0 },
   // paddingTop: 8,
@@ -168,6 +169,16 @@ const UnboxWrap = styled('div', {
   zIndex: 9999
 })
 
+const Overlay = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  background: 'rgba( 0,0,0, 0.8 )',
+  zIndex: 9000
+})
+
 interface PhoneProps {
   children: React.ReactNode
   hasHero?: boolean
@@ -178,6 +189,7 @@ interface PhoneProps {
   bottomNav?: boolean
   hasLockScreen?: boolean
   contentFullHeight?: boolean
+  hasAlert?: boolean
 }
 
 export const Phone = ({ 
@@ -189,7 +201,8 @@ export const Phone = ({
     blockSpacing,
     bottomNav,
     hasLockScreen,
-    contentFullHeight
+    contentFullHeight,
+    hasAlert
   }:PhoneProps) => {
 
   return(
@@ -216,12 +229,17 @@ export const Phone = ({
       {/* <PhoneBg {...{ lighterBg }} /> */}
       { bottomNav && ( <NavBottom /> )}
 
+ 
+
       {/* <BottomSheet>
         <AiChat />
       </BottomSheet> */}
 
       {/* <BuyNowWrap><BuyNow /></BuyNowWrap> */}
       {/* <UnboxWrap><Unbox /></UnboxWrap> */}
+      
+      {/* { hasAlert && ( <Alert /> )} */}
+      {/* <Overlay  /> */}
     </PhoneWrap>
 
   )
