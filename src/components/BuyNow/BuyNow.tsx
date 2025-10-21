@@ -201,7 +201,7 @@ export const BuyNow = ({}:BuyProps) => {
               <BuyNowTextMain>
                 <div>
                   <Price />
-                  <Heading size="l1" title="Finds x Ghoul Squad Drop The Ghoul Squad Mystery Drop" />
+                  <Heading bold size="l1" title="Finds x Ghoul Squad Drop The Ghoul Squad Mystery Drop" />
                 </div>
                 <Heading size="l0" color="secondary" title="Only 8 left" />
               </BuyNowTextMain>
