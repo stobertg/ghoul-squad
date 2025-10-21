@@ -200,7 +200,7 @@ export const BuyNow = ({}:BuyProps) => {
             <BuyNowText>
               <BuyNowTextMain>
                 <div>
-                  <Price />
+                  <Price amount={27.92} />
                   <Heading bold size="l1" title="Finds x Ghoul Squad Drop The Ghoul Squad Mystery Drop" />
                 </div>
                 <Heading size="l0" color="secondary" title="Only 8 left" />

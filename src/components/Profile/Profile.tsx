@@ -58,7 +58,7 @@ export const Profile = ({}:ProfileProps) => {
                 { icon: 'star', title: '5.0', subtitle: 'Trust Score' },
                 { icon: 'tags', title: '1,123', subtitle: 'Collectables sold' },
                 { icon: 'thumbs-up', title: '1,004', subtitle: 'Positive reviews' },
-                { icon: 'circle-check', title: 'Verified', subtitle: 'By Walmart' }
+                { icon: 'circle-check', title: 'Verified', subtitle: 'By Finds' }
               ]}
             />
           </AppBlock>

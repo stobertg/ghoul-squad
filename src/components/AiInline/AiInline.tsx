@@ -60,7 +60,7 @@ export const AiInline = ({}:AiProps) => {
             <IconWrap><Icon size="l3" icon="sparkles" /></IconWrap>
             <PromptHeaderTitle>
               <Heading size="l1" title="Do you have any questions?" />
-              <Heading color="secondary" size="l0" title="Ask sparky, your personal Assistant!" />
+              <Heading color="secondary" size="l0" title="Ask Findy, your personal Assistant!" />
             </PromptHeaderTitle>
           </PromptHeader>
         </PromptBlock>

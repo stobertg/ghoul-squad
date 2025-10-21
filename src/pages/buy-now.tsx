@@ -91,7 +91,7 @@ export default function Home() {
             { icon: 'shopping-cart', title: 'Checkout', link: '/checkout', active: false },
           ]}
         >
-          <HeadTags bgColor="#181818" />
+          <HeadTags bgColor="#131313" />
           <Phone removeBg>
             {/* <PhoneHeader overlay /> */}
             <BottomSheet>
