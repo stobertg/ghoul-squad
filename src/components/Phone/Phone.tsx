@@ -179,6 +179,16 @@ const Overlay = styled('div', {
   zIndex: 9000
 })
 
+const ConfettiCanvas = styled('canvas', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  pointerEvents: 'none',
+  zIndex: 9998
+})
+
 interface PhoneProps {
   children: React.ReactNode
   hasHero?: boolean
@@ -190,6 +200,8 @@ interface PhoneProps {
   hasLockScreen?: boolean
   contentFullHeight?: boolean
   hasAlert?: boolean
+  showConfettiCanvas?: boolean
+  confettiCanvasRef?: React.RefObject<HTMLCanvasElement>
 }
 
 export const Phone = ({ 
@@ -202,7 +214,9 @@ export const Phone = ({
     bottomNav,
     hasLockScreen,
     contentFullHeight,
-    hasAlert
+    hasAlert,
+    showConfettiCanvas,
+    confettiCanvasRef
   }:PhoneProps) => {
 
   return(
@@ -223,7 +237,10 @@ export const Phone = ({
         </PhoneContentMain>
       </PhoneContent>
 
-      {/* <BottomSheet>This is some content in the container</BottomSheet> */}
+      { showConfettiCanvas && (
+        <ConfettiCanvas id="confetti-canvas" ref={confettiCanvasRef} />
+      )}
+
       <IphoneBottom />
       { fall && ( <FallAnimation /> )}
       {/* <PhoneBg {...{ lighterBg }} /> */}

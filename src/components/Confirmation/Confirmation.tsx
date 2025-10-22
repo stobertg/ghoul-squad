@@ -3,7 +3,6 @@ import { styled } from '@theme'
 import { PaymentMethod, ItemCarousel } from '@components'
 import { Shipping } from './Parts/Shipping'
 import { Confirm } from './Parts/Confirm'
-import confetti from "canvas-confetti"
 
 const ConfirmWrap = styled('div', {
   position: 'relative',
@@ -44,32 +43,6 @@ interface ConfirmProps {
 }
 
 export const Confirmation = ({}:ConfirmProps) => {
-  const handleClick = () => {
-    const end = Date.now() + 3 * 1000 // 3 seconds
-    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"]
-    const frame = () => {
-      if (Date.now() > end) return
-      confetti({
-        particleCount: 2,
-        angle: 60,
-        spread: 55,
-        startVelocity: 60,
-        origin: { x: 0, y: 0.5 },
-        colors: colors,
-      })
-      confetti({
-        particleCount: 2,
-        angle: 120,
-        spread: 55,
-        startVelocity: 60,
-        origin: { x: 1, y: 0.5 },
-        colors: colors,
-      })
-      requestAnimationFrame(frame)
-    }
-    frame()
-  }
-
   return(
 
     <ConfirmWrap>

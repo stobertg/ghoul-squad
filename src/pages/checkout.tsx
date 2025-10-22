@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { styled } from '@theme'
 import { HeadTags, SiteContainer, Phone, PhoneHeader, BuyNow, Heading, ButtonIcon, HomePage, Alert, Confirmation } from '@components'
 import { useImagePreloader, useFontPreloader } from '@lib'
@@ -43,6 +43,7 @@ const BottomSheetHeader = styled('div', {
     justifyContent: 'center',
     position: 'relative',
     width: '92%',
+    height: 56,
     margin: '0 auto',
     padding: '20px 0',
 
@@ -83,17 +84,17 @@ const ConfirmWrap = styled('div', {
   height: '100%',
   background: '$bgSecondary',
   transition: '$s3',
-  transform: 'translateX( 20% )',
+  transform: 'translateY( 30px )',
   pointerEvents: 'none',
   opacity: 0,
 
   variants: {
     active: {
       true: {
-        transform: 'translateX( 0 )',
+        transform: 'translateY( 0 )',
         pointerEvents: 'auto',
         opacity: 1,
-        transitionDelay: '150ms'
+        transitionDelay: '500ms'
       }
     }
   }
@@ -102,12 +103,12 @@ const ConfirmWrap = styled('div', {
 const BuyNowWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  transition: '$s3',
+  transition: '$s2',
 
   variants: {
     active: {
       true: {
-        transform: 'translateX( -20% )',
+        transform: 'translateY( -30px )',
         pointerEvents: 'none',
         opacity: 0
       }
@@ -136,6 +137,8 @@ export default function Home() {
   const combinedProgress = Math.round(((progress || 0) + (fontProgress || 0)) / 2);
   const allLoaded = isLoaded && isFontLoaded;
 
+  const confettiCanvasRef = useRef<HTMLCanvasElement>(null)
+
   const [ buy, setBuy ] = useState( false )
   const onBuy = () => { setBuy( !buy ) }
 
@@ -143,25 +146,27 @@ export default function Home() {
   const onConfirm = () => { setConfirm( !confirm ) }
 
   const handleClick = () => {
-    const end = Date.now() + 2 * 1000 // 3 seconds
-    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"]
+    if (!confettiCanvasRef.current) return
+    const myConfetti = confetti.create(confettiCanvasRef.current, { resize: true, useWorker: true })
+    const end = Date.now() + 1 * 600
+    const colors = ["#ffffff", "#FFC220"]
     const frame = () => {
       if (Date.now() > end) return
-      confetti({
+      myConfetti({
         particleCount: 2,
         angle: 60,
         spread: 55,
         startVelocity: 60,
         origin: { x: 0, y: 0.5 },
-        colors: colors,
+        colors
       })
-      confetti({
+      myConfetti({
         particleCount: 2,
         angle: 120,
         spread: 55,
         startVelocity: 60,
         origin: { x: 1, y: 0.5 },
-        colors: colors,
+        colors
       })
       requestAnimationFrame(frame)
     }
@@ -191,14 +196,14 @@ export default function Home() {
           ]}
         >
           <HeadTags bgColor="#181818" />
-          <Phone removeBg hasAlert>
+          <Phone removeBg hasAlert showConfettiCanvas confettiCanvasRef={confettiCanvasRef}>
             <PhoneHeader home />
             <HomePage />
 
             <BottomSheet active={ buy }>
               <BottomSheetHeader>
                 <div>
-                  <Heading bold title="Buy now" />
+                  <Heading bold title={ !confirm && "Buy now"} />
                   <ButtonIcon size="l1" icon="x" onClick={() => { onBuy(), onConfirm() }} />
                 </div>
               </BottomSheetHeader>

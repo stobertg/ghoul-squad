@@ -102,7 +102,7 @@ export default function Home() {
                 </div>
               </BottomSheetHeader>
 
-              <BuyNow />
+              <BuyNow placeOrder={() => alert('hello')} />
             </BottomSheet>
           </Phone>
         </SiteContainer>

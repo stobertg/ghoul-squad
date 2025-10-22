@@ -72,7 +72,7 @@ export const Confirm = ({}:ConfirmProps) => {
         </ConfirmVideo>
 
         <ConfirmText>
-          <Heading bold size="l2" title="Isabella, your order is confirmed!" />
+          <Heading bold size="l4" title="Your order is confirmed!" />
           <Text fontSize="l1"><p>Welcome to the Ghoul Squad! Get excited, your blind box is on the way 🎃 👻 🧛 🧟</p></Text>
         </ConfirmText>
       </ConfirmContent>

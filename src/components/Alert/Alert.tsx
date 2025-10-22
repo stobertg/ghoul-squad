@@ -1,6 +1,11 @@
 import React from 'react'
-import { styled } from '@theme'
+import { styled, keyframes } from '@theme'
 import { Heading, Button, ButtonIcon } from '@components'
+
+const fadeIn = keyframes({
+  '0%': { transform: 'translateY( 30px )', opacity: 0 },
+  '100%': { transform: 'translateY( 0 )', opacity: 1 }
+})
 
 const AlertWrap = styled('div', {
   position: 'absolute',
@@ -23,7 +28,8 @@ const AlertContent = styled('div', {
   padding: 12,
   background: '$bgSecondary',
   borderRadius: '$r2',
-  boxShadow: '0 2px 10px rgba( 0,0,0, 0.5 )'
+  boxShadow: '0 2px 10px rgba( 0,0,0, 0.5 )',
+  animation: `${ fadeIn } 400ms ease forwards`,
 })
 
 const AlertImage = styled('div', {
@@ -42,6 +48,11 @@ const AlertImage = styled('div', {
     width: '100%',
     height: '100%',
     objectFit: 'cover'
+  },
+
+  video: {
+    position: 'absolute',
+    width: '100%',
   }
 })
 
@@ -73,7 +84,17 @@ export const Alert = ({ onBuyNow }:AlertProps) => {
 
     <AlertWrap>
       <AlertContent>
-        <AlertImage><img src="/ghouls/static/mystery-box.webp" /></AlertImage>
+        <AlertImage>
+          {/* <img src="/ghouls/static/mystery-box.webp" /> */}
+          <video
+            src="/ghouls/ghoul-box.mp4"
+            autoPlay
+            muted
+            playsInline
+            loop
+            preload="auto"
+          />
+        </AlertImage>
 
         <AlertInfo>
           <AlertText>
