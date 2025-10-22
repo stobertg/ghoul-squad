@@ -64,9 +64,7 @@ export const Confirm = ({}:ConfirmProps) => {
             src="/ghouls/casper.webm"
             autoPlay
             muted
-            playsInline
             loop
-            preload="auto"
           />
           <FallAnimation placement="top" />
         </ConfirmVideo>

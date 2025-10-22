@@ -148,7 +148,7 @@ export default function Home() {
   const handleClick = () => {
     if (!confettiCanvasRef.current) return
     const myConfetti = confetti.create(confettiCanvasRef.current, { resize: true, useWorker: true })
-    const end = Date.now() + 1 * 600
+    const end = Date.now() + 0.5 * 1000
     const colors = ["#ffffff", "#FFC220"]
     const frame = () => {
       if (Date.now() > end) return
@@ -156,7 +156,7 @@ export default function Home() {
         particleCount: 2,
         angle: 60,
         spread: 55,
-        startVelocity: 60,
+        startVelocity: 40,
         origin: { x: 0, y: 0.5 },
         colors
       })
@@ -164,7 +164,7 @@ export default function Home() {
         particleCount: 2,
         angle: 120,
         spread: 55,
-        startVelocity: 60,
+        startVelocity: 40,
         origin: { x: 1, y: 0.5 },
         colors
       })
@@ -172,6 +172,32 @@ export default function Home() {
     }
     frame()
   }
+
+  // const handleClick = () => {
+  //   const end = Date.now() + 3 * 1000 // 3 seconds
+  //   const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"]
+  //   const frame = () => {
+  //     if (Date.now() > end) return
+  //     confetti({
+  //       particleCount: 2,
+  //       angle: 60,
+  //       spread: 55,
+  //       startVelocity: 60,
+  //       origin: { x: 0, y: 0.5 },
+  //       colors: colors,
+  //     })
+  //     confetti({
+  //       particleCount: 2,
+  //       angle: 120,
+  //       spread: 55,
+  //       startVelocity: 60,
+  //       origin: { x: 1, y: 0.5 },
+  //       colors: colors,
+  //     })
+  //     requestAnimationFrame(frame)
+  //   }
+  //   frame()
+  // }
 
   return (
 
@@ -196,7 +222,12 @@ export default function Home() {
           ]}
         >
           <HeadTags bgColor="#181818" />
-          <Phone removeBg hasAlert showConfettiCanvas confettiCanvasRef={confettiCanvasRef}>
+          <Phone 
+            removeBg 
+            hasAlert 
+            showConfettiCanvas 
+            confettiCanvasRef={ confettiCanvasRef }
+          >
             <PhoneHeader home />
             <HomePage />
 
