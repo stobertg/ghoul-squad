@@ -277,7 +277,7 @@ export const Share = ({ onBackClick, onRecord, hasMediaThumb, removeThumb, onPos
 
 						<InputOptions>
 							<OptionButton onClick={ onRecord }>
-								<Icon icon="video" />
+                <Icon icon="video" />
 								<Heading title="Record video" />
 							</OptionButton>
 
