@@ -36,15 +36,15 @@ export default function Home() {
       { allLoaded && (
 
         <SiteContainer
-          nav={[
-            { icon: 'star', title: 'Drop hero', link: '/' },
-            { icon: 'pumpkin', title: 'Product', link: '/product' },
-            { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
-            { icon: 'user-check', title: 'Profile', link: '/profile', active: true },
-            { icon: 'box', title: 'Unboxing', link: '/unbox' },
-            { icon: 'tags', title: 'Buy now', link: '/buy-now' },
-            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
-          ]}
+        nav={[
+          { icon: 'star', title: 'Drop hero', link: '/' },
+          { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
+          { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
+          { icon: 'box', title: 'Unboxing', link: '/unbox' },
+          { icon: 'pumpkin', title: 'Product', link: '/product' },
+          { icon: 'user-check', title: 'Profile', link: '/profile', active: true },
+          { icon: 'tags', title: 'Buy now', link: '/buy-now' },
+        ]}
         >
           <HeadTags bgColor="#181818" />
           <Phone removeBg blockSpacing="l2">

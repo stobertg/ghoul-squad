@@ -39,12 +39,12 @@ export default function Home() {
         <SiteContainer
           nav={[
             { icon: 'star', title: 'Drop hero', link: '/' },
-            { icon: 'pumpkin', title: 'Product', link: '/product', active: true },
             { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
-            { icon: 'user-check', title: 'Profile', link: '/profile' },
-            { icon: 'box', title: 'Unboxing', link: '/unbox' },
-            { icon: 'tags', title: 'Buy now', link: '/buy-now' },
             { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
+            { icon: 'box', title: 'Unboxing', link: '/unbox' },
+            { icon: 'pumpkin', title: 'Product', link: '/product', active: true },
+            { icon: 'user-check', title: 'Profile', link: '/profile' },
+            { icon: 'tags', title: 'Buy now', link: '/buy-now' },
           ]}
         >
           <HeadTags bgColor="#181818" />

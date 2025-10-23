@@ -172,6 +172,7 @@ export const PhoneHeader = ({
                   { icon: 'message-circle', onClick: onChat },
                   { icon: 'share', onClick: () => alert('share') },
                   { icon: 'star', onClick:  onStar },
+                  { icon: 'cart', onClick:  onStar },
                 ]}
               />
 
