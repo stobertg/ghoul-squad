@@ -7,7 +7,7 @@ const BlockWrap = styled('div', {
 
   variants: {
     bgColor: {
-      subtle: { background: '$bgSecondary' }
+      subtle: { background: '$bgSubtle' }
     }
   }
 })  
@@ -26,7 +26,7 @@ const BlockContent = styled('div', {
     },
 
     hasBg: {
-      true: { padding: '40px 28px' }
+      true: { padding: '40px 24px' }
     },
 
     width: {

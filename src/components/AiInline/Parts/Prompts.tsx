@@ -1,25 +1,28 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading } from '@components'
+import { Heading, Icon } from '@components'
 
 const PromptWrap = styled('div', {
   display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: 4,
+  flexDirection: 'column',
   position: 'relative',
-  padding: '0 16px',
-  overflow: 'scroll',
-  scrollbarWidth: 'none',
-  '&::-webkit-scrollbar': { display: 'none' }
+  width: '100%',
+
+  '> *:not(:last-child)': {
+    borderBottom: '1px solid $seperator'
+  }
 })
 
 const Prompt = styled('button', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
   position: 'relative',
-  padding: 12,
-  background: '$bgSecondary',
-  borderRadius: '$pill',
-  whiteSpace: 'noWrap'
+  width: 'calc( 100% - 32px )',
+  margin: '0 auto',
+  padding: '16px 0',
+  textAlign: 'left'
 })
 
 interface PromptProps {
@@ -35,7 +38,8 @@ export const Prompts = ({ prompts }:PromptProps) => {
       { prompts.map(( prompt, i ) => (
       
         <Prompt key={`prompt-${ i }`}>
-          <Heading size="l0" title={ prompt.title } />
+          <Heading size="l1" title={ prompt.title } />
+          <Icon size="l1" icon="chevron-down" />
         </Prompt>
 
       ))}

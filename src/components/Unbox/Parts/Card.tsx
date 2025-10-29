@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { styled, keyframes } from '@theme'
+import { styled } from '@theme'
 import { FallAnimation, CharacterVideo, Heading } from '@components'
+import { useTheme } from 'next-themes'
 
 const CardWrap = styled('button', {
   position: 'relative',
@@ -17,13 +18,13 @@ const CardContent = styled('div', {
   position: 'relative',
   width: 260,
   height: 360,
-  background: '#111',
+  background: '$cardBg',
   margin: '0 auto',
   transformStyle: 'preserve-3d',
   WebkitTransformStyle: 'preserve-3d',
   transition: 'transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1)',
   willChange: 'transform',
-  boxShadow: '0 2px 10px rgba( 0,0,0, 1 )',
+  // boxShadow: '0 2px 10px rgba( 0,0,0, 1 )',
 
   '&:before': {
     content: '',
@@ -32,7 +33,7 @@ const CardContent = styled('div', {
     left: 0,
     width: 'calc( 100% - 2px )',
     height: 'calc( 100% - 2px )',
-    border: '1px solid #333',
+    border: '1px solid $cardBorder',
     borderRadius: '$r3',
     zIndex: 10,
   },
@@ -84,14 +85,47 @@ const CardFrontBg = styled('div', {
   position: 'absolute',
   width: '180%',
   height: '120%',
-  backgroundColor: '#000',
+  backgroundColor: '$cardBgDark',
   // backgroundImage: 'url("https://www.transparenttextures.com/patterns/crissxcross.png")',
   backgroundImage:' url("/textures/cartographer.png")',
   backgroundSize: '200px',
   backgroundRepeat: 'repeat',
   // backgroundImage: 'url("https://www.transparenttextures.com/patterns/bo-play.png")',
   
-  transform: 'rotate( 45deg )'
+  transform: 'rotate( 45deg )',
+  transition: 'opacity 0.3s ease',
+
+  variants: {
+    mode: {
+      light: { opacity: 0.2 },
+      dark: { opacity: 1 }
+    }
+  }
+})
+
+const CardBackTexture = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+  width: '180%',
+  height: '120%',
+  backgroundColor: '$cardBgDark',
+  // backgroundImage: 'url("https://www.transparenttextures.com/patterns/crissxcross.png")',
+  backgroundImage:' url("/textures/cartographer.png")',
+  backgroundSize: '200px',
+  backgroundRepeat: 'repeat',
+  // backgroundImage: 'url("https://www.transparenttextures.com/patterns/bo-play.png")',
+  
+  transform: 'rotate( 45deg )',
+  transition: 'opacity 0.3s ease',
+
+  variants: {
+    mode: {
+      light: { opacity: 0.2 },
+      dark: { opacity: 1 }
+    }
+  }
 })
 
 const CardBack = styled('div', {
@@ -139,7 +173,7 @@ const CardCorners = styled('div', {
     position: 'absolute',
     width: '84%',
     height: '92%',
-    border: '1px solid #000'
+    border: '1px solid $cardBgDark'
   }
 })
 
@@ -279,7 +313,7 @@ const CardBottomText = styled('div', {
 
 const CardFrontText = styled('div', {
   position: 'absolute',
-  bottom: 24,
+  bottom: 22,
   width: '100%',
   padding: '0 20px',
   zIndex: 10
@@ -291,6 +325,11 @@ interface CardProps {
 
 export const UnboxCard = ({ }: CardProps) => {
   const [ flip, setFlip ] = useState( false )
+  const { resolvedTheme } = useTheme()
+  const cardMode = resolvedTheme === 'dark' ? 'dark' : 'light'
+  const darkImg = "/textures/ghost.jpg"
+  const lightImg = "/textures/ghost-alt.webp"
+  const bgImg = resolvedTheme === 'dark' ? darkImg : lightImg
   const flipCard = () => { setFlip( !flip ) }
 
   return (
@@ -300,7 +339,7 @@ export const UnboxCard = ({ }: CardProps) => {
         <CardFront>
           <CharacterVideo video="/ghouls/casper.webm" />
           <BgWrap><FallAnimation placement="top" /></BgWrap>
-          <CardFrontBg />
+          <CardFrontBg mode={cardMode} />
 
           <CardFrontText>
             <Heading heavy size="l2" title="Sir Casper" />
@@ -318,7 +357,7 @@ export const UnboxCard = ({ }: CardProps) => {
             <CardCornerItems placement="bottomRight"><img src="/ghouls/illus/vamp-trans.png" /></CardCornerItems>  
           </CardCorners>
 
-          <CardBackBg><img src="/textures/ghost.jpg" /></CardBackBg>
+          <CardBackBg><img src={bgImg} /></CardBackBg>
         </CardFront>
 
         <CardBack>
@@ -341,7 +380,10 @@ export const UnboxCard = ({ }: CardProps) => {
             <Heading bold size="l0" title="#111/400" />
           </CardTop>
           {/* <CardBackBadge><img src="/badges/badge_collab.png" /></CardBackBadge> */}
-          <CardBackBg><img src="/textures/ghost.jpg" /></CardBackBg>
+          <CardBackBg>
+            <img src={bgImg} />
+          </CardBackBg>
+          <CardBackTexture mode={cardMode} />
         </CardBack>
       </CardContent>
     </CardWrap>

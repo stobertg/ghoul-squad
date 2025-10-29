@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { InputSearch, ButtonContainer, ButtonIcon, Avatar, Button } from '@components'
+import { InputSearch, ButtonContainer, ButtonIcon, Avatar, Button, CartButton } from '@components'
 
 const HeaderWrap = styled('div', {
   position: 'relative',
@@ -34,7 +34,7 @@ const ContentBlock = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: 8,
+  gap: 4,
   position: 'relative'
 })
 
@@ -86,25 +86,24 @@ const MenuButton = styled('div', {
   }
 })
 
-const Headshot = styled('div', {
+const Sparky = styled('button', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   position: 'relative',
-  minWidth: 32,
   width: 32,
-  minHeight: 32,
   height: 32,
-  borderRadius: '50%',
-  overflow: 'hidden',
-  border: '2px solid $bgPrimary',
 
-  img: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover'
-  }
+  img: { width: 26 }
+})
+
+const Cart = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  width: 32,
+  height: 32
 })
 
 
@@ -137,7 +136,7 @@ export const PhoneHeader = ({
       <HeaderContent>
         <ContentBlock>
           { overlay ? 
-            ( <ButtonIcon variant="secondary" icon="arrow-left" onClick={ onBackClick } /> ) 
+            ( <ButtonIcon variant="neutral" icon="arrow-left" onClick={ onBackClick } /> ) 
             : <MenuButtonWrap><MenuButton /></MenuButtonWrap> 
             }
           { overlay ?? <InputSearch /> }
@@ -166,15 +165,19 @@ export const PhoneHeader = ({
               
             ) : (
 
-              <ButtonContainer 
-                icons
-                buttons={[
-                  { icon: 'message-circle', onClick: onChat },
-                  { icon: 'share', onClick: () => alert('share') },
-                  { icon: 'star', onClick:  onStar },
-                  { icon: 'cart', onClick:  onStar },
-                ]}
-              />
+              <>
+                <ButtonContainer 
+                  icons
+                  spacing="l0"
+                  buttons={[
+                    { icon: 'star', onClick:  onStar },
+                    { icon: 'share', onClick: () => alert('share') }
+                  ]}
+                />
+
+                <Sparky onClick={ onChat }><img src="/brand/sparky.png" /></Sparky>
+                <Cart><CartButton /></Cart>
+              </>
 
             )}    
           </ContentBlock>

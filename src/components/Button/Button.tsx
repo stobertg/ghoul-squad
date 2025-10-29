@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { Heading } from '@components'
+import { Heading, Icon } from '@components'
 
 const ButtonWrap = styled('div', {
   display: 'inline-flex',
@@ -9,11 +9,12 @@ const ButtonWrap = styled('div', {
   position: 'relative',
   minWidth: 100,
   height: 40,
-  background: '$borderActive',
+  background: '$brand',
   borderRadius: '$r2',
   transition: '$s1',
   cursor: 'pointer',
-  '&:hover': { background: '#33339b' },
+  color: '#fff',
+  '&:hover': { background: '$primaryButtonHover' },
   '*': { whiteSpace: 'nowrap' },
 
   variants: {
@@ -24,6 +25,7 @@ const ButtonWrap = styled('div', {
       },
 
       underline: {
+        color: '$textPrimary',
         background: 'none',
         minWidth: 'initial',
         '&:hover': { background: 'none', color: '#33339b' },
@@ -48,7 +50,7 @@ const ButtonWrap = styled('div', {
     width: {
       auto: { 
         minWidth: 'initial',
-        'button, a': { padding: '0 12px', }
+        'button, a': { padding: '0 18px', }
       }
     },
 
@@ -56,18 +58,29 @@ const ButtonWrap = styled('div', {
       l0: { height: 32, 'button, a': { padding: '0 20px' }},
       l1: { height: 50 }
     }
-  }
+  },
+
+  '> * > *:last-child': { marginTop: 1 }
 })
 
 const ButtonClick = styled('button', {
   display: "flex",
   justifyContent: 'center',
   alignItems: 'center',
+  gap: 2,
   width: '100%',
   height: '100%',
   padding: '0 24px',
 
-  '&[disabled]': {  }
+  '&[disabled]': {  },
+
+  variants: {
+    hasIcon: {
+      true: {
+        paddingLeft: '12px !important'
+      }
+    }
+  }
 })
 
 const PageLink = styled('a', {
@@ -76,9 +89,18 @@ const PageLink = styled('a', {
   alignItems: 'center',
   width: '100%',
   height: '100%',
+  gap: 2,
   padding: '0 24px',
 
-  '&[aria-disabled = true]': {  }
+  '&[aria-disabled = true]': {  },
+
+  variants: {
+    hasIcon: {
+      true: {
+        paddingLeft: '12px !important'
+      }
+    }
+  }
 })
 
 interface ButtonProps {
@@ -89,6 +111,7 @@ interface ButtonProps {
   width?: 'auto'
   size?: 'l0' | 'l1'
   disabled?: boolean
+  icon?: string
 }
 
 export const Button = ({
@@ -98,7 +121,8 @@ export const Button = ({
     variant,
     width,
     size,
-    disabled
+    disabled,
+    icon
   }:ButtonProps) => {
   
   return(
@@ -106,13 +130,15 @@ export const Button = ({
     <ButtonWrap {...{ variant, width, size, disabled }}>
       { onClick ? (
 
-        <ButtonClick {...{ onClick, disabled }}>
+        <ButtonClick {...{ onClick, disabled }} hasIcon={ icon ? true : false }>
+          { icon && ( <Icon size="l0" {...{ icon }} /> )}
           <Heading bold size="l1" {...{ title }} />
         </ButtonClick>
 
       ) : (
 
-        <PageLink href={ pageLink } aria-disabled={ disabled }>
+        <PageLink href={ pageLink } aria-disabled={ disabled } hasIcon={ icon ? true : false }>
+          { icon && ( <Icon size="l0" {...{ icon }} /> )}
           <Heading bold size="l1" {...{ title }} />
         </PageLink>
 

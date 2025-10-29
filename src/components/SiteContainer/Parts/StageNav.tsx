@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { styled } from '@theme'
 import { Heading, Icon, Grid } from '@components'
 
@@ -16,21 +17,21 @@ const NavItem = styled('a', {
   gap: 12,
   position: 'relative',
   padding: '16px 16px',
-  border: '1px solid $border',
+  border: '1px solid $seperator',
   borderRadius: '$r2',
   cursor: 'pointer',
   transition: '$s1',
   
   '&:hover': {
     borderColor: '$borderActive',
-    background: 'rgba( 70, 70, 183, 0.4 )' 
+    background: '$brandSubtle' 
   },
 
   variants: {
     active: {
       true: { 
         borderColor: '$borderActive',
-        background: 'rgba( 70, 70, 183, 0.4 )'
+        background: '$brandSubtle'
       },
 
       false: {
@@ -57,14 +58,15 @@ export const StageNav = ({ items }:NavProps) => {
     <NavWrap>
       <Grid columns={ 3 }>
         { items?.map(( item, i ) => (
-          <NavItem
+          <Link
             key={`item-${ i }`}
             href={ item.link }
-            active={ item.active }
           >
-            <Icon icon={ item.icon } />
-            <Heading bold size="l1" title={ item.title } />
-          </NavItem>
+            <NavItem active={ item.active }>
+              <Icon icon={ item.icon } />
+              <Heading bold size="l1" title={ item.title } />
+            </NavItem>
+          </Link>
         ))}
       </Grid>
     </NavWrap>

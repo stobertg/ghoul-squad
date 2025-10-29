@@ -28,7 +28,7 @@ export default function Home() {
 
     <>
       <LoadingBar 
-        color="yellow"
+        color="#0053E2"
         progress={ combinedProgress }
         shadow={ true }
       />
@@ -36,15 +36,15 @@ export default function Home() {
       { allLoaded && (
 
         <SiteContainer
-        nav={[
-          { icon: 'star', title: 'Drop hero', link: '/' },
-          { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
-          { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
-          { icon: 'box', title: 'Unboxing', link: '/unbox' },
-          { icon: 'pumpkin', title: 'Product', link: '/product' },
-          { icon: 'user-check', title: 'Profile', link: '/profile', active: true },
-          { icon: 'tags', title: 'Buy now', link: '/buy-now' },
-        ]}
+          nav={[
+            { icon: 'star', title: 'Drop hero', link: '/' },
+            { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
+            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
+            { icon: 'box', title: 'Unboxing', link: '/unbox' },
+            { icon: 'pumpkin', title: 'Product', link: '/product' },
+            { icon: 'user-check', title: 'Profile', link: '/profile', active: true },
+            { icon: 'tags', title: 'Buy now', link: '/buy-now' },
+          ]}
         >
           <HeadTags bgColor="#181818" />
           <Phone removeBg blockSpacing="l2">

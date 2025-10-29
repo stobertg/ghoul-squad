@@ -7,7 +7,7 @@ const HeroWrap = styled('div', {
   flexDirection: 'column',
   position: 'relative',
   width: '100%',
-  paddingBottom: 44,
+  paddingBottom: 48,
 })
 
 const HeroBg = styled('div', {

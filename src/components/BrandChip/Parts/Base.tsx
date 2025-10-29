@@ -10,7 +10,7 @@ const ChipContent = styled ('button', {
   gap: 12,
   position: 'relative',
   padding: 8,
-  background: '#000',
+  background: '$bgSecondary',
   borderRadius: '$pill',
   transition: '$s1',
 
@@ -72,7 +72,7 @@ export const ChipBase = ({
 
     <ChipContent {...{ onClick, size }}>
       <ChipImage {...{ size }}><img src={ image } alt={ title } /></ChipImage>
-      <Heading size={ size ? size : 'l1' } title={ title } />
+      <Heading bold size={ size ? size : 'l1' } title={ title } />
       <TrustBadge {...{ size }} />
     </ChipContent>
 

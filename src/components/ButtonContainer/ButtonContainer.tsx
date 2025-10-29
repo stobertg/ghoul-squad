@@ -29,6 +29,7 @@ interface ButtonProps {
   buttons?: {
     icon: string
     onClick: any
+    color?: 'brand'
   }[]
 }
 
@@ -56,6 +57,7 @@ export const ButtonContainer = ({
                 key={`button-${ i }`}
                 icon={ button.icon } 
                 onClick={ button.onClick }
+                color={ button.color }
               /> 
 
             ))}

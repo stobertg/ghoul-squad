@@ -65,39 +65,45 @@ export const Profile = ({}:ProfileProps) => {
         </IntroContent>
 
         <ItemCarousel 
-          items={[
-            {
-              image: "/ghouls/static/mystery-box.webp",
-              title: "Ghoul Squad Mystery Drop collaboration with Finds",
-              price: "$111.96"
-            },
-            {
-              image: "/ghouls/static/pump.webp",
-              title: "Sir Pump Blind Box",
-              price: "$27.99"
-            },
-            {
-              image: "/ghouls/static/casper.webp",
-              title: "Sir Casper Blind Box",
-              price: "$27.99"
-            },
-            {
-              image: "/ghouls/static/frank.webp",
-              title: "Sir Frank Blind Box",
-              price: "$27.99"
-            },
-            {
-              image: "/ghouls/static/vamp.webp",
-              title: "Sir Vamp Blind Box",
-              price: "$27.99"
-            },
-            {
-              image: "/ghouls/static/jeremy.webp",
-              title: "Jeremy Blind Box",
-              price: "$27.99"
-            },
-          ]}
-        />
+        items={[
+          {
+            image: "/ghouls/static/mystery-box.webp",
+            title: "Ghoul Squad Mystery Drop collaboration with Walmart",
+            price: "111.96",
+            ratingNumber: 23
+          },
+          {
+            image: "/ghouls/static/pump.webp",
+            title: "Sir Pump Blind Box",
+            price: "27.99",
+            ratingNumber: 45
+          },
+          {
+            image: "/ghouls/static/frank.webp",
+            title: "Sir Frank Blind Box",
+            price: "27.99",
+            ratingNumber: 15
+          },
+          {
+            image: "/ghouls/static/casper.webp",
+            title: "Sir Casper Blind Box",
+            price: "27.99",
+            ratingNumber: 32
+          },
+          {
+            image: "/ghouls/static/vamp.webp",
+            title: "Sir Vamp Blind Box",
+            price: "27.99",
+            ratingNumber: 28
+          },
+          {
+            image: "/ghouls/static/jeremy.webp",
+            title: "Jeremy Blind Box",
+            price: "27.99",
+            ratingNumber: 41
+          },
+        ]}
+      />
 
         <AppBlock width="l1">
           <Reviews />

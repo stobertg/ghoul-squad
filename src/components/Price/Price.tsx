@@ -6,7 +6,7 @@ const PriceWrap = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'flex-start',
-  gap: 2,
+  gap: 1,
   '*': { lineHeight: '1 !important' }
 })
 
@@ -48,9 +48,9 @@ export const Price = ({
 
   return (
     <PriceWrap>
-      <PriceSub><Heading bold size="l0" title={currency ? currency : '$'} /></PriceSub>
-      <Heading bold size="l3" title={dollars} />
-      <PriceSub><Heading bold size="l0" title={cents} /></PriceSub>
+      <PriceSub><Heading heavy size="l0" title={currency ? currency : '$'} /></PriceSub>
+      <Heading heavy size="l3" title={dollars} />
+      <PriceSub><Heading heavy size="l0" title={cents} /></PriceSub>
     </PriceWrap>
   )
 }

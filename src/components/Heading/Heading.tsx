@@ -32,6 +32,7 @@ const HeadingWrap = styled('div', {
     // For the support of different colors that the heading can be
 
     color: {
+      brand: { color: '$brand' },
       secondary: { color: '$textSecondary' },
       yellow: { color: '$rating' },
       white: { color: '$white' },
@@ -54,7 +55,7 @@ const FontHeavy = styled('strong', {
 
 interface HeadingProps {
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' | 'l5' | 'l6' | 'l7' | 'l8' | 'l9' | 'l10'
-  color?: 'secondary' | 'white' | 'purple' | 'invert' | 'yellow'
+  color?: 'brand' | 'secondary' | 'white' | 'purple' | 'invert' | 'yellow'
   title: any
   bold?: boolean
   heavy?: boolean

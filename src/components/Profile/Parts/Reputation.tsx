@@ -17,7 +17,7 @@ const RepItem = styled('div', {
   position: 'relative',
   width: '100%',
   height: 100,
-  border: '1px solid $border',
+  border: '1px solid $seperator',
   borderRadius: '$r2',
   textAlign: 'center'
 })

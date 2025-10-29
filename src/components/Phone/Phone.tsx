@@ -12,24 +12,24 @@ const PhoneWrap = styled('div', {
   width: '100%',
   height: 850,
   margin: '0 auto',
-  background: '#131313',
+  background: '$bgPrimary',
   borderRadius: 56,
   // border: '1px solid #e0e0e0',
-  border: '4px solid rgba( 37, 37, 37, 1 )',
-  boxShadow: '0 2px 10px rgba( 0,0,0, 0.05 )',
+  border: '4px solid $phoneBorder',
+  // boxShadow: '0 2px 10px rgba( 0,0,0, 0.05 )',
   overflow: 'hidden',
 
-  '&:before': {
-    content: '',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: 440,
-    background: '$bgSecondary',
-    borderRadius: '0 0 50% 50%',
-    '@mobile': { height: 380 }
-  },
+  // '&:before': {
+  //   content: '',
+  //   position: 'absolute',
+  //   top: 0,
+  //   left: 0,
+  //   width: '100%',
+  //   height: 440,
+  //   background: '$bgSubtle',
+  //   borderRadius: '0 0 50% 50%',
+  //   '@mobile': { height: 380 }
+  // },
 
   variants: {
     hasHero: {
@@ -68,7 +68,7 @@ const PhoneContent = styled('div', {
 
   variants: {
     bottomSpacing: {
-      true: { paddingBottom: 50 }
+      true: { paddingBottom: 80 }
     },
 
     contentFullHeight: {
@@ -87,9 +87,10 @@ const PhoneContentMain = styled('div', {
   // gap: 12,
   position: 'relative',
   paddingTop: 50,
+  paddingBottom: 50,
   width: '100%',
-  minHeight: '100%',
-  height: '100%',
+  // minHeight: '100%',
+  // height: '100%',
   
   '@mobile': { paddingTop: 0 },
   // paddingTop: 8,
@@ -101,7 +102,8 @@ const PhoneContentMain = styled('div', {
 
     blockSpacing: {
       l1: { '> *:not(:first-child)': { marginBottom: 20 } },
-      l2: { '> *:not(:first-child)': { marginBottom: 40 } }
+      l2: { '> *:not(:first-child)': { marginBottom: 40 } },
+      l3: { '> *:not(:first-child)': { marginBottom: 60 } }
     },
 
     hasBottomNav: {
@@ -134,7 +136,7 @@ const IphoneBottom = styled('div', {
     bottom: 12,
     width: 120,
     height: 4,
-    background: '#fff',
+    background: '$textPrimary',
     borderRadius: '$pill'
   },
 
@@ -160,25 +162,6 @@ export const BuyNowWrap = styled('div', {
   zIndex: 9999
 })
 
-const UnboxWrap = styled('div', {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  zIndex: 9999
-})
-
-const Overlay = styled('div', {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  background: 'rgba( 0,0,0, 0.8 )',
-  zIndex: 9000
-})
-
 const ConfettiCanvas = styled('canvas', {
   position: 'absolute',
   top: 0,
@@ -202,6 +185,7 @@ interface PhoneProps {
   hasAlert?: boolean
   showConfettiCanvas?: boolean
   confettiCanvasRef?: React.RefObject<HTMLCanvasElement>
+  navButtonTitle?: string
 }
 
 export const Phone = ({ 
@@ -216,7 +200,8 @@ export const Phone = ({
     contentFullHeight,
     hasAlert,
     showConfettiCanvas,
-    confettiCanvasRef
+    confettiCanvasRef,
+    navButtonTitle
   }:PhoneProps) => {
 
   return(
@@ -226,7 +211,7 @@ export const Phone = ({
     >
       { hasLockScreen && ( <LockScreen /> )}
 
-      <IphoneTop {...{ darkBg }} />
+      <IphoneTop />
 
       <PhoneContent bottomSpacing={ bottomNav && true }>
         <PhoneContentMain 
@@ -242,9 +227,9 @@ export const Phone = ({
       )}
 
       <IphoneBottom />
-      { fall && ( <FallAnimation /> )}
+      {/* { fall && ( <FallAnimation /> )} */}
       {/* <PhoneBg {...{ lighterBg }} /> */}
-      { bottomNav && ( <NavBottom /> )}
+      { bottomNav && ( <NavBottom title={ navButtonTitle } /> )}
 
  
 

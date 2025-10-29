@@ -20,7 +20,7 @@ const IconWrap = styled('span', {
   svg: {
     position: 'absolute',
     width: '100%',
-    fill: 'CurrentColor'
+    fill: 'currentColor'
   },
 
   // For the different variants supporting the icon component
@@ -34,6 +34,10 @@ const IconWrap = styled('span', {
       l3: { minWidth: 28, width: 28, minHeight: 28, height: 28 },
       l4: { minWidth: 40, width: 40, minHeight: 40, height: 40 },
       l5: { minWidth: 52, width: 52, minHeight: 52, height: 52 }
+    },
+
+    color: {
+      brand: { color: '$cart' }
     }
   }
 })
@@ -44,6 +48,7 @@ interface IconProps {
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4'
   icon?: string
   iconAlt?: string
+  color?: 'brand'
 }
 
 // ---------- This is the end of declarations ---------- //
@@ -51,12 +56,13 @@ interface IconProps {
 export const Icon = ({
     size,
     icon,
+    color,
     iconAlt
   }: IconProps ) => {
   
   return(
 
-    <IconWrap {...{ size }}>
+    <IconWrap {...{ size, color }}>
       <svg>
         <use 
           xlinkHref={ `/icons/icons.svg#${ icon }` }

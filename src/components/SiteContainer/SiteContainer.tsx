@@ -8,7 +8,7 @@ const SiteWrap = styled('div', {
   position: 'relative',
   width: '100%',
   minHeight: '100vh',
-  background: '#171717',
+  background: '$bgPrimary',
   overflow: 'hidden'
 })
 

@@ -24,12 +24,12 @@ const BatteryWrap = styled('div', {
     width: 1,
     height: 4,
     borderRadius: '0 1px 1px 0',
-    background: '#878787'
+    background: '$textPrimary'
   },
 
   variants: {
     darkBg: {
-      true: { '&:after': { background: '#fff' }}
+      true: { '&:after': { background: '$textPrimary' }}
     }
   }
 })
@@ -45,7 +45,7 @@ const BatteryBase = styled('div', {
   width: '100%',
   height: '100%',
   borderRadius: 4,
-  border: '0.5px solid #878787',
+  border: '0.5px solid $textPrimary',
 
   // For the current power line in the center of the container
 
@@ -56,14 +56,14 @@ const BatteryBase = styled('div', {
     width: '50%',
     height: '70%',
     borderRadius: 2,
-    background: '#fff',
+    background: '$textPrimary',
   },
 
   variants: {
     darkBg: {
       true: { 
-        border: '0.5px solid #fff',
-        '&:before': { background: '#fff' }
+        border: '0.5px solid $textPrimary',
+        '&:before': { background: '$textPrimary' }
       }
     }
   }

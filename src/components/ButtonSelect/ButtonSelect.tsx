@@ -6,7 +6,8 @@ const ButtonWrap = styled('div', {
   display: 'inline-flex',
   position: 'relative',
   textAlign: 'left',
-  height: 56
+  height: 56,
+  cursor: 'pointer'
 })
 
 const ButtonContent = styled('div', {
@@ -17,7 +18,8 @@ const ButtonContent = styled('div', {
   position: 'relative',
   width: '100%',
   paddingRight: 24,
-  background: '$bgTert',
+  background: '$bgPrimary',
+  border: '1px solid $borderDisabled',
   borderRadius: '$r1',
   overflow: 'hidden',
 
@@ -31,8 +33,7 @@ const ButtonContent = styled('div', {
     left: 0,
     width: '100%',
     height: '100%',
-    background: '$borderActive',
-    opacity: 0.4,
+    background: '$brandSubtle',
     display: 'none'
   },
 
@@ -97,7 +98,7 @@ export const ButtonSelect = ({
 
         <ButtonText>
           <Heading bold size="l1" title={ title } />
-          <Heading size="l0" color="secondary" title={ price } />
+          <Heading size="l0" title={ price } />
         </ButtonText>
       </ButtonContent>
     </ButtonWrap>

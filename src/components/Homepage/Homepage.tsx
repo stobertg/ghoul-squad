@@ -24,7 +24,7 @@ const HomeContent = styled('div', {
 const HomeCardHero = styled('div', {
   width: '100%',
   height: 180,
-  border: '1px solid #222',
+  border: '1px solid $borderFaint',
   borderRadius: '$r2',
 
   variants: {

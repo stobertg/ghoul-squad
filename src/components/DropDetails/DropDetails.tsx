@@ -39,7 +39,7 @@ const TabsTrigger = styled( TabsPrimitive.Trigger, {
   gap: 0,
   position: 'relative',
   height: 55,
-  border: '1px solid $bgTert',
+  border: '1px solid $borderDisabled',
   borderRadius: '$r1',
   overflow: 'hidden',
   transition: '$s1',
@@ -51,15 +51,14 @@ const TabsTrigger = styled( TabsPrimitive.Trigger, {
     left: 0,
     width: '100%',
     height: '100%',
-    background: '$bgTert'
+    // background: '$bgTert'
   },
 
   '&[data-state="active"]': {
     border: '1px solid $borderActive',
 
     '&:before': {  
-      background: '$borderActive',
-      opacity: 0.4 
+      background: '$brandSubtle'
     }
   }
 })
@@ -95,7 +94,7 @@ const DropIntro = styled('div', {
 const DropStageWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  border: '1px solid $border',
+  background: '$bgPrimary',
   borderRadius: '$r2',
   overflow: 'hidden'
 })

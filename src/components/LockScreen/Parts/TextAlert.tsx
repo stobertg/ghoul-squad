@@ -11,7 +11,7 @@ const fadeIn = keyframes({
 const TextWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  
+  '*': { color: '#333' }
 })
 
 const TextContent = styled('button', {
@@ -71,7 +71,7 @@ const TextTitle = styled('div', {
   position: 'relative',
   width: '100%',
 
-  '+ *': { width: '85%' }
+  '+ *': { width: '90%' }
 })
 
 interface TextProps {
@@ -87,11 +87,11 @@ export const TextAlert = ({ onClick }:TextProps) => {
 
         <TextMain>
           <TextTitle>
-            <Heading bold size="l1" color="invert" title="Ready for Halloween!?" />
+            <Heading bold size="l1" title="Ready for Halloween!?" />
             <div style={{ fontSize: 10, color: '#333' }}>1m ago</div>
           </TextTitle>
 
-          <Text fontSize="l0" color="invert">🎃👻🍁 Finds x Ghoul Squad Drop is available now. Tap to join the 🔴 live stream</Text>
+          <Text fontSize="l0">🎃👻🍁 Finds x Ghoul Squad Drop is available now. Tap to join the 🔴 live stream</Text>
         </TextMain>
       </TextContent>
     </TextWrap>

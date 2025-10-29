@@ -50,16 +50,16 @@ const TrendingContent = styled('div', {
 })
 
 interface IntroProps {
-
+  badgeTitle?: string | React.ReactNode
 }
 
-export const ProductIntro = ({}:IntroProps) => {
+export const ProductIntro = ({ badgeTitle }:IntroProps) => {
   return(
 
     <IntroWrap>
       <IntroContent>
         <IntroTop>
-          <CollectableTag />
+          <CollectableTag title={ badgeTitle } />
 
           <IntroAttr>
             <Condition />
@@ -68,7 +68,7 @@ export const ProductIntro = ({}:IntroProps) => {
         </IntroTop>
 
         <IntroTitle>
-          <Heading bold size="l4" title="Ghoul Squad Special Drop: Halloween Blind Box" />
+          <Heading heavy size="l4" title="Ghoul Squad Special Drop: Halloween Blind Box" />
           <BrandChip 
             hasBy
             size="l0"

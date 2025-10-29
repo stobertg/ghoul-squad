@@ -12,11 +12,11 @@ const PromptWrap = styled('div', {
 const PromptContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: 16,
+  gap: 8,
   position: 'relative',
   width: '100%',
   padding: '16px 0',
-  border: '1px solid $border',
+  background: '$bgPrimary',
   borderRadius: '$r2'
 })
 
@@ -27,7 +27,6 @@ const PromptHeader = styled('div', {
   gap: 8,
   position: 'relative',
   width: '100%',
-  svg: { color: '$borderActive' }
 })
 
 const PromptBlock = styled('div', {
@@ -43,7 +42,27 @@ const PromptHeaderTitle = styled('div', {
 })
 
 const IconWrap = styled('div', {
+  width: 48
+})
 
+const SubTitle = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: 4,
+  position: 'relative'
+})
+
+const PromptMore = styled('button', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  position: 'relative',
+  width: '100%',
+  padding: '16px 16px',
+  background: '$brandSubtle',
+  borderRadius: '$r1'
 })
 
 interface AiProps {
@@ -57,10 +76,13 @@ export const AiInline = ({}:AiProps) => {
       <PromptContent>
         <PromptBlock>
           <PromptHeader>
-            <IconWrap><Icon size="l3" icon="sparkles" /></IconWrap>
+            <IconWrap><img src="/brand/wink.png" /></IconWrap>
             <PromptHeaderTitle>
-              <Heading size="l1" title="Do you have any questions?" />
-              <Heading color="secondary" size="l0" title="Ask Findy, your personal Assistant!" />
+              <Heading bold size="l1" title="Ask Sparky " />
+              <SubTitle>
+                <Heading size="l0" title="Your AI shopping assistant" />
+                <Icon size="l0" icon="info" />
+              </SubTitle>
             </PromptHeaderTitle>
           </PromptHeader>
         </PromptBlock>
@@ -73,7 +95,12 @@ export const AiInline = ({}:AiProps) => {
           ]}
         />
 
-        <PromptBlock><Input /></PromptBlock>
+        <PromptBlock>
+          <PromptMore>
+            <Heading size="l1" title="Ask a different question" />
+            <Icon size="l0" icon="message-circle" />
+          </PromptMore>
+        </PromptBlock>
       </PromptContent>
     </PromptWrap>
 

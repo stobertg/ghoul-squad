@@ -14,19 +14,20 @@ const ButtonWrap = styled('button', {
   variants: {
     variant: {
       primary: {
-        background: '$brandPrimary',
+        background: '$brand',
         color: '#fff'
       },
 
       secondary: { 
-        background: '$buttonSecondary',
+        background: '$buttonNeutral',
         color: '$bgPrimary',
         'svg': { width: 20 }
       },
 
       neutral: {
-        background: '#fff',
-        color: '$bgPrimary'
+        background: '$buttonNeutral',
+        color: '$bgPrimary',
+        'svg': { width: 20 }
       }
     }
   }
@@ -37,19 +38,21 @@ interface ButtonProps {
   onClick?: any
   icon: string
   size?: 'l0' | 'l1' | 'l2' | 'l3' | 'l4' 
+  color?: 'brand'
 }
 
 export const ButtonIcon = ({ 
     variant,
     onClick,
     icon,
-    size
+    size,
+    color
   }:ButtonProps) => {
 
   return(
 
     <ButtonWrap {...{ variant, onClick }}>
-      <Icon {...{ icon, size }} />
+      <Icon {...{ icon, size, color }} />
     </ButtonWrap>
 
   )

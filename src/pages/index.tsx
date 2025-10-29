@@ -103,31 +103,32 @@ export default function Home() {
   return (
     <>
       <LoadingBar 
-        color="yellow"
+        color="#0053E2"
         progress={ combinedProgress }
         shadow={ true }
       />
 
       { allLoaded && (
         <SiteContainer
-        nav={[
-          { icon: 'star', title: 'Drop hero', link: '/', active: true },
-          { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
-          { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
-          { icon: 'box', title: 'Unboxing', link: '/unbox' },
-          { icon: 'pumpkin', title: 'Product', link: '/product' },
-          { icon: 'user-check', title: 'Profile', link: '/profile' },
-          { icon: 'tags', title: 'Buy now', link: '/buy-now' },
-        ]}
+          nav={[
+            { icon: 'star', title: 'Drop hero', link: '/', active: true },
+            { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
+            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
+            { icon: 'box', title: 'Unboxing', link: '/unbox' },
+            { icon: 'pumpkin', title: 'Product', link: '/product' },
+            { icon: 'user-check', title: 'Profile', link: '/profile' },
+            { icon: 'tags', title: 'Buy now', link: '/buy-now' },
+          ]}
         >
           <HeadTags />
 
-          <Phone fall>
+          <Phone fall bottomNav navButtonTitle="Notify Me">
             <PhoneHeader 
               overlay 
               onStar={ toggleWatch }
               onChat={ toggleChat }
             />
+
             <Drop
               title=""
               titles={titles}
@@ -137,13 +138,13 @@ export default function Home() {
               onBrandClick={ toggleProfile }
             />
 
-            <ProfileWrap showProfile={ profile }>
+            {/* <ProfileWrap showProfile={ profile }>
               <PhoneHeader 
                 overlay 
                 onBackClick={ toggleProfile } 
               />
               <Profile />
-            </ProfileWrap>
+            </ProfileWrap> */}
 
             <WatchWrap active={ watch }>
               <WatchList closeWatch={ toggleWatch } />

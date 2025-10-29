@@ -20,7 +20,7 @@ const NetworkBar = styled('div', {
   position: 'relative',
   width: 3,
   borderRadius: 2,
-  background: '#fff',
+  background: '$textPrimary',
 
   // Here we account for the different heights of the bar
   // As traiditonal network icons go, this forms a 'step-like' graphic
@@ -41,7 +41,7 @@ const NetworkBar = styled('div', {
     },
 
     darkBg: {
-      true: { background: '#fff' }
+      true: { background: '$textPrimary' }
     }
   }
 })

@@ -112,7 +112,7 @@ export default function Home() {
 
     <>
       <LoadingBar 
-        color="yellow"
+        color="#0053E2"
         progress={ combinedProgress }
         shadow={ true }
       />

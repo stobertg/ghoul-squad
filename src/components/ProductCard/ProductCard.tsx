@@ -5,7 +5,7 @@ import { Heading } from '@components'
 const CardWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  background: '$bgSecondary',
+  background: '$bgPrimary',
   borderRadius: '$r2'
 })
 

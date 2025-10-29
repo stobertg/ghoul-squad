@@ -3,6 +3,7 @@ import { styled } from '@theme'
 import Tilt from 'react-parallax-tilt'
 import { Heading, Text, Button, Grid } from '@components'
 import { UnboxCard } from './Parts' 
+import { useTheme } from 'next-themes'
 
 const BoxWrap = styled('div', {
   display: 'flex',
@@ -93,6 +94,10 @@ interface UnboxProps {
 }
 
 export const Unbox = ({ shareCom }:UnboxProps) => {
+  const { resolvedTheme } = useTheme()
+  const glareColor = resolvedTheme === 'dark' ? 'orange' : 'orange'
+  const glareOpacity = resolvedTheme === 'dark' ? 0.15 : 0.08
+
   return(
 
     <BoxWrap>
@@ -102,9 +107,9 @@ export const Unbox = ({ shareCom }:UnboxProps) => {
           tiltMaxAngleX={ 20 }
           tiltMaxAngleY={ 20 }
           glareEnable={ true }
-          glareMaxOpacity={0.15}
+          glareMaxOpacity={glareOpacity}
           glareBorderRadius="32px"
-          glareColor="orange"
+          glareColor={glareColor}
           tiltReverse={ true }
           glarePosition="all"
         >

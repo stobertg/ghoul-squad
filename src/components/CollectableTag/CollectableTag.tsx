@@ -13,7 +13,7 @@ const CollectContent = styled('div', {
   gap: 8,
   position: 'relative',
   padding: '6px 16px 6px 6px',
-  border: '1px solid $border',
+  border: '1px solid $seperator',
   borderRadius: '$pill',
 
   em: { color: '$rating' }
@@ -26,16 +26,19 @@ const CollectImage = styled('div', {
 })
 
 interface CollectProps {
-
+  title?: string | React.ReactNode
 }
 
-export const CollectableTag = ({}:CollectProps) => {
+export const CollectableTag = ({ title }:CollectProps) => {
   return(
 
     <CollectWrap>
       <CollectContent>
         <CollectImage><img src="/badges/badge_collab.png" alt="Collectable Badge" /></CollectImage>
-        <Heading size="l0" title={<>Collectable <em>#347</em> / 500</>} />
+        <Heading 
+          size="l0" 
+          title={ title ?? ( <>Collectable <em>#347</em> / 500</> )} 
+        />
       </CollectContent>
     </CollectWrap>
 

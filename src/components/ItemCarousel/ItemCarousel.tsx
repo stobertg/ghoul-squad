@@ -15,7 +15,7 @@ const CarContent = styled('div', {
   flexDirection: 'row',
   gap: 8,
   position: 'relative',
-  padding: '0 32px',
+  padding: '0 24px',
   overflow: 'scroll',
   scrollbarWidth: 'none',
   '&::-webkit-scrollbar': { display: 'none' },
@@ -34,13 +34,26 @@ const CarHeader = styled('div', {
   justifyContent: 'space-between',
   position: 'relative',
   width: '100%',
-  padding: '0 32px',
+  padding: '0 24px',
+
+  a: {
+    textDecoration: 'underline',
+    fontSize: '$s1'
+  },
 
   variants: {
     width: {
       l0: { padding: '0 20px' }
     }
   }
+})
+
+const CarTitle = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: 4,
+  position: 'relative'
 })
 
 interface ItemProps {
@@ -51,6 +64,7 @@ interface ItemProps {
     image: string
     title: string
     price: string | number
+    ratingNumber?: number
   }[]
 }
 
@@ -59,22 +73,33 @@ export const ItemCarousel = ({ items, noButton, width, title }:ItemProps) => {
 
     <CarWrap>
       <CarHeader {...{ width }}>
-        <Heading 
-          bold 
-          size="l2" 
-          title={ title ?? "More from Ghoul Squad"} 
-        />
-        { noButton ?? ( <Button title="Shop" /> )}
+        <CarTitle>
+          <Heading 
+            bold 
+            size="l2" 
+            title={ title ?? "More from Ghoul Squad" } 
+          />
+
+          <Heading 
+            size="l1" 
+            title={ `(${ items.length })` } 
+          />
+        </CarTitle>
+
+        { noButton ?? ( <a href="#">View all</a> )}
       </CarHeader>
 
       <CarContent {...{ width }}>
         { items.map(( item, i ) => (
+
           <Item 
             key={`item${ i }`}
             image={ item.image }
             title={ item.title }
             price={ item.price }
+            ratingNumber={ item.ratingNumber }
           />
+
         ))}
       </CarContent>
     </CarWrap>

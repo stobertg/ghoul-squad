@@ -17,7 +17,7 @@ const HeroContent = styled('div', {
   variants: {
     isLive: {
       true: {
-        height: 380
+        height: 360
       }
     }
   }
@@ -70,30 +70,74 @@ interface HeroProps {
   alignVideo?: 'top'
   videoMuted?: boolean
   isLive?: boolean
+  image?: string
+  onClick?: any
 }
 
-export const ProductHero = ({ video, alignVideo, videoMuted, isLive }:HeroProps) => {
+export const ProductHero = ({ 
+    video, 
+    alignVideo, 
+    videoMuted, 
+    isLive,
+    image,
+    onClick
+  }:HeroProps) => {
+
   return(
 
     <HeroWrap>
       <HeroContent {...{ isLive }}>
-        <Video {...{ alignVideo }}>
-          <video
-            src={ video }
-            autoPlay
-            muted={ videoMuted }
-            playsInline
-            loop
-            preload="auto"
-          />
+        { video && (
+          <>
+            { onClick ? (
 
-          { isLive && ( 
-            <LiveBadge>
-              <span />
-              <Heading bold color="white" size="l0" title="Live now" />
-            </LiveBadge>
-          )}
-        </Video>
+              <button {...{ onClick }}>
+                <Video {...{ alignVideo }}>
+                  <video
+                    src={ video }
+                    autoPlay
+                    muted={ videoMuted }
+                    playsInline
+                    loop
+                    preload="auto"
+                  />
+
+                  { isLive && ( 
+                    <LiveBadge>
+                      <span />
+                      <Heading bold color="white" size="l0" title="Live now" />
+                    </LiveBadge>
+                  )}
+                </Video>
+              </button>
+
+            ) : (
+
+              <Video {...{ alignVideo }}>
+                <video
+                  src={ video }
+                  autoPlay
+                  muted={ videoMuted }
+                  playsInline
+                  loop
+                  preload="auto"
+                />
+
+                { isLive && ( 
+                  <LiveBadge>
+                    <span />
+                    <Heading bold color="white" size="l0" title="Live now" />
+                  </LiveBadge>
+                )}
+              </Video>
+
+            )}
+          </>
+        )}
+
+        { image && (
+          <img src={ image } alt="Ghoul Squad" />
+        )}
       </HeroContent>
     </HeroWrap>
 

@@ -62,14 +62,14 @@ export const IphoneTop = ({ darkBg }:PhoneProps) => {
 
     <IphoneHeader>
       <IphoneHeaderSide>
-        <Heading color={ darkBg ? 'white' : undefined } title="05:29" />
+        <Heading bold color={ darkBg ? 'white' : undefined } title="05:29" />
       </IphoneHeaderSide>
 
       <IphoneCamera />
 
       <IphoneHeaderSide>
         <IconNetwork {...{ darkBg }} />
-        <Heading color={ darkBg ? 'white' : undefined } title="LTE" />
+        <Heading bold color={ darkBg ? 'white' : undefined } title="LTE" />
         <IconBattery {...{ darkBg }} />
       </IphoneHeaderSide>
     </IphoneHeader>

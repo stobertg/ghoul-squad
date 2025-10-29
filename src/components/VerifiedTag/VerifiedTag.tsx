@@ -5,9 +5,9 @@ import { TrustBadge } from '../BrandChip/Parts/TrustBadge'
 
 const TagWrap = styled('div', {
   position: 'relative',
-  padding: '4px 12px 4px 4px',
+  padding: '6px 12px 6px 6px',
   borderRadius: '$pill',
-  border: '1px solid $border'
+  background: '$bgSubtle'
 })
 
 const TagContent = styled('div', {
@@ -29,7 +29,7 @@ export const VerifiedTag = ({}:TagProps) => {
     <TagWrap>
       <TagContent>
         <TrustBadge size="l0" />
-        <Heading size="l0" title="Verified Partner" />
+        <Heading bold size="l0" title="Verified Partner" />
       </TagContent>
     </TagWrap>
 
