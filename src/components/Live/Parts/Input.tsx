@@ -16,7 +16,7 @@ const InputContent = styled('div', {
   width: '92%',
   margin: '0 auto',
   paddingRight: 12,
-  border: '1px solid #494949',
+  border: '1px solid #353535',
   borderRadius: '$pill',
   overflow: 'hidden',
   '> *': { zIndex: 2 },
@@ -42,7 +42,7 @@ const InputContent = styled('div', {
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'rgba( 48,48,48, 0.5 )'
+    background: 'rgba( 0,0,0, 0.8 )'
   },
 
   input: {

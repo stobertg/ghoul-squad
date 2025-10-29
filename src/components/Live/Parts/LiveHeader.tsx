@@ -4,7 +4,8 @@ import { ButtonIcon, ButtonContainer, Icon, Heading } from '@components'
 
 const HeaderWrap = styled('div', {
   position: 'relative',
-  width: '100%'
+  width: '100%',
+  
 })
 
 const HeaderContent = styled('div', {
@@ -38,6 +39,7 @@ const Watching = styled('div', {
   padding: '12px 16px 12px 12px',
   borderRadius: '$pill',
   overflow: 'hidden',
+  '*': { color: '$white !important' },
   
   '&:before': {
     content: '',
@@ -52,7 +54,7 @@ const Watching = styled('div', {
 })
 
 const HeaderRight = styled('div', {
-
+  '*': { color: '$white !important' }
 })
 
 interface HeaderProps {

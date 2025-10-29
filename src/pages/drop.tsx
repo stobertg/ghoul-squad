@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { styled, keyframes } from '@theme'
-import { SiteContainer, HeadTags, Phone, PhoneHeader, ProductHero, ProductIntro, AppBlock, Heading, DropDetails, Live, AiInline, ItemCarousel, Product, TextEm } from '@components'
+import { SiteContainer, HeadTags, Phone, PhoneHeader, Product, Live, TextEm } from '@components'
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
@@ -48,49 +48,85 @@ const AppScreen = styled('div', {
 
   variants: {
     show: {
-      true: { 
+      true: {
         pointerEvents: 'auto',
-        '> *': { animation: `${ fadeIn } 600ms ease forwards` }
+        '> *': { animation: `${fadeIn} 600ms ease forwards` }
       },
-
-      false: { 
+      false: {
         pointerEvents: 'none',
-        '> *': { animation: `${ fadeOut } 600ms ease forwards` }
+        '> *': { animation: `${fadeOut} 600ms ease forwards` }
       }
     }
   }
 })
 
-
 const StupidGap = styled('div', {
   paddingTop: 50,
-  // animation: `${ fadeOut } 600ms ease forwards`,
 })
 
 export default function Home() {
-  const [ live, setLive ] = useState( false )
+  const [live, setLive] = useState(false)
+
   const openLive = () => {
-    setLive( !live )
+    const next = !live
+  
+    if (typeof document !== 'undefined') {
+      const phone = document.querySelector('.phone') as HTMLElement | null
+  
+      if (phone && next) {
+        // lock scroll and jump to top synchronously
+        phone.style.overflow = 'hidden'
+        phone.scrollTop = 0
+        // force a sync layout pass to ensure the scrollTop takes effect
+        // before we toggle the UI
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        phone.getBoundingClientRect()
+  
+        // defer state change to the next frame so UI toggles after scroll
+        requestAnimationFrame(() => {
+          setLive(next)
+        })
+        return
+      }
+  
+      if (phone && !next) {
+        // closing: restore overflow before toggling state
+        phone.style.overflow = ''
+      }
+    }
+  
+    // fallback for when .phone isn't found
+    setLive(next)
   }
 
-  const Video = "/ghouls/livedrop.mp4" 
+  const Video = "/ghouls/livedrop.mp4"
 
-  const { progress, isLoaded } = useImagePreloader(imageUrls);
-  const { progress: fontProgress, isLoaded: isFontLoaded } = useFontPreloader(fontUrls);
-  const combinedProgress = Math.round(((progress || 0) + (fontProgress || 0)) / 2);
-  const allLoaded = isLoaded && isFontLoaded;
+  // Safety net: ensure overflow is correct if state changes or component unmounts
+  useEffect(() => {
+    if (typeof document === 'undefined') return
+    const phone = document.querySelector('.phone') as HTMLElement | null
+    if (phone) {
+      phone.style.overflow = live ? 'hidden' : ''
+    }
+    return () => {
+      if (phone) phone.style.overflow = ''
+    }
+  }, [live])
+
+  const { progress, isLoaded } = useImagePreloader(imageUrls)
+  const { progress: fontProgress, isLoaded: isFontLoaded } = useFontPreloader(fontUrls)
+  const combinedProgress = Math.round(((progress || 0) + (fontProgress || 0)) / 2)
+  const allLoaded = isLoaded && isFontLoaded
 
   return (
-
     <>
-      <LoadingBar 
+      <LoadingBar
         color="#0053E2"
-        progress={ combinedProgress }
-        shadow={ true }
+        progress={combinedProgress}
+        shadow={true}
       />
 
-      { allLoaded && (
-
+      {allLoaded && (
         <SiteContainer
           nav={[
             { icon: 'star', title: 'Drop hero', link: '/' },
@@ -103,39 +139,38 @@ export default function Home() {
           ]}
         >
           <HeadTags bgColor="#181818" />
-          
-          <Phone 
-            removeBg 
+
+          <Phone
+            removeBg
             hasLockScreen
-            hasHero={ true }
-            bottomNav={ !live }
+            hasHero={true}
+            bottomNav={!live}
             blockSpacing="l2"
+            hasClickEvents
           >
             <div>
               <StupidGap />
               <PhoneHeader overlay />
             </div>
-            
-            <Product 
-              isLive 
-              videoMuted 
-              alignVideo="top" 
-              video={ Video } 
-              badgeTitle={<>Collectable <TextEm><strong>#347</strong></TextEm> / 500</>} 
-              onClick={ openLive }
+
+            <Product
+              isLive
+              videoMuted
+              alignVideo="top"
+              video={Video}
+              badgeTitle={<>Collectable <TextEm><strong>#347</strong></TextEm> / 500</>}
+              onClick={openLive}
             />
 
-            <AppScreen show={ live === true }>
-              <Live 
-                backClick={ openLive }
-                video={ Video } 
+            <AppScreen show={live === true}>
+              <Live
+                backClick={openLive}
+                video={Video}
               />
             </AppScreen>
           </Phone>
         </SiteContainer>
-
       )}
     </>
-
   )
 }

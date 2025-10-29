@@ -11,7 +11,7 @@ const fadeIn = keyframes({
 const TextWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  '*': { color: '#333' }
+  '*': { color: '#333 !important' }
 })
 
 const TextContent = styled('button', {

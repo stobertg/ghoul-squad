@@ -14,7 +14,7 @@ const LiveWrap = styled('div', {
   top: 0,
   left: 0,
   width: '100%',
-  height: 840,
+  height: 843,
   paddingTop: 64,
   background: '$bgPrimary',
   overflow: 'hidden',
@@ -99,6 +99,7 @@ const PlayButton = styled('button', {
   width: 40,
   height: 40,
   borderRadius: '50%',
+  color: '#fff',
   '> *': { zIndex: 3 },
 
   '&:before, &:after': {

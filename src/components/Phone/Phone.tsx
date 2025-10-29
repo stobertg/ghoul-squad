@@ -108,7 +108,13 @@ const PhoneContentMain = styled('div', {
 
     hasBottomNav: {
       true: {
-        paddingBottom: 50
+        // paddingBottom: 50
+      }
+    },
+
+    hasClickEvents: {
+      true: {
+        paddingBottom: 0
       }
     }
   }
@@ -186,6 +192,7 @@ interface PhoneProps {
   showConfettiCanvas?: boolean
   confettiCanvasRef?: React.RefObject<HTMLCanvasElement>
   navButtonTitle?: string
+  hasClickEvents?: boolean
 }
 
 export const Phone = ({ 
@@ -201,22 +208,21 @@ export const Phone = ({
     hasAlert,
     showConfettiCanvas,
     confettiCanvasRef,
-    navButtonTitle
+    navButtonTitle,
+    hasClickEvents
   }:PhoneProps) => {
 
   return(
 
-    <PhoneWrap 
-      {...{ hasHero, removeBg }}
-    >
+    <PhoneWrap {...{ hasHero, removeBg }}>
       { hasLockScreen && ( <LockScreen /> )}
 
       <IphoneTop />
 
-      <PhoneContent bottomSpacing={ bottomNav && true }>
+      <PhoneContent bottomSpacing={ bottomNav && true } className="phone">
         <PhoneContentMain 
           hasBottomNav={ bottomNav ? true : false }
-          {...{ hasHero, blockSpacing, contentFullHeight }}
+          {...{ hasHero, blockSpacing, contentFullHeight, hasClickEvents }}
         >
           { children }
         </PhoneContentMain>

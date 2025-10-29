@@ -96,7 +96,8 @@ const CardText = styled('div', {
   gap: 4,
   flexDirection: 'column',
   position: 'relative',
-  marginTop: 4
+  marginTop: 4,
+  '*': { color: '#1e1e1e !important' }
 })
 
 // -------------- Typescript declarations -------------- //

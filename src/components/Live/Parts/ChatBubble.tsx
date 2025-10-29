@@ -15,7 +15,7 @@ const ChatContent = styled('div', {
   position: 'relative',
   padding: '12px 20px',
   borderRadius: '$r2',
-  '*': { zIndex: 3 },
+  '*': { zIndex: 3, color: '$white' },
   
   '&:before, &:after': {
     content: '',
