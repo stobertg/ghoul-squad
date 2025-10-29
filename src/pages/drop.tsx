@@ -77,9 +77,6 @@ export default function Home() {
         // lock scroll and jump to top synchronously
         phone.style.overflow = 'hidden'
         phone.scrollTop = 0
-        // force a sync layout pass to ensure the scrollTop takes effect
-        // before we toggle the UI
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         phone.getBoundingClientRect()
   
         // defer state change to the next frame so UI toggles after scroll
