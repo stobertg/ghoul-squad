@@ -47,7 +47,7 @@ export default function Home() {
           ]}
         >
           <HeadTags bgColor="#181818" />
-          <Phone removeBg bottomNav blockSpacing="l2">
+          <Phone removeBg bottomNav blockSpacing="l2" hasClickEvents>
             <PhoneHeader overlay />
             <Product 
               video="/ghouls/ghoul-box.mp4" 

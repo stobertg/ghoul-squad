@@ -89,6 +89,7 @@ const PhoneContentMain = styled('div', {
   paddingTop: 50,
   paddingBottom: 50,
   width: '100%',
+  minHeight: '100%',
   // minHeight: '100%',
   // height: '100%',
   
