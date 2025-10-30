@@ -42,7 +42,7 @@ export const darkThemeColors = {
   cardBgDark: '#000',
   cardBorder: '#333',
 
-  foreground: 'rgba( 24,24,24, 0.9 )',
+  foreground: 'rgba( 24,24,24, 0.95 )',
 
   danger: 'red',
   toggleBorder: '#555'

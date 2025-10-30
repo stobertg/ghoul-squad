@@ -10,7 +10,8 @@ const BottomSheet = styled('div', {
   left: 0,
   background: '$bgSecondary',
   borderRadius: '$r3 $r3 0 0',
-  paddingBottom: 32
+  paddingBottom: 32,
+  zIndex: 1,
 })
 
 const BottomSheetHeader = styled('div', {
@@ -32,6 +33,16 @@ const BottomSheetHeader = styled('div', {
       right: 0
     }
   }
+})
+
+const Overlay = styled('div', {
+  position: 'absolute',
+  top: -130,
+  left: 0,
+  width: '100%',
+  height: 'calc( 100% + 130px )',
+  background: '$overlay',
+  zIndex: 0
 })
 
 const imageUrls = [
@@ -104,6 +115,8 @@ export default function Home() {
 
               <BuyNow placeOrder={() => alert('hello')} />
             </BottomSheet>
+
+            <Overlay />
           </Phone>
         </SiteContainer>
 

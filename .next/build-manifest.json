@@ -15,11 +15,6 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/404": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -35,20 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/enter": [
+    "/buy-now": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/enter.js"
+      "static/chunks/pages/buy-now.js"
     ],
-    "/product": [
+    "/checkout": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/product.js"
-    ],
-    "/unbox": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/unbox.js"
+      "static/chunks/pages/checkout.js"
     ]
   },
   "ampFirstPages": []

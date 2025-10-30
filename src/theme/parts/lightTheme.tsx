@@ -1,6 +1,6 @@
 export const lightThemeColors = {
   bgPrimary: '#fff',
-  bgSecondary: '#F1F1F2',
+  bgSecondary: '#fff',
   bgTert: '#333',
   bgSubtle: '#f8f8f8',
   bgInvert: '#fff',
@@ -38,5 +38,7 @@ export const lightThemeColors = {
 
   danger: 'red',
 
-  toggleBorder: '#e3e4e5'
+  toggleBorder: '#e3e4e5',
+
+  overlay: 'rgba( 116, 118, 124, 0.7 )'
 }

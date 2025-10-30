@@ -83,13 +83,13 @@ export const ThemeButton = ({ onClick }:ThemeProps) => {
 
     <ButtonWrap type="button" onClick={ toggleTheme }>
       <ButtonIcons darkTheme={ lightTheme }>
-        <Icon size="l1" icon="moon-star" />
         <Icon size="l1" icon="sun-medium" />
+        <Icon size="l1" icon="moon-star" />
       </ButtonIcons>
       
       <ButtonTitles darkTheme={ lightTheme }>
-        <Heading bold title="Dark" />
         <Heading bold title="Light" />
+        <Heading bold title="Dark" />
       </ButtonTitles>
     </ButtonWrap>
 
