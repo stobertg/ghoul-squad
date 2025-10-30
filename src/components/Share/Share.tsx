@@ -3,6 +3,7 @@ import { styled } from '@theme'
 import { Heading, Avatar, PhoneHeader, AppBlock, Icon } from '@components'
 import { ShareInput } from './Parts/InputAlt'
 import { Input } from './Parts/Input'
+import { useTheme } from 'next-themes'
 
 const ShareWrap = styled('div', {
 	display: 'flex',
@@ -88,7 +89,7 @@ const Community = styled('div', {
 	gap: 6,
 	position: 'relative',
 	padding: '10px 14px 10px 10px',
-	border: '1px solid $border',
+	border: '1px solid $seperator',
 	borderRadius: '$pill'
 })
 
@@ -117,10 +118,11 @@ const OptionButton = styled('button', {
 	width: '100%',
 	minHeight: 44,
 	padding: '10px 16px',
-	background: '#30303080',
+	background: '$pillButton',
+  border: '1px solid $pillButtonBorder',
 	borderRadius: '$pill',
   transition: '$s1',
-  '&:hover': { background: '$bgTert' }
+  '&:hover': { background: '$pillButtonHover' }
 })
 
 const ItemCardWrap = styled('div', {
@@ -128,7 +130,7 @@ const ItemCardWrap = styled('div', {
 	width: '100%',
 	paddingBottom: 16,
 	marginBottom: 4,
-	borderBottom: '1px solid #333',
+	borderBottom: '1px solid $seperator',
 	transition: '$s2',
 	transitionDelay: '300ms',
 
@@ -150,7 +152,7 @@ const ItemCard = styled('div', {
 	gap: 12,
 	position: 'relative',
 	padding: 8,
-	border: '1px solid #333',
+	border: '1px solid $seperator',
 	// background: '$borderActive',
 	borderRadius: '$r2'
 })
@@ -223,6 +225,10 @@ export const Share = ({ onBackClick, onRecord, hasMediaThumb, removeThumb, onPos
 	const [ stage, setStage ] = useState(false)
 	const handleFocusChange = (focused: boolean) => { setStage(focused) }
 
+  // theme-aware keyboard image
+  const { resolvedTheme } = useTheme()
+  const keyboardSrc = resolvedTheme === 'light' ? '/utils/keyboard-light.webp' : '/utils/keyboard.webp'
+
 	return(
 
 		<ShareWrap>
@@ -278,17 +284,19 @@ export const Share = ({ onBackClick, onRecord, hasMediaThumb, removeThumb, onPos
 						<InputOptions>
 							<OptionButton onClick={ onRecord }>
                 <Icon icon="video" />
-								<Heading title="Record video" />
+								<Heading bold title="Record video" />
 							</OptionButton>
 
 							<OptionButton>
 								<Icon size="l1" icon="image" />
-								<Heading title="Upload media" />
+								<Heading bold title="Upload media" />
 							</OptionButton>
 						</InputOptions>
 					</KeyboardOptions>
 
-					<Keyboard active={ stage }><img src="/utils/keyboard.webp" /></Keyboard>
+					<Keyboard active={ stage }>
+            <img src={keyboardSrc} />
+          </Keyboard>
 				</ShareKeyboard>
 			</ShareContent>
 		</ShareWrap>

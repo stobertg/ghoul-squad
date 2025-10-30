@@ -19,21 +19,8 @@ const InputContent = styled('div', {
 //   border: '1px solid #494949',
   borderRadius: '$pill',
   overflow: 'hidden',
+  border: '1px solid $seperator',
   '> *': { zIndex: 2 },
-
-  // For the blur background
-
-  '&:before': {
-    content: '',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backdropFilter: 'blur( 10px )',
-    borderRadius: '$pill',
-    zIndex: 1
-  },
 
   '&:after': {
     content: '',
@@ -42,7 +29,7 @@ const InputContent = styled('div', {
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'rgba( 48,48,48, 0.5 )'
+    background: '$inputBg'
   },
 
   input: {

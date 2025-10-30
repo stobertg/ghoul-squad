@@ -50,5 +50,9 @@ export const darkThemeColors = {
   overlay: 'rgba( 0,0,0, 0.85 )',
   search: '#333',
 
-  chip: '#1b1b1b'
+  chip: '#1b1b1b',
+  pillButton: '#262626',
+  pillButtonBorder: '#262626',
+  pillButtonHover: '#333',
+  progress: '#333',
 }

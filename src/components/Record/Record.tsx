@@ -90,7 +90,8 @@ const IconWrap = styled('div', {
   alignItems: 'center',
   position: 'relative',
   width: 40,
-  height: 40
+  height: 40,
+  color: '#fff'
 })
 
 const RecordVideo = styled('div', {
@@ -102,10 +103,12 @@ const RecordVideo = styled('div', {
   left: 0,
   width: '100%',
   height: 'calc( 100% - 50px )',
+  borderRadius: '$r3',
+  overflow: 'hidden',
 
   video: { 
-    width: '110%',
-    height: '100%' 
+    width: '100%',
+    height: '103%' 
   }
 })
 

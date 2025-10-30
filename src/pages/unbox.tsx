@@ -4,6 +4,23 @@ import { HeadTags, SiteContainer, Phone, PhoneHeader, Unbox, Share, Record, User
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 
+const UnboxWrap = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  maxWidth: 392,
+  height: '100%',
+  paddingTop: 50,
+  overflow: 'hidden'
+})
+
+const UnboxMain = styled('div', {
+  position: 'relative',
+  width: '100%',
+  height: '100%',
+  overflow: 'hidden'
+})
+
 const ShareWrap = styled('div', {
   position: 'absolute',
   top: 0,
@@ -120,41 +137,45 @@ export default function Home() {
       { allLoaded && (
 
         <SiteContainer
-        nav={[
-          { icon: 'star', title: 'Drop hero', link: '/' },
-          { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
-          { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
-          { icon: 'box', title: 'Unboxing', link: '/unbox', active: true },
-          { icon: 'pumpkin', title: 'Product', link: '/product' },
-          { icon: 'user-check', title: 'Profile', link: '/profile' },
-          { icon: 'tags', title: 'Buy now', link: '/buy-now' },
-        ]}
+          nav={[
+            { icon: 'star', title: 'Drop hero', link: '/' },
+            { icon: 'clapperboard', title: 'Live drop', link: '/drop' },
+            { icon: 'shopping-cart', title: 'Checkout', link: '/checkout' },
+            { icon: 'box', title: 'Unboxing', link: '/unbox', active: true },
+            { icon: 'pumpkin', title: 'Product', link: '/product' },
+            { icon: 'user-check', title: 'Profile', link: '/profile' },
+            { icon: 'tags', title: 'Buy now', link: '/buy-now' },
+          ]}
         >
           <HeadTags bgColor="#181818" />
-          <Phone removeBg blockSpacing="l2">
-            <PhoneHeader overlay />
-            <Unbox shareCom={ onShare } />
+          <Phone removeBg blockSpacing="l2" noPadding overflowHidden>
+            <UnboxWrap>
+              <UnboxMain>
+                <PhoneHeader overlay />
+                <Unbox shareCom={ onShare } />
+              </UnboxMain>
 
-            <ShareWrap active={ share }>
-              <Share 
-                onBackClick={ onShare } 
-                onRecord={ onRecord } 
-                hasMediaThumb={ video }
-                removeThumb={ onVideoRemove }
-                onPost={ onPost }
-              />
-            </ShareWrap>
+              <ShareWrap active={ share }>
+                <Share 
+                  onBackClick={ onShare } 
+                  onRecord={ onRecord } 
+                  hasMediaThumb={ video }
+                  removeThumb={ onVideoRemove }
+                  onPost={ onPost }
+                />
 
-            <RecordWrap active={ record }>
-              <Record 
-                onClose={ onRecord } 
-                onDone={ () => { onRecord(), onVideoSubmit() }}
-              />
-            </RecordWrap>
+                <RecordWrap active={ record }>
+                  <Record 
+                    onClose={ onRecord } 
+                    onDone={ () => { onRecord(), onVideoSubmit() }}
+                  />
+                </RecordWrap>
 
-            <ProfileWrap active={ profile }>
-              <UserProfile />
-            </ProfileWrap>
+                <ProfileWrap active={ profile }>
+                  <UserProfile />
+                </ProfileWrap>
+              </ShareWrap>  
+            </UnboxWrap>
           </Phone>
         </SiteContainer>
 

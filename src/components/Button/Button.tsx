@@ -44,7 +44,7 @@ const ButtonWrap = styled('div', {
     },
 
     disabled: {
-      true: { background: '#222', color: '#555' }
+      true: { background: '#222', color: '#555', pointerEvents: 'none' }
     },
 
     width: {

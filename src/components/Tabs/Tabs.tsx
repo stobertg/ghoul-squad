@@ -22,7 +22,7 @@ const TabsList = styled( TabsPrimitive.List, {
   alignItems: 'center',
   position: 'relative',
   width: '100%',
-  borderBottom: '1px solid $border',
+  borderBottom: '1px solid $seperator',
   overflow: 'scroll',
   scrollbarWidth: 'none',
 

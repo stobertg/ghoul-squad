@@ -8,7 +8,7 @@ const ConfirmWrap = styled('div', {
   position: 'relative',
   width: '100%',
   height: '100%',
-  paddingBottom: 50,
+  paddingBottom: 100,
   overflow: 'scroll',
   
   '> *:not(:last-child)': {

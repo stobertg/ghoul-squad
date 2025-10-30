@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTheme } from 'next-themes'
 import { styled } from '@theme'
 import { Heading } from '@components'
 
@@ -15,7 +16,7 @@ const LevelContent = styled('div', {
   position: 'relative',
   width: '100%',
   padding: 16,
-  border: '1px solid $border',
+  border: '1px solid $seperator',
   borderRadius: '$r2'
 })
 
@@ -43,7 +44,7 @@ const LevelProgress = styled('div', {
   position: 'relative',
   width: '100%',
   height: 8,
-  background: '$bgTert',
+  background: '$progress',
   borderRadius: '$pill',
   overflow: 'hidden',
 
@@ -64,15 +65,21 @@ interface LevelProps {
 }
 
 export const Level = ({}:LevelProps) => {
+  const { resolvedTheme } = useTheme()
+  const badgeSrc = resolvedTheme === 'light'
+    ? '/badges/pump-badge.png'
+    : '/badges/pump-badge-inverse.png'
   return(
 
     <LevelWrap>
       <LevelContent>
-        <LevelBadge><img src="/badges/pump-badge-inverse.png" /></LevelBadge>
+        <LevelBadge>
+          <img src={badgeSrc} />
+        </LevelBadge>
 
         <LevelMain>
           <LevelText>
-            <Heading size="l0" color="secondary" title="Level 1 - Stater Pack" />
+            <Heading size="l0" color="secondary" title="Level 1 - Halloween Stater Pack" />
             <Heading size="l1" title="Complete your first collection and unlock exclusive benefits" />
           </LevelText>
 

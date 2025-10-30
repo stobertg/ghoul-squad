@@ -6,7 +6,7 @@ export const lightThemeColors = {
   bgSubtle: '#f8f8f8',
   bgInvert: '#fff',
   textPrimary: '#2e2f32',
-  textSecondary: '#74767c',
+  textSecondary: '#74767C',
   brandPrimary: '#0053e2',
 
   buttonNeutral: '#2e2f32',
@@ -46,5 +46,10 @@ export const lightThemeColors = {
 
   search: '#F8F8F8',
 
-  chip: '#F8F8F8'
+  chip: '#F8F8F8',
+
+  pillButton: '#fff',
+  pillButtonBorder: '#2E2F32',
+  pillButtonHover: '#e9f1fe',
+  progress: '#E3E4E5'
 }

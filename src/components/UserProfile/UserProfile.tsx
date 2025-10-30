@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@theme'
-import { PhoneHeader, AppBlock, Heading, Icon, Tabs, Text, ButtonIcon, Avatar, Level, ItemCarousel } from '@components' 
+import { PhoneHeader, AppBlock, Heading, Icon, Tabs, Text, ButtonIcon, Avatar, Level, ItemCarousel, Collections } from '@components' 
 import { Input } from './Parts/Input'
 
 const ProfileWrap = styled('div', {
@@ -112,7 +112,7 @@ const Post = styled('div', {
   position: 'relative',
   width: '100%',
   padding: 12,
-  border: '1px solid $border',
+  border: '1px solid $seperator',
   borderRadius: '$r2'
 })
 
@@ -167,7 +167,7 @@ const ItemCard = styled('div', {
 	gap: 12,
 	position: 'relative',
 	padding: 8,
-	border: '1px solid #333',
+	border: '1px solid $seperator',
 	// background: '$borderActive',
 	borderRadius: '$r2'
 })
@@ -241,7 +241,7 @@ const CollectionCard = styled('div', {
   gap: 12,
   position: 'relative',
   padding: 12,
-  border: '1px solid $border',
+  border: '1px solid $seperator',
   borderRadius: '$r2'
 })
 
@@ -275,7 +275,7 @@ const AddMore = styled('div', {
   position: 'relative',
   width: '100%',
   height: 140,
-  border: '1px dashed $border',
+  border: '1px dashed $seperator',
   borderRadius: '$r2'
 })
 
@@ -353,6 +353,7 @@ export const UserProfile = ({}:UserProps) => {
             triggers={[
               { title: 'Posts' },
               { title: 'My Collection' },
+              { title: 'Purchases' },
               { title: 'Wishlist' }
             ]}
             tabContent={[
@@ -420,6 +421,11 @@ export const UserProfile = ({}:UserProps) => {
                 </SocialFeed>
 
               },
+              { content: 
+
+                <Collections />
+
+              },
               {  content:
                 
                 <CollectionWrap>
@@ -448,33 +454,39 @@ export const UserProfile = ({}:UserProps) => {
                     items={[
                       {
                         image: "/ghouls/static/mystery-box.webp",
-                        title: "Ghoul Squad Mystery Drop collaboration with Finds",
-                        price: "$111.96"
+                        title: "Ghoul Squad Mystery Drop collaboration with Walmart",
+                        price: "111.96",
+                        ratingNumber: 23
                       },
                       {
                         image: "/ghouls/static/pump.webp",
                         title: "Sir Pump Blind Box",
-                        price: "$27.99"
-                      },
-                      {
-                        image: "/ghouls/static/casper.webp",
-                        title: "Sir Casper Blind Box",
-                        price: "$27.99"
+                        price: "27.99",
+                        ratingNumber: 45
                       },
                       {
                         image: "/ghouls/static/frank.webp",
                         title: "Sir Frank Blind Box",
-                        price: "$27.99"
+                        price: "27.99",
+                        ratingNumber: 15
+                      },
+                      {
+                        image: "/ghouls/static/casper.webp",
+                        title: "Sir Casper Blind Box",
+                        price: "27.99",
+                        ratingNumber: 32
                       },
                       {
                         image: "/ghouls/static/vamp.webp",
                         title: "Sir Vamp Blind Box",
-                        price: "$27.99"
+                        price: "27.99",
+                        ratingNumber: 28
                       },
                       {
                         image: "/ghouls/static/jeremy.webp",
                         title: "Jeremy Blind Box",
-                        price: "$27.99"
+                        price: "27.99",
+                        ratingNumber: 41
                       },
                     ]}
                   />
