@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { ThemeProvider, useTheme } from 'next-themes'
 import { globalStyles, lightTheme, darkTheme } from '@theme'
+import { ThemeButton } from '@components'
 
 function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme()
@@ -21,7 +22,9 @@ function ThemeToggle() {
   }
 
   return (
-    <button
+    <>
+    <ThemeButton onClick={ toggleTheme } />
+    {/* <button
       onClick={toggleTheme}
       style={{
         position: 'fixed',
@@ -37,7 +40,8 @@ function ThemeToggle() {
       }}
     >
       {current === 'light' ? '🌙 Dark' : '☀️ Light'}
-    </button>
+    </button> */}
+    </>
   )
 }
 

@@ -51,6 +51,10 @@ const ButtonWrap = styled('div', {
       auto: { 
         minWidth: 'initial',
         'button, a': { padding: '0 18px', }
+      },
+
+      full: {
+        width: '100%'
       }
     },
 
@@ -108,10 +112,11 @@ interface ButtonProps {
   pageLink?: string
   onClick?: any
   variant?: 'secondary' | 'underline'
-  width?: 'auto'
+  width?: 'auto' | 'full'
   size?: 'l0' | 'l1'
   disabled?: boolean
   icon?: string
+  type?: 'submit'
 }
 
 export const Button = ({
@@ -122,15 +127,16 @@ export const Button = ({
     width,
     size,
     disabled,
-    icon
+    icon,
+    type
   }:ButtonProps) => {
   
   return(
 
     <ButtonWrap {...{ variant, width, size, disabled }}>
-      { onClick ? (
+      { onClick || type ? (
 
-        <ButtonClick {...{ onClick, disabled }} hasIcon={ icon ? true : false }>
+        <ButtonClick {...{ onClick, disabled, type }} hasIcon={ icon ? true : false }>
           { icon && ( <Icon size="l0" {...{ icon }} /> )}
           <Heading bold size="l1" {...{ title }} />
         </ButtonClick>

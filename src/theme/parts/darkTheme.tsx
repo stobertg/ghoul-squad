@@ -26,7 +26,7 @@ export const darkThemeColors = {
 
   buttonNeutral: '#fff',
   // buttonSecondary: '#fff',
-  // primaryButtonHover: '#114AB6',
+  primaryButtonHover: '#114AB6',
   // rating: '#ffc220',
   // border: '#74767c',
   borderDisabled: '#333',
@@ -42,5 +42,8 @@ export const darkThemeColors = {
   cardBgDark: '#000',
   cardBorder: '#333',
 
-  foreground: 'rgba( 24,24,24, 0.9 )'
+  foreground: 'rgba( 24,24,24, 0.9 )',
+
+  danger: 'red',
+  toggleBorder: '#555'
 }

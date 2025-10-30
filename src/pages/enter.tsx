@@ -1,5 +1,69 @@
 import { useState } from 'react'
+import { styled } from '@theme'
 import { useRouter } from 'next/router'
+import { Heading, Text, Button } from '@components'
+
+const EnterWrap = styled('main', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  width: '100vw',
+  maxHeight: '100dvh',
+  height: '100vh'
+})
+
+const PwWrap = styled('form', {
+  position: 'relative',
+  width: 380,
+  border: '1px solid $seperator',
+  borderRadius: '$r2',
+
+  input: {
+    position: 'relative',
+    height: 44,
+    padding: '0 12px',
+    border: '1px solid $border',
+    borderRadius: '$r1',
+    appearance: 'none',
+    outline: 'none',
+  }
+})  
+
+const PwContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 20,
+  position: 'relative',
+  maxWidth: 350,
+  width: '100%',
+  margin: '0 auto',
+  padding: '50px 32px',
+  textAlign: 'center'
+})
+
+const PwImage = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+
+  img: { width: 100 }
+})
+
+const PwBlock = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 8,
+  position: 'relative',
+  width: '100%',
+
+  variants: {
+    spacing: {
+      l1: { gap: 16 }
+    }
+  }
+})
 
 export default function EnterPage() {
   const router = useRouter()
@@ -41,8 +105,6 @@ export default function EnterPage() {
       }
     }
 
-    console.log('Login response status:', res.status)
-
     setLoading(false)
 
     if (res.status === 200) {
@@ -64,65 +126,38 @@ export default function EnterPage() {
   }
 
   return (
-    <main style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '2rem',
-      fontFamily: 'sans-serif'
-    }}>
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          border: '1px solid #444',
-          borderRadius: '8px',
-          padding: '2rem',
-          minWidth: '280px',
-          maxWidth: '90%',
-        }}
-      >
-        <h1 style={{ marginBottom: '1rem', fontSize: '1rem', fontWeight: 600 }}>
-          Enter password
-        </h1>
 
-        <input
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          style={{
-            width: '100%',
-            padding: '0.5rem 0.75rem',
-            borderRadius: '4px',
-            border: '1px solid #888',
-            marginBottom: '0.75rem',
-          }}
-        />
+    <EnterWrap>
+      <PwWrap onSubmit={handleSubmit}>
+        <PwContent>
+          <PwBlock>
+            <PwImage><img src="/ghouls/illus/ghost-trans.png" /></PwImage>
+          </PwBlock>
 
-        {error && (
-          <div style={{ color: 'red', fontSize: '0.8rem', marginBottom: '0.75rem' }}>
-            {error}
-          </div>
-        )}
+          <PwBlock>
+            <Heading bold size="l2" title="Enter password" />
+            <Text fontSize="l1">This is a project by Tyler, Kate, Camilo, and Pablo. If you need access to this project, reach out ot the WCP team</Text>
+          </PwBlock>
 
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            width: '100%',
-            padding: '0.5rem 0.75rem',
-            borderRadius: '4px',
-            border: '1px solid #000',
-            background: '#000',
-            color: '#fff',
-            fontSize: '0.8rem',
-            fontWeight: 600,
-            cursor: 'pointer'
-          }}
-        >
-          {loading ? '...' : 'Unlock'}
-        </button>
-      </form>
-    </main>
+          <PwBlock spacing="l1">
+            <input
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+
+            { error && ( <Heading color='danger' size="l1" title={ error } /> )}
+
+            <Button 
+              type="submit"
+              width="full"
+              size="l1"
+              disabled={ loading }
+              title={ loading ? '...' : 'Unlock' }
+            />
+          </PwBlock>
+        </PwContent>
+      </PwWrap>
+    </EnterWrap>
   )
 }

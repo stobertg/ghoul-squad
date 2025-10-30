@@ -2,5 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/product": "pages/product.js"
+  "/enter": "pages/enter.js",
+  "/api/auth": "pages/api/auth.js",
+  "/": "pages/index.js",
+  "/unbox": "pages/unbox.js",
+  "/product": "pages/product.js",
+  "/404": "pages/404.js"
 }

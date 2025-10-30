@@ -24,7 +24,7 @@ export const globalStyle = {
     margin: 0,
     lineHeight: 1,
     fontSize: '1rem',
-    background: '#1e1e1e',
+    // background: '#1e1e1e',
     color: '$textPrimary',
     webkitFontSmoothing: 'antialiased',
     mozFontSmoothing: 'none',

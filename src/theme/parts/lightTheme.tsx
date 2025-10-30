@@ -34,5 +34,9 @@ export const lightThemeColors = {
 
   white: '#fff',
 
-  foreground: 'rgba( 255,255,255, 0.8 )'
+  foreground: 'rgba( 255,255,255, 0.8 )',
+
+  danger: 'red',
+
+  toggleBorder: '#e3e4e5'
 }
