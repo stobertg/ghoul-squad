@@ -283,7 +283,8 @@ const CardTop = styled('div', {
   position: 'absolute',
   top: 28,
   width: '100%',
-  padding: '0 20px'
+  padding: '0 20px',
+  color: '$textPrimary'
 })
 
 const CardBottom = styled('div', {

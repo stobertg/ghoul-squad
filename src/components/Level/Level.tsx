@@ -55,7 +55,7 @@ const LevelProgress = styled('div', {
     left: 0,
     width: '35%',
     height: '100%',
-    background: 'green',
+    background: '$brand',
     borderRadius: '$pill'
   }
 })
