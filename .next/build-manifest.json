@@ -35,15 +35,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/buy-now": [
+    "/unbox": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/buy-now.js"
-    ],
-    "/enter": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/enter.js"
+      "static/chunks/pages/unbox.js"
     ]
   },
   "ampFirstPages": []
