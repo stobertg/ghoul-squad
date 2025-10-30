@@ -5,7 +5,7 @@ import { InputSearch, ButtonContainer, ButtonIcon, Avatar, Button, CartButton } 
 const HeaderWrap = styled('div', {
   position: 'relative',
   width: '100%',
-  zIndex: 9000,
+  zIndex: 1,
   // background: 'rgba( 255, 255, 255, 0.5 )'
 
   variants: {
@@ -74,15 +74,15 @@ const MenuButton = styled('div', {
   position: 'relative',
   width: 16,
   height: 12,
-  borderTop: '1px solid #fff',
-  borderBottom: '1px solid #fff',
+  borderTop: '1px solid $textPrimary',
+  borderBottom: '1px solid $textPrimary',
 
   '&:after': {
     content: '',
     position: 'absolute',
     width: '100%',
     height: 1,
-    background: '#fff'
+    background: '$textPrimary'
   }
 })
 
@@ -158,9 +158,11 @@ export const PhoneHeader = ({
             { home ? (
 
               <ButtonContainer>
-                <ButtonIcon icon="bell" />
-                <ButtonIcon icon="cart" />
+                {/* <ButtonIcon icon="bell" />
+                <ButtonIcon icon="cart" /> */}
                 {/* <Avatar image="/people/isabella.webp" /> */}
+                <Sparky onClick={ onChat }><img src="/brand/sparky.png" /></Sparky>
+                <Cart><CartButton /></Cart>
               </ButtonContainer>
               
             ) : (

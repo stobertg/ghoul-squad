@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled, keyframes } from '@theme'
 import { Heading, Button, ButtonIcon } from '@components'
+import { useTheme } from 'next-themes'
 
 const fadeIn = keyframes({
   '0%': { transform: 'translateY( 30px )', opacity: 0 },
@@ -26,7 +27,7 @@ const AlertContent = styled('div', {
   width: '100%',
   margin: '0 auto',
   padding: 12,
-  background: '$bgSecondary',
+  background: '$alert',
   borderRadius: '$r2',
   boxShadow: '0 2px 10px rgba( 0,0,0, 0.5 )',
   animation: `${ fadeIn } 400ms ease forwards`,
@@ -80,10 +81,13 @@ interface AlertProps {
 }
 
 export const Alert = ({ onBuyNow }:AlertProps) => {
+  const { resolvedTheme } = useTheme()
+  const isLight = resolvedTheme === 'light'
+
   return(
 
     <AlertWrap>
-      <AlertContent>
+      <AlertContent style={{ boxShadow: isLight ? 'none' : '0 2px 10px rgba( 0,0,0, 0.5 )' }}>
         <AlertImage>
           {/* <img src="/ghouls/static/mystery-box.webp" /> */}
           <video

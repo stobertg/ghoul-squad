@@ -36,7 +36,7 @@ const Chip = styled('div', {
   height: 40,
   padding: '12px 16px',
   borderRadius: '$pill',
-  background: '$bgSecondary'
+  background: '$chip'
 })
 
 const ButtonWrap = styled('div', {
@@ -47,7 +47,7 @@ const ButtonWrap = styled('div', {
   width: 40,
   height: 40,
   borderRadius: '50%',
-  background: '$bgSecondary'
+  background: '$chip'
 })
 
 interface NavProps {

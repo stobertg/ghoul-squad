@@ -8,7 +8,7 @@ const BottomSheet = styled('div', {
   position: 'absolute',
   bottom: 0,
   left: 0,
-  background: '$bgSecondary',
+  background: '$bottomSheet',
   borderRadius: '$r3 $r3 0 0',
   paddingBottom: 32,
   zIndex: 1,

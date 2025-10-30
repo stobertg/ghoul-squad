@@ -1,5 +1,6 @@
 export const darkThemeColors = {
   bgPrimary: '#171717',
+  bottomSheet: '#1b1b1b',
   bgSecondary: '#1b1b1b',
   bgTert: '#333',
   bgSubtle: '#1b1b1b',
@@ -11,7 +12,7 @@ export const darkThemeColors = {
   rating: '#ffc220',
   border: '#3a3a3a',
   // borderActive: '#4646B7',
-
+  alert: '#1b1b1b',
 
   // bgPrimary: '#131313',
   // bgSecondary: '#1b1b1b',
@@ -45,5 +46,9 @@ export const darkThemeColors = {
   foreground: 'rgba( 24,24,24, 0.95 )',
 
   danger: 'red',
-  toggleBorder: '#555'
+  toggleBorder: '#555',
+  overlay: 'rgba( 0,0,0, 0.85 )',
+  search: '#333',
+
+  chip: '#1b1b1b'
 }

@@ -13,7 +13,7 @@ const PayContent = styled('div', {
   gap: 16,
   position: 'relative',
   padding: 20,
-  border: '1px solid $border',
+  border: '1px solid $seperator',
   borderRadius: '$r2'
 })
 

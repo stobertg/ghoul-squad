@@ -63,7 +63,7 @@ const PhoneContent = styled('div', {
   left: 0,
   width: '100%',
   height: '100%',
-  zIndex: 1,
+  zIndex: 2,
   overflow: 'scroll',
 
   variants: {
@@ -77,6 +77,10 @@ const PhoneContent = styled('div', {
         flexDirection: 'column',
         flex: 1
       }
+    },
+
+    overflowHidden: {
+      true: { overflow: 'hidden' }
     }
   }
 })
@@ -90,6 +94,7 @@ const PhoneContentMain = styled('div', {
   paddingBottom: 50,
   width: '100%',
   minHeight: '100%',
+  zIndex: 10,
   // minHeight: '100%',
   // height: '100%',
   
@@ -115,6 +120,17 @@ const PhoneContentMain = styled('div', {
 
     hasClickEvents: {
       true: {
+        paddingBottom: 0
+      }
+    },
+
+    overflowHidden: {
+      true: { overflow: 'hidden' }
+    },
+
+    noPadding: {
+      true: {
+        paddingTop: 0,
         paddingBottom: 0
       }
     }
@@ -179,6 +195,8 @@ const ConfettiCanvas = styled('canvas', {
   zIndex: 9998
 })
 
+
+
 interface PhoneProps {
   children: React.ReactNode
   hasHero?: boolean
@@ -194,6 +212,8 @@ interface PhoneProps {
   confettiCanvasRef?: React.RefObject<HTMLCanvasElement>
   navButtonTitle?: string
   hasClickEvents?: boolean
+  overflowHidden?: boolean
+  noPadding?: boolean
 }
 
 export const Phone = ({ 
@@ -210,7 +230,9 @@ export const Phone = ({
     showConfettiCanvas,
     confettiCanvasRef,
     navButtonTitle,
-    hasClickEvents
+    hasClickEvents,
+    overflowHidden,
+    noPadding
   }:PhoneProps) => {
 
   return(
@@ -220,10 +242,10 @@ export const Phone = ({
 
       <IphoneTop />
 
-      <PhoneContent bottomSpacing={ bottomNav && true } className="phone">
+      <PhoneContent bottomSpacing={ bottomNav && true } className="phone" {...{ overflowHidden }}>
         <PhoneContentMain 
           hasBottomNav={ bottomNav ? true : false }
-          {...{ hasHero, blockSpacing, contentFullHeight, hasClickEvents }}
+          {...{ hasHero, blockSpacing, contentFullHeight, hasClickEvents, overflowHidden, noPadding }}
         >
           { children }
         </PhoneContentMain>
@@ -249,6 +271,8 @@ export const Phone = ({
       
       {/* { hasAlert && ( <Alert /> )} */}
       {/* <Overlay  /> */}
+
+      
     </PhoneWrap>
 
   )

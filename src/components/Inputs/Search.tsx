@@ -10,7 +10,7 @@ const SearchWrap = styled('div', {
   width: 210,
   height: 42,
   padding: '0 16px',
-  background: '#333',
+  background: '$search',
   borderRadius: '$pill',
   fontFamily: '$sansSerif',
 
@@ -48,7 +48,7 @@ export const InputSearch = ({}:SearchProps) => {
 
     <SearchWrap>
       <Icon size="l0" icon="search" />
-      <input id="search" name="search" type="text" placeholder="Search Finds" />
+      <input id="search" name="search" type="text" placeholder="Search Walmart" />
     </SearchWrap>
 
   )

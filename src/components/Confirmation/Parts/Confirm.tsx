@@ -26,13 +26,9 @@ const ConfirmVideo = styled('div', {
   width: '100%',
   height: 162,
 
-  video: {
+  img: {
     width: 112,
     zIndex: 2
-  },
-
-  '> *:last-child': {
-    top: -50
   }
 })
 
@@ -60,13 +56,7 @@ export const Confirm = ({}:ConfirmProps) => {
     <ConfirmWrap>
       <ConfirmContent>
         <ConfirmVideo>
-          <video
-            src="/ghouls/casper.webm"
-            autoPlay
-            muted
-            loop
-          />
-          <FallAnimation placement="top" />
+          <img src="/ghouls/illus/ghost-trans.png" />
         </ConfirmVideo>
 
         <ConfirmText>

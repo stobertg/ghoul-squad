@@ -8,7 +8,7 @@ const HomeWrap = styled('div', {
   gap: 20,
   position: 'relative',
   width: '100%',
-  height: 696,
+  height: 701,
   overflow: 'hidden'
 })
 
@@ -24,7 +24,7 @@ const HomeContent = styled('div', {
 const HomeCardHero = styled('div', {
   width: '100%',
   height: 180,
-  border: '1px solid $borderFaint',
+  border: '1px solid $seperator',
   borderRadius: '$r2',
 
   variants: {

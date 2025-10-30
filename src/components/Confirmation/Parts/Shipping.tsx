@@ -10,7 +10,7 @@ const IconWrap = styled('div', {
   width: 44,
   height: 44,
   borderRadius: '50%',
-  border: '1px solid $border'
+  border: '1px solid $seperator'
 })
 
 const ShippingWrap = styled('div', {
@@ -19,13 +19,13 @@ const ShippingWrap = styled('div', {
   position: 'relative',
   width: '100%',
   padding: '20px 20px',
-  border: '1px solid $border',
+  border: '1px solid $seperator',
   borderRadius: '$r2',
   
   '> *:not(:last-child)': {
     marginBottom: 20,
     paddingBottom: 20,
-    borderBottom: '1px solid $border'
+    borderBottom: '1px solid $seperator'
   }
 })
 

@@ -4,6 +4,7 @@ import { HeadTags, SiteContainer, Phone, PhoneHeader, BuyNow, Heading, ButtonIco
 import { useImagePreloader, useFontPreloader } from '@lib'
 import LoadingBar from 'react-top-loading-bar'
 import confetti from "canvas-confetti"
+import { useTheme } from 'next-themes'
 
 const BottomSheet = styled('div', {
   position: 'absolute',
@@ -11,7 +12,7 @@ const BottomSheet = styled('div', {
   left: 0,
   width: '100%',
   height: 730,
-  background: '$bgSecondary',
+  background: '$bottomSheet',
   borderRadius: '$r3 $r3 0 0',
   paddingBottom: 32,
   zIndex: 9999,
@@ -54,35 +55,13 @@ const BottomSheetHeader = styled('div', {
   }
 })
 
-const Overlay = styled('div', {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  background: 'rgba( 0,0,0, 0.8 )',
-  zIndex: 9000,
-  opacity: 0,
-  pointerEvents: 'none',
-
-  variants: {
-    active: {
-      true: { 
-        opacity: 1, 
-        pointerEvents: 'auto',
-        transition: '$s1' 
-      }
-    }
-  }
-})
-
 const ConfirmWrap = styled('div', {
   position: 'absolute',
   top: 50,
   left: 0,
   width: '100%',
   height: '100%',
-  background: '$bgSecondary',
+  background: '$bottomSheet',
   transition: '$s3',
   transform: 'translateY( 30px )',
   pointerEvents: 'none',
@@ -116,6 +95,37 @@ const BuyNowWrap = styled('div', {
   }
 })
 
+
+const Overlay = styled('div', {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  background: '$overlay',
+  zIndex: 2,
+  opacity: 0,
+  pointerEvents: 'none',
+
+  variants: {
+    active: {
+      true: { 
+        opacity: 1, 
+        pointerEvents: 'auto',
+        transition: '$s1' 
+      }
+    }
+  }
+})
+
+const PageWrap = styled('div', {
+  position: 'relative',
+  width: '100%',
+  height: '100%',
+  paddingTop: 50,
+  overflow: 'hidden'
+})
+
 const imageUrls = [
   "/badges/badge_collab.png",
   "/ghouls/static/pump.png",
@@ -145,11 +155,15 @@ export default function Home() {
   const [ confirm, setConfirm ] = useState( false )
   const onConfirm = () => { setConfirm( !confirm ) }
 
+  const { resolvedTheme } = useTheme()
+
   const handleClick = () => {
     if (!confettiCanvasRef.current) return
     const myConfetti = confetti.create(confettiCanvasRef.current, { resize: true, useWorker: true })
     const end = Date.now() + 0.5 * 1000
-    const colors = ["#ffffff", "#FFC220"]
+    const colors = resolvedTheme === 'dark'
+      ? ["#ffffff", "#FFC220"]
+      : ["#0053E2", "#FFC220"]
     const frame = () => {
       if (Date.now() > end) return
       myConfetti({
@@ -225,26 +239,30 @@ export default function Home() {
           <Phone 
             removeBg 
             hasAlert 
-            showConfettiCanvas 
+            overflowHidden
+            showConfettiCanvas
+            noPadding 
             confettiCanvasRef={ confettiCanvasRef }
           >
+            <PageWrap>
             <PhoneHeader home />
-            <HomePage />
+              <HomePage />
 
-            <BottomSheet active={ buy }>
-              <BottomSheetHeader>
-                <div>
-                  <Heading bold title={ !confirm && "Buy now"} />
-                  <ButtonIcon size="l1" icon="x" onClick={() => { onBuy(), onConfirm() }} />
-                </div>
-              </BottomSheetHeader>
+              <BottomSheet active={ buy }>
+                <BottomSheetHeader>
+                  <div>
+                    <Heading bold title={ !confirm && "Buy now"} />
+                    <ButtonIcon size="l1" icon="x" onClick={() => { onBuy(), onConfirm() }} />
+                  </div>
+                </BottomSheetHeader>
 
-              <BuyNowWrap active={ confirm }><BuyNow placeOrder={() => { onConfirm(), handleClick() }} /></BuyNowWrap>
-              <ConfirmWrap active={ confirm }><Confirmation /></ConfirmWrap>
-            </BottomSheet>
+                <BuyNowWrap active={ confirm }><BuyNow placeOrder={() => { onConfirm(), handleClick() }} /></BuyNowWrap>
+                <ConfirmWrap active={ confirm }><Confirmation /></ConfirmWrap>
+              </BottomSheet>
 
-            <Alert onBuyNow={ onBuy } />
-            <Overlay active={ buy } />
+              <Alert onBuyNow={ onBuy } />
+              <Overlay active={ buy } />
+            </PageWrap>
           </Phone>
         </SiteContainer>
 
