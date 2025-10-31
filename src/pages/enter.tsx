@@ -48,7 +48,7 @@ const PwImage = styled('div', {
   alignItems: 'center',
   position: 'relative',
 
-  img: { width: 100 }
+  img: { width: 200 }
 })
 
 const PwBlock = styled('div', {
@@ -131,7 +131,7 @@ export default function EnterPage() {
       <PwWrap onSubmit={handleSubmit}>
         <PwContent>
           <PwBlock>
-            <PwImage><img src="/ghouls/illus/ghost-trans.png" /></PwImage>
+            <PwImage><img src="/ghouls/static/jeremy.png" /></PwImage>
           </PwBlock>
 
           <PwBlock>
