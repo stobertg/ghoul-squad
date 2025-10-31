@@ -23,10 +23,14 @@ const ProfileWrap = styled('div', {
 })
 
 const WatchWrap = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-end',
   position: 'absolute',
+  top: 0,
   bottom: 0,
-  left: 0,
   width: '100%',
+  height: 832,
   zIndex: 9999,
   pointerEvents: 'none',
   transform: 'scale( 0.9 )',
@@ -122,7 +126,12 @@ export default function Home() {
         >
           <HeadTags />
 
-          <Phone fall bottomNav navButtonTitle="Notify Me">
+          <Phone 
+            fall 
+            bottomNav 
+            onBottomAction={ toggleWatch }
+            navButtonTitle="Notify Me"
+          >
             <PhoneHeader 
               overlay 
               onStar={ toggleWatch }
@@ -146,13 +155,13 @@ export default function Home() {
               <Profile />
             </ProfileWrap> */}
 
-            <WatchWrap active={ watch }>
+            {/* <WatchWrap active={ watch }>
               <WatchList closeWatch={ toggleWatch } />
             </WatchWrap>
 
             <WatchWrap active={ chat }>
               <AiChat closeChat={ toggleChat } />
-            </WatchWrap>
+            </WatchWrap> */}
           </Phone>
         </SiteContainer>
       )}

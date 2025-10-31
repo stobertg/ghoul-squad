@@ -49,15 +49,16 @@ const NavContent = styled('div', {
 
 interface NavProps {
   title?: string
+  onBottomAction?: any
 }
 
-export const NavBottom = ({ title }:NavProps) => {
+export const NavBottom = ({ title, onBottomAction }:NavProps) => {
   return(
 
     <NavWrap>
       <NavContent>
         <Heading heavy title="$27.99" />
-        <Button title={ title ?? "Add to cart"} />
+        <Button title={ title ?? "Add to cart"} onClick={ onBottomAction } />
       </NavContent>
     </NavWrap>
 

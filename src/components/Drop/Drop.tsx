@@ -89,7 +89,7 @@ export const Drop = ({
       <DropContent>
         <DropMain>
           <Hero {...{ title, subTitle, image, video, videos, titles }} hevcVideos={ appleFallback } />
-          <Countdown targetDate="2025-10-31T23:59:59" />
+          <Countdown targetDate="2025-11-15T23:59:59" />
         </DropMain>
         
         <ChipWrap>

@@ -214,6 +214,7 @@ interface PhoneProps {
   hasClickEvents?: boolean
   overflowHidden?: boolean
   noPadding?: boolean
+  onBottomAction?: any
 }
 
 export const Phone = ({ 
@@ -232,7 +233,8 @@ export const Phone = ({
     navButtonTitle,
     hasClickEvents,
     overflowHidden,
-    noPadding
+    noPadding,
+    onBottomAction
   }:PhoneProps) => {
 
   return(
@@ -258,7 +260,7 @@ export const Phone = ({
       <IphoneBottom />
       {/* { fall && ( <FallAnimation /> )} */}
       {/* <PhoneBg {...{ lighterBg }} /> */}
-      { bottomNav && ( <NavBottom title={ navButtonTitle } /> )}
+      { bottomNav && ( <NavBottom title={ navButtonTitle } {...{ onBottomAction }} /> )}
 
  
 
